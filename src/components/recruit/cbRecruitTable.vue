@@ -35,157 +35,158 @@
       </tbody>
 
     </table>
-  </div>
 
+  </div>
 </template>
 
 <script>
     export default {
-        name: "cbRecruitTable",
-        data(){
-          return{
-            tableData: [{
-              isChecked:false,
-              reId: '01',
+      name: "cbRecruitTable",
+      data() {
+        return {
+          tableData: [
+            {
+            isChecked: false,
+            reId: '01',
+            reName: '刘瑞雪',
+            rePhone: '18817334402',
+            reEmail: 'liuruixue@163.com',
+            reAddress: '上海',
+            reDitch: '投递',
+            reType: '项目经理',
+            reInter: '初始',
+            case: '未知',
+            rePerson: '王菁'
+          },
+            {
+              isChecked: false,
+              reId: '02',
               reName: '刘瑞雪',
               rePhone: '18817334402',
               reEmail: 'liuruixue@163.com',
               reAddress: '上海',
               reDitch: '投递',
-              reType:'项目经理',
-              reInter:'初始',
-              case:'未知',
-              rePerson:'王菁'
-              },
-              {
-                isChecked:false,
-                reId: '02',
-                reName: '刘瑞雪',
-                rePhone: '18817334402',
-                reEmail: 'liuruixue@163.com',
-                reAddress: '上海',
-                reDitch: '投递',
-                reType:'项目经理',
-                reInter:'初始',
-                case:'',
-                rePerson:'王菁'
-              },
-              {
-                isChecked:false,
-                reId: '03',
-                reName: '刘瑞雪',
-                rePhone: '18817334402',
-                reEmail: 'liuruixue@163.com',
-                reAddress: '上海',
-                reDitch: '投递',
-                reType:'项目经理',
-                reInter:'初始',
-                case:'',
-                rePerson:'王菁'
-              },
-              {
-                isChecked:false,
-                reId: '04',
-                reName: '刘瑞雪',
-                rePhone: '18817334402',
-                reEmail: 'liuruixue@163.com',
-                reAddress: '上海',
-                reDitch: '投递',
-                reType:'项目经理',
-                reInter:'初始',
-                case:'',
-                rePerson:'王菁'
-              },
-              {
-                isChecked:false,
-                reId: '05',
-                reName: '刘瑞雪',
-                rePhone: '18817334402',
-                reEmail: 'liuruixue@163.com',
-                reAddress: '上海',
-                reDitch: '投递',
-                reType:'项目经理',
-                reInter:'初始',
-                case:'',
-                rePerson:'王菁'
-              },
-              {
-                isChecked:false,
-                reId: '06',
-                reName: '刘瑞雪',
-                rePhone: '18817334402',
-                reEmail: 'liuruixue@163.com',
-                reAddress: '上海',
-                reDitch: '投递',
-                reType:'项目经理',
-                reInter:'初始',
-                case:'',
-                rePerson:'王菁'
-              },
-              {
-                isChecked:false,
-                reId: '07',
-                reName: '刘瑞雪',
-                rePhone: '18817334402',
-                reEmail: 'liuruixue@163.com',
-                reAddress: '上海',
-                reDitch: '投递',
-                reType:'项目经理',
-                reInter:'初始',
-                case:'',
-                rePerson:'王菁'
-              },
-              {
-                isChecked:false,
-                reId: '08',
-                reName: '刘瑞雪',
-                rePhone: '18817334402',
-                reEmail: 'liuruixue@163.com',
-                reAddress: '上海',
-                reDitch: '投递',
-                reType:'项目经理',
-                reInter:'初始',
-                case:'',
-                rePerson:'王菁'
-              },
-              {
-                isChecked:false,
-                reId: '09',
-                reName: '刘瑞雪',
-                rePhone: '18817334402',
-                reEmail: 'liuruixue@163.com',
-                reAddress: '上海',
-                reDitch: '投递',
-                reType:'项目经理',
-                reInter:'初始',
-                case:'',
-                rePerson:'王菁'
-              },
-              {
-                isChecked:false,
-                reId: '10',
-                reName: '刘瑞雪',
-                rePhone: '18817334402',
-                reEmail: 'liuruixue@163.com',
-                reAddress: '上海',
-                reDitch: '投递',
-                reType:'项目经理',
-                reInter:'初始',
-                case:'',
-                rePerson:'王菁'
-              },
-            ]
-          }
+              reType: '项目经理',
+              reInter: '初始',
+              case: '',
+              rePerson: '王菁'
+            },
+            {
+              isChecked: false,
+              reId: '03',
+              reName: '刘瑞雪',
+              rePhone: '18817334402',
+              reEmail: 'liuruixue@163.com',
+              reAddress: '上海',
+              reDitch: '投递',
+              reType: '项目经理',
+              reInter: '初始',
+              case: '',
+              rePerson: '王菁'
+            },
+            {
+              isChecked: false,
+              reId: '04',
+              reName: '刘瑞雪',
+              rePhone: '18817334402',
+              reEmail: 'liuruixue@163.com',
+              reAddress: '上海',
+              reDitch: '投递',
+              reType: '项目经理',
+              reInter: '初始',
+              case: '',
+              rePerson: '王菁'
+            },
+            {
+              isChecked: false,
+              reId: '05',
+              reName: '刘瑞雪',
+              rePhone: '18817334402',
+              reEmail: 'liuruixue@163.com',
+              reAddress: '上海',
+              reDitch: '投递',
+              reType: '项目经理',
+              reInter: '初始',
+              case: '',
+              rePerson: '王菁'
+            },
+            {
+              isChecked: false,
+              reId: '06',
+              reName: '刘瑞雪',
+              rePhone: '18817334402',
+              reEmail: 'liuruixue@163.com',
+              reAddress: '上海',
+              reDitch: '投递',
+              reType: '项目经理',
+              reInter: '初始',
+              case: '',
+              rePerson: '王菁'
+            },
+            {
+              isChecked: false,
+              reId: '07',
+              reName: '刘瑞雪',
+              rePhone: '18817334402',
+              reEmail: 'liuruixue@163.com',
+              reAddress: '上海',
+              reDitch: '投递',
+              reType: '项目经理',
+              reInter: '初始',
+              case: '',
+              rePerson: '王菁'
+            },
+            {
+              isChecked: false,
+              reId: '08',
+              reName: '刘瑞雪',
+              rePhone: '18817334402',
+              reEmail: 'liuruixue@163.com',
+              reAddress: '上海',
+              reDitch: '投递',
+              reType: '项目经理',
+              reInter: '初始',
+              case: '',
+              rePerson: '王菁'
+            },
+            {
+              isChecked: false,
+              reId: '09',
+              reName: '刘瑞雪',
+              rePhone: '18817334402',
+              reEmail: 'liuruixue@163.com',
+              reAddress: '上海',
+              reDitch: '投递',
+              reType: '项目经理',
+              reInter: '初始',
+              case: '',
+              rePerson: '王菁'
+            },
+            {
+              isChecked: false,
+              reId: '10',
+              reName: '刘瑞雪',
+              rePhone: '18817334402',
+              reEmail: 'liuruixue@163.com',
+              reAddress: '上海',
+              reDitch: '投递',
+              reType: '项目经理',
+              reInter: '初始',
+              case: '',
+              rePerson: '王菁'
+            }
+          ]
         }
+      }
     }
 </script>
 
 <style scoped>
-.tableBox{
+.tableBox {
   width: calc(100% - 30px);
   height: 300px;
   padding: 15px;
-  background-color:#fff;
+  background-color: #fff;
   border-radius: 5px;
   box-shadow: 1px 1px 3px rgba(0,0,0,.2);
   overflow-y: scroll;
@@ -210,4 +211,6 @@
     background: #fff;
     cursor: pointer;
   }
+
+
 </style>

@@ -39,25 +39,25 @@
             </template>
             <el-menu-item-group>
               <el-menu-item index="2-1">
-                <router-link to="user">用户</router-link>
+                <span @click="router('user')">用户</span>
               </el-menu-item>
               <el-menu-item index="2-2">
-                <router-link to="role">角色</router-link>
+                <span @click="router('role')">角色</span>
               </el-menu-item>
               <el-menu-item index="2-3">
-                <router-link to="part">部门</router-link>
+                <span @click="router('part')">部门</span>
               </el-menu-item>
               <el-menu-item index="2-4">
-                <router-link to="job">岗位</router-link>
+                <span @click="router('job')">岗位</span>
               </el-menu-item>
               <el-menu-item index="2-5">
-                <router-link to="schedule">日程</router-link>
+                <span @click="router('schedule')">日程</span>
               </el-menu-item>
-              <el-menu-item index="2-5">
-                <router-link to="application">招聘管理</router-link>
+              <el-menu-item index="2-6">
+                <span @click="router('recruit')">招聘管理</span>
               </el-menu-item>
-              <el-menu-item index="2-5">
-                <router-link to="word">字典管理</router-link>
+              <el-menu-item index="2-7">
+                <span @click="router('dictionary')">字典管理</span>
               </el-menu-item>
             </el-menu-item-group>
           </el-submenu>
@@ -84,10 +84,17 @@ export default {
   },
   methods: {
     handleOpen(key, keyPath) {
-      console.log(key, keyPath);
+      // console.log(key, keyPath);
     },
     handleClose(key, keyPath) {
-      console.log(key, keyPath);
+      // console.log(key, keyPath);
+    },
+    router(path) {
+      this.$store.dispatch({
+        type: "intradd",
+        data: path
+      });
+      this.$router.push("/index/" + path);
     }
   }
 };
@@ -101,9 +108,27 @@ export default {
   border-radius: 50%;
   background: #1c84c6;
 }
+.nav::-webkit-scrollbar {
+  width: 2px; /*对垂直流动条有效*/
+  height: 2px; /*对水平流动条有效*/
+}
+/*定义滚动条的轨道颜色、内阴影及圆角*/
+.nav::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+}
+/*定义滑块颜色、内阴影及圆角*/
+.nav::-webkit-scrollbar-thumb {
+  border-radius: 7px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #e8e8e8;
+}
+
 .nav {
   background: #2f4050;
   width: 220px;
+  overflow-x: hidden;
+  overflow-y: auto;
   .userMenu {
     display: flex;
     justify-content: space-between;
@@ -149,16 +174,18 @@ export default {
       .el-menu {
         border: 0;
         .el-menu-item {
+          height: 32px;
+          line-height: 32px;
           a {
             display: block;
             width: 100%;
           }
-        }
-      }
-      li {
-        background: #2f4050;
-        div {
-          background: #2f4050 !important;
+
+          span {
+            display: inline-block;
+            width: 100%;
+            color: #ccc !important;
+          }
         }
       }
     }
