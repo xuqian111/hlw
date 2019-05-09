@@ -48,6 +48,7 @@ export default {
   justify-content: space-between;
   border-bottom: 1px solid #e7eaec;
   height: 40px;
+  background: #fff;
   .preBtn,
   .nextBtn {
     width: 40px;
