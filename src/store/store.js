@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    brumbs: ['1']
+    brumbs: []
   },
   getters: {
     getbrumbs(state) {
@@ -25,12 +25,32 @@ export default new Vuex.Store({
       if (!has) {
         state.brumbs.push(str)
       }
+    },
+    deleteBrumb(state, obj) {
+      let n = obj.data;
+      state.brumbs.splice(n, 1)
+
+    },
+    clear(state, obj) {
+      state.brumbs = []
     }
   },
   actions: {
     intradd(context, obj) {
       context.commit({
         type: 'addBrumb',
+        data: obj.data
+      })
+    },
+    untradd(context, obj) {
+      context.commit({
+        type: 'deleteBrumb',
+        data: obj.data
+      })
+    },
+    clear(context, obj) {
+      context.commit({
+        type: 'clear',
         data: obj.data
       })
     }

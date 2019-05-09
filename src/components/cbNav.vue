@@ -54,7 +54,7 @@
                 <span @click="router('schedule')">日程</span>
               </el-menu-item>
               <el-menu-item index="2-6">
-                <span @click="router('employment')">招聘管理</span>
+                <span @click="router('recruit')">招聘管理</span>
               </el-menu-item>
               <el-menu-item index="2-7">
                 <span @click="router('dictionary')">字典管理</span>
