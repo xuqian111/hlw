@@ -1,29 +1,46 @@
 <template>
   <div id="app">
-    <router-view/>
+    <index></index>
   </div>
 </template>
 
 <script>
+import Index from "./pages/index";
 export default {
-  name: 'App'
-}
+  name: "App",
+  components: {
+    Index
+  }
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 
-body,p,h1,h2,h3,h4,h5,h6,ul,ol,dl,li,dt,dd{
+body,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+dl,
+li,
+dt,
+dd {
   /* 默认有边距，都要清除 */
   margin: 0;
   padding: 0;
   /*字体设置*/
   font-size: 14px;
-  font-family: "Microsoft Yahei",sans-serif;
+  font-family: "Microsoft Yahei", sans-serif;
   color: #ccc;
   /* 去掉列表的原点 */
   list-style: none;
@@ -32,14 +49,15 @@ body,p,h1,h2,h3,h4,h5,h6,ul,ol,dl,li,dt,dd{
 }
 
 /*可选*/
-html,body{
+html,
+body {
   width: 100%;
   height: 100%;
-  font-size: 100px!important;
 }
 
 /*行内块元素*/
-input,img{
+input,
+img {
   margin: 0;
   padding: 0;
   border: 0 none;
@@ -48,41 +66,42 @@ input,img{
 }
 
 /*行内元素*/
-a,a:active,a:visited{
+a,
+a:active,
+a:visited {
   /*下划线和颜色*/
   text-decoration: none;
   color: #ccc;
 }
 
-a:hover{
-  color:#333;
+a:hover {
+  color: #333;
 }
 
-textarea{
+textarea {
   /* 边框清零 */
-  border:none;
+  border: none;
   /* 轮廓线清零 */
   outline: none;
   /* 防止文本域被随意拖拽 */
   resize: none;
 }
 
-i{
+i {
   /*文字样式*/
   font-style: normal;
 }
 
-table{
+table {
   /*边框合并*/
-  border-collapse:collapse;
-  border-spacing:0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
-
 
 /* 使用伪元素清除浮动 */
 .clearfix::before,
-.clearfix::after{
-  content:"";
+.clearfix::after {
+  content: "";
   height: 0;
   line-height: 0;
   display: block;
@@ -93,5 +112,4 @@ table{
 .clearfix {
   *zoom: 1;
 }
-
 </style>
