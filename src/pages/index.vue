@@ -14,7 +14,7 @@
 import cbHeader from "../components/cbHeader";
 import cbNav from "../components/cbNav";
 export default {
-  name: "index",
+  name: "Index",
   components: {
     cbHeader,
     cbNav

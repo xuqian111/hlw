@@ -1,10 +1,14 @@
 <template>
-  <div>main</div>
+  <cbBreadCrumb/>
 </template>
 
 <script>
+import cbBreadCrumb from "./cbBreadCrumb";
 export default {
-  name: "cbMain"
+  name: "cbMain",
+  components: {
+    cbBreadCrumb
+  }
 };
 </script>
 
