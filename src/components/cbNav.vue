@@ -25,7 +25,8 @@
           class="el-menu-vertical-demo"
           @open="handleOpen"
           @close="handleClose"
-          background-color="#545c64"
+          text-color="#fff"
+          background-color="#2f4050"
         >
           <el-menu-item index="1">
             <i class="el-icon-document"></i>
@@ -39,9 +40,9 @@
             <el-menu-item-group>
               <el-menu-item index="2-1">用户</el-menu-item>
               <el-menu-item index="2-2">角色</el-menu-item>
-              <el-menu-item index="2-1">部门</el-menu-item>
-              <el-menu-item index="2-2">岗位</el-menu-item>
-              <el-menu-item index="2-1">日程</el-menu-item>
+              <el-menu-item index="2-3">部门</el-menu-item>
+              <el-menu-item index="2-4">岗位</el-menu-item>
+              <el-menu-item index="2-5">日程</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
 
@@ -78,17 +79,18 @@ export default {
 
 <style lang="scss" scoped>
 .nav {
+  background: #2f4050;
   width: 220px;
   .userMenu {
     display: flex;
     justify-content: space-between;
     .userImg {
-      width: 45px;
       img {
-        width: 100%;
-        display: block;
-        padding-left: 10px;
-        padding-top: 4px;
+        width: 45px;
+        height: 45px;
+        margin-left: 10px;
+        margin-top: 6px;
+        border-radius: 50%;
       }
     }
   }
@@ -96,6 +98,12 @@ export default {
     height: 100%;
     .el-col-12 {
       width: 100%;
+      li {
+        background: #2f4050;
+        div {
+          background: #2f4050 !important;
+        }
+      }
     }
   }
 }
