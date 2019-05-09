@@ -31,6 +31,7 @@ export default {
     justify-content: space-between;
     .content {
       flex: 1;
+      background: #e2e2e2;
     }
   }
 }
