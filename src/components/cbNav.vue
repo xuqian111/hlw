@@ -38,13 +38,27 @@
               <span>系统</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="2-1">用户</el-menu-item>
-              <el-menu-item index="2-2">角色</el-menu-item>
-              <el-menu-item index="2-3">部门</el-menu-item>
-              <el-menu-item index="2-4">岗位</el-menu-item>
-              <el-menu-item index="2-5">日程</el-menu-item>
-              <el-menu-item index="2-5">招聘管理</el-menu-item>
-              <el-menu-item index="2-5">字典管理</el-menu-item>
+              <el-menu-item index="2-1">
+                <router-link to="user">用户</router-link>
+              </el-menu-item>
+              <el-menu-item index="2-2">
+                <router-link to="role">角色</router-link>
+              </el-menu-item>
+              <el-menu-item index="2-3">
+                <router-link to="part">部门</router-link>
+              </el-menu-item>
+              <el-menu-item index="2-4">
+                <router-link to="job">岗位</router-link>
+              </el-menu-item>
+              <el-menu-item index="2-5">
+                <router-link to="schedule">日程</router-link>
+              </el-menu-item>
+              <el-menu-item index="2-5">
+                <router-link to="application">招聘管理</router-link>
+              </el-menu-item>
+              <el-menu-item index="2-5">
+                <router-link to="word">字典管理</router-link>
+              </el-menu-item>
             </el-menu-item-group>
           </el-submenu>
 
@@ -94,6 +108,8 @@ export default {
     display: flex;
     justify-content: space-between;
     padding: 15px;
+    box-sizing: border-box;
+
     .userImg {
       img {
         width: 45px;
@@ -130,6 +146,15 @@ export default {
   .tac {
     .el-col-12 {
       width: 100%;
+      .el-menu {
+        border: 0;
+        .el-menu-item {
+          a {
+            display: block;
+            width: 100%;
+          }
+        }
+      }
       li {
         background: #2f4050;
         div {

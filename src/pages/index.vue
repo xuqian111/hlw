@@ -31,7 +31,6 @@ export default {
     justify-content: space-between;
     .content {
       flex: 1;
-      border: 1px solid black;
     }
   }
 }
