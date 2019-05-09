@@ -39,7 +39,7 @@
             </template>
             <el-menu-item-group>
               <el-menu-item index="2-1">
-                <span @click="router('user')">用户</span>
+                <span @click="router('personal')">用户</span>
               </el-menu-item>
               <el-menu-item index="2-2">
                 <span @click="router('role')">角色</span>
@@ -54,7 +54,7 @@
                 <span @click="router('schedule')">日程</span>
               </el-menu-item>
               <el-menu-item index="2-6">
-                <span @click="router('recruit')">招聘管理</span>
+                <span @click="router('employment')">招聘管理</span>
               </el-menu-item>
               <el-menu-item index="2-7">
                 <span @click="router('dictionary')">字典管理</span>

@@ -28,9 +28,6 @@
           <el-dropdown-item>
             <span @click="closeAll">全部关闭</span>
           </el-dropdown-item>
-          <el-dropdown-item>
-            <span>全屏显示</span>
-          </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
       <el-button @click="reload">刷新</el-button>
@@ -48,7 +45,6 @@ export default {
   },
   methods: {
     reload() {
-      // console.log(window);
       location.reload();
     },
     deleteOne(n) {
@@ -76,7 +72,7 @@ export default {
         type: "clear",
         data: ""
       });
-      console.log(this.$store.getters.getbrumbs);
+      // console.log(this.$store.getters.getbrumbs);
     }
   }
 };

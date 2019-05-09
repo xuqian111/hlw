@@ -4,6 +4,8 @@ import Index from "../pages/index";
 import cbMain from '../components/cbMain'
 import recruit from '../components/recruit/cbRecruit'
 import cbRole from '../pages/cbRole'
+import login from '../pages/login'
+import cbPersonal from "../components/personal/cbPersonal"
 
 Vue.use(Router)
 
@@ -15,6 +17,11 @@ export default new Router({
       component: Index
     },
     {
+      path: '/login',
+      name: 'login',
+      component: login
+    },
+    {
       path: '/index',
       name: "Index",
       component: Index,
@@ -23,9 +30,14 @@ export default new Router({
           component: recruit
         },
         {
-          path: '/role',
+          path: 'role',
           name: 'cbRole',
           component: cbRole
+        },
+        {
+          path: "personal",
+          name: "cbPersonal",
+          component: cbPersonal
         }
       ]
     }
