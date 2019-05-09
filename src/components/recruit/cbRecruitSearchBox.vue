@@ -61,7 +61,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
   margin-bottom: 10px;
   box-shadow: 1px 1px 3px rgba(0,0,0,.2);
 }
