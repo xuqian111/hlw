@@ -8,11 +8,11 @@
         <div class="userName">大娃</div>
         <div class="userState">
           <div class="online">
-            <i></i>
+            <i class="onlineIcon"></i>
             <span>在线</span>
           </div>
           <div class="outline">
-            <i></i>
+            <i class="el-icon-s-unfold"></i>
             <span>注销</span>
           </div>
         </div>
@@ -43,6 +43,8 @@
               <el-menu-item index="2-3">部门</el-menu-item>
               <el-menu-item index="2-4">岗位</el-menu-item>
               <el-menu-item index="2-5">日程</el-menu-item>
+              <el-menu-item index="2-5">招聘管理</el-menu-item>
+              <el-menu-item index="2-5">字典管理</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
 
@@ -78,12 +80,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.onlineIcon {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #1c84c6;
+}
 .nav {
   background: #2f4050;
   width: 220px;
   .userMenu {
     display: flex;
     justify-content: space-between;
+    padding: 15px;
     .userImg {
       img {
         width: 45px;
@@ -93,9 +103,31 @@ export default {
         border-radius: 50%;
       }
     }
+    .userInfo {
+      flex: 1;
+      padding-left: 10px;
+      .userName {
+        height: 30%;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+      .userState {
+        display: flex;
+        .online {
+          margin-right: 10px;
+        }
+        .outline {
+          &:hover {
+            cursor: pointer;
+          }
+          .el-icon-s-unfold {
+            color: #ed4f5a;
+          }
+        }
+      }
+    }
   }
   .tac {
-    height: 100%;
     .el-col-12 {
       width: 100%;
       li {
