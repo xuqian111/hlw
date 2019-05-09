@@ -5,7 +5,6 @@ import b from '../components/b'
 import c from '../components/c'
 import d from '../components/d'
 import Index from "../pages/index";
-import cbMain from '../components/cbMain'
 
 Vue.use(Router)
 
