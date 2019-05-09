@@ -1,15 +1,15 @@
 <template>
         <div class="Sinput_Box">
             <div class="Sinput Sinput_one si">
-                <span>角色名称 : </span>
+                <span>角色名称&nbsp;:&nbsp;</span>
                 <el-input v-model="input" placeholder=""></el-input>
             </div>
             <div class="Sinput Sinput_two si">
-                <span>权限字符 : </span>
-                <el-input v-model="input" placeholder=""></el-input>
+                <span>权限字符&nbsp;:&nbsp;</span>
+                <el-input v-model="input2" placeholder=""></el-input>
             </div>
-            <div class="Sinput Sinput_three si">
-                <span>角色状态 : </span>
+            <div class="Sinput_three si">
+                <span>角色状态&nbsp;:&nbsp;</span>
                 <el-select  v-model="value8" filterable placeholder="">
                     <el-option
                         v-for="item in options"
@@ -19,23 +19,32 @@
                     </el-option>
                 </el-select>
             </div>
-            <div class="Sinput Sinput_four">
+            <div class="Sinput_four">
                 <div class="block">
-                    <span class="demonstration" >创建时间 : </span>
+                    <span class="demonstration" >创建时间&nbsp;:&nbsp;</span>
                     <el-date-picker
                         v-model="value4"
                         type="month"
-                        placeholder="开始时间">
+                        placeholder="开始时间"
+                        :editable='editable'>
                     </el-date-picker>
                 </div>
                 <div class="block">
-                    <span class="demonstration">-</span>
+                    <span class="demonstration">&nbsp;&nbsp;-&nbsp;&nbsp;</span>
                     <el-date-picker
                         v-model="value5"
                         align="right"
                         type="year"
                         placeholder="结束时间">
                     </el-date-picker>
+                </div>
+            </div>
+            <div class="twoBut">
+                <div class="searchBut">
+
+                </div>
+                <div class="refreshBut">
+
                 </div>
             </div>
         </div>
@@ -47,6 +56,7 @@
         data() {
             return {
                 input: '',
+                input2:'',
                 options: [{
                     value: '选项1',
                     label: '正常'
@@ -60,8 +70,10 @@
                     value8: '',
                     value3: '',
                     value4: '',
-                    value5: ''
-            };
+                    value5: '',
+                    editable:'ture'
+                }
+
         },
         methods: {
 
@@ -75,58 +87,107 @@
 }
 .Sinput_Box{
     overflow: hidden;
+    box-sizing: border-box;
 }
 // Sinpt
 .Sinput{
     float:left;
-    // width:25%;
     box-sizing:border-box;
     padding-right:15px;
-    display: -webkit-flex;
+    margin-bottom: 10px;
+    // display: -webkit-flex;
     span{
-        float:left !important;
+        float:left ;
         font-size:14px;
         color:#333333;
         line-height:30px;
     }
     .el-input--small{
         float:left !important;
+        width:180px;
         .el-input__inner{
             width:180px !important;
             height:28px !important;
             outline:none !important;
+            border: 1px solid #dddddd;
         }
     }
-    .el-input__inner:focus{
-        outline:none !important;
-    }
 }
-.si span{
-    width:94px;
-}
-.block{
+.Sinput_three{
+    float:left;
+    box-sizing:border-box;
+    padding-right:15px;
+    margin-bottom: 10px;
     span{
-        float:left !important;
+        float:left ;
+        font-size:14px;
+        color:#333333;
+        line-height:30px;
     }
-    .el-date-editor{
+    .el-select--small{
         float:left !important;
-        width:88px !important;
-        height:28px !important;
-    }
-    .el-input__inner{
-        width:88px !important;
-        height:28px !important;
+        width:180px;
+        .el-input__inner{
+            height:28px !important;
+        }
     }
 }
 .Sinput_four{
+    overflow: hidden;
     clear:both;
-    .block:first-child{
-        margin-right:6px;
+    display: -webkit-flex;
+}
+.block{
+    overflow: hidden;
+    clear:both;
+    span{
+        float:left ;
+        font-size:14px;
+        color:#333333;
+        line-height:30px;
     }
-    .block:last-child{
-        span{
-            margin-right:6px;
+    .el-date-editor--month{
+            width:88px;
+    //     float:left !important;
+    //     width:88px !important;
+    //     height:28px !important;
+        .el-input__inner{
+            width:88px !important;
+            padding:0;
+            text-indent:6px;
         }
+        .el-icon-date::before{
+            content:'';
+        }
+    }
+    .el-date-editor--year{
+            width:88px;
+    //     float:left !important;
+    //     width:88px !important;
+    //     height:28px !important;
+        .el-input__inner{
+            width:88px !important;
+            padding:0;
+            text-indent:6px;
+        }
+        .el-icon-date::before{
+            content:'';
+        }
+    }
+}
+.el-date-picker__header--bordered{
+    background-color:#009688;
+    margin:0;
+    padding:12px;
+}
+.twoBut{
+    .searchBut{
+        width:60px;
+        height: 30px;
+        background-color:#1ab394;
+    }
+    .refreshBut{
+
     }
 }
 </style>

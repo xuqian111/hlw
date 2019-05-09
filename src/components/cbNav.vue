@@ -8,11 +8,11 @@
         <div class="userName">大娃</div>
         <div class="userState">
           <div class="online">
-            <i></i>
+            <i class="onlineIcon"></i>
             <span>在线</span>
           </div>
           <div class="outline">
-            <i></i>
+            <i class="el-icon-s-unfold"></i>
             <span>注销</span>
           </div>
         </div>
@@ -38,13 +38,27 @@
               <span>系统</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="2-1">用户</el-menu-item>
-              <router-link to="/role">
-                <el-menu-item index="2-2">角色</el-menu-item>
-              </router-link>
-              <el-menu-item index="2-3">部门</el-menu-item>
-              <el-menu-item index="2-4">岗位</el-menu-item>
-              <el-menu-item index="2-5">日程</el-menu-item>
+              <el-menu-item index="2-1">
+                <span @click="router('user')">用户</span>
+              </el-menu-item>
+              <el-menu-item index="2-2">
+                <span @click="router('role')">角色</span>
+              </el-menu-item>
+              <el-menu-item index="2-3">
+                <span @click="router('part')">部门</span>
+              </el-menu-item>
+              <el-menu-item index="2-4">
+                <span @click="router('job')">岗位</span>
+              </el-menu-item>
+              <el-menu-item index="2-5">
+                <span @click="router('schedule')">日程</span>
+              </el-menu-item>
+              <el-menu-item index="2-6">
+                <span @click="router('employment')">招聘管理</span>
+              </el-menu-item>
+              <el-menu-item index="2-7">
+                <span @click="router('dictionary')">字典管理</span>
+              </el-menu-item>
             </el-menu-item-group>
           </el-submenu>
 
@@ -70,22 +84,57 @@ export default {
   },
   methods: {
     handleOpen(key, keyPath) {
-      console.log(key, keyPath);
+      // console.log(key, keyPath);
     },
     handleClose(key, keyPath) {
-      console.log(key, keyPath);
+      // console.log(key, keyPath);
+    },
+    router(path) {
+      this.$store.dispatch({
+        type: "intradd",
+        data: path
+      });
+      this.$router.push("/index/" + path);
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+.onlineIcon {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #1c84c6;
+}
+.nav::-webkit-scrollbar {
+  width: 2px; /*对垂直流动条有效*/
+  height: 2px; /*对水平流动条有效*/
+}
+/*定义滚动条的轨道颜色、内阴影及圆角*/
+.nav::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+}
+/*定义滑块颜色、内阴影及圆角*/
+.nav::-webkit-scrollbar-thumb {
+  border-radius: 7px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #e8e8e8;
+}
+
 .nav {
   background: #2f4050;
   width: 220px;
+  overflow-x: hidden;
+  overflow-y: auto;
   .userMenu {
     display: flex;
     justify-content: space-between;
+    padding: 15px;
+    box-sizing: border-box;
+
     .userImg {
       img {
         width: 45px;
@@ -95,15 +144,48 @@ export default {
         border-radius: 50%;
       }
     }
+    .userInfo {
+      flex: 1;
+      padding-left: 10px;
+      .userName {
+        height: 30%;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+      .userState {
+        display: flex;
+        .online {
+          margin-right: 10px;
+        }
+        .outline {
+          &:hover {
+            cursor: pointer;
+          }
+          .el-icon-s-unfold {
+            color: #ed4f5a;
+          }
+        }
+      }
+    }
   }
   .tac {
-    height: 100%;
     .el-col-12 {
       width: 100%;
+      .el-menu {
+        border: 0;
+        .el-menu-item {
+          height: 32px;
+          line-height: 32px;
+          a {
+            display: block;
+            width: 100%;
+          }
+        }
+      }
       li {
         background: #2f4050;
-        div {
-          background: #2f4050 !important;
+        a {
+          color: #ccc !important;
         }
       }
     }

@@ -44,6 +44,7 @@
     // padding-top: 5px;
     // padding-bottom: 13px;
     padding:10px 15px;
+    box-sizing:border-box;
     box-shadow: 1px 1px 3px rgba(0,0,0,.2);
 }
 </style>

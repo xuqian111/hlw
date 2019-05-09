@@ -14,7 +14,7 @@
 import cbHeader from "../components/cbHeader";
 import cbNav from "../components/cbNav";
 export default {
-  name: "index",
+  name: "Index",
   components: {
     cbHeader,
     cbNav
@@ -31,7 +31,6 @@ export default {
     justify-content: space-between;
     .content {
       flex: 1;
-      // border: 1px solid black;
     }
   }
 }
