@@ -180,12 +180,12 @@ export default {
             display: block;
             width: 100%;
           }
-        }
-      }
-      li {
-        background: #2f4050;
-        a {
-          color: #ccc !important;
+
+          span {
+            display: inline-block;
+            width: 100%;
+            color: #ccc !important;
+          }
         }
       }
     }

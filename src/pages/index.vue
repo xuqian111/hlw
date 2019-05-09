@@ -4,6 +4,7 @@
     <div class="contentwrap">
       <cb-nav/>
       <div class="content">
+        <cbbreadCrumb/>
         <router-view/>
       </div>
     </div>
@@ -13,11 +14,13 @@
 <script>
 import cbHeader from "../components/cbHeader";
 import cbNav from "../components/cbNav";
+import cbbreadCrumb from "../components/cbbreadCrumb";
 export default {
   name: "Index",
   components: {
     cbHeader,
-    cbNav
+    cbNav,
+    cbbreadCrumb
   }
 };
 </script>
@@ -31,6 +34,7 @@ export default {
     justify-content: space-between;
     .content {
       flex: 1;
+      background: #e2e2e2;
     }
   }
 }
