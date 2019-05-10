@@ -32,7 +32,15 @@
         },
       methods:{
         login(){
-          
+          if(this.userName === '' || this.userPass === ''){
+            alert("账号或密码不能为空")
+          }else{
+            let keyname = 'userName'
+            let keypass = 'userPass'
+            localStorage.setItem(keyname,this.userName)
+            localStorage.setItem(keypass,this.userPass)
+            this.$router.push('/')
+          }
         }
       }
     }
