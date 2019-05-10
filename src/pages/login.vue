@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-      <div class="loginBox">
+      <div class="loginBox" >
         <h1 class="z">LOGIN IN</h1>
         <div class="inp z">
           <label>用户名：</label>
@@ -14,7 +14,7 @@
           <el-checkbox v-model="checked" class="remember">记住密码</el-checkbox>
           <span class="forget">忘记密码？</span>
         </div>
-        <el-button type="primary" class="z loginBtn">登&nbsp;&nbsp;&nbsp;&nbsp;录</el-button>
+        <el-button type="primary" class="z loginBtn" >登&nbsp;&nbsp;&nbsp;&nbsp;录</el-button>
         <div class="bg"></div>
       </div>
   </div>
@@ -54,6 +54,7 @@
     align-items: center;
     justify-content: space-around;
     padding-bottom: 30px;
+    box-shadow: 3px 3px 20px rgba(0,0,0,1);
   }
   .loginBox h1{
     color: #000;

@@ -30,12 +30,22 @@
           <td>{{ item.reInter}}</td>
           <td>{{ item.rePerson }}</td>
           <td>{{ item.case }}</td>
-          <td><el-button type="primary" icon="el-icon-edit-outline" size="mini">编辑</el-button></td>
+          <td><el-button type="primary" icon="el-icon-edit-outline" size="mini" @click="open">编辑</el-button></td>
         </tr>
       </tbody>
 
     </table>
-
+    <!--分页-->
+    <div class="block">
+      <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page.sync="currentPage"
+        :page-size="pageSize"
+        layout="prev, pager, next, jumper"
+        :total="dataCount">
+      </el-pagination>
+    </div>
   </div>
 </template>
 
@@ -175,7 +185,34 @@
               case: '',
               rePerson: '王菁'
             }
-          ]
+          ],
+          currentPage: 1,
+          dataCount:0,
+          pageSize:10
+        }
+      },
+      methods: {
+        handleSizeChange(val) {
+          console.log(`每页 ${val} 条`);
+        },
+        handleCurrentChange(val) {
+          console.log(`当前页: ${val}`);
+        },
+        open() {
+          this.$prompt('意向情况', '提示', {
+            confirmButtonText: '确定',
+            cancelButtonText: '取消',
+          }).then(({ value }) => {
+            this.$message({
+              type: 'success',
+              message: '本次面试: ' + value
+            });
+          }).catch(() => {
+            this.$message({
+              type: 'info',
+              message: '取消输入'
+            });
+          });
         }
       }
     }
@@ -184,21 +221,34 @@
 <style scoped>
 .tableBox {
   width: calc(100% - 30px);
-  height: 300px;
+  height: calc(100% - 38px);
   padding: 15px;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 1px 1px 3px rgba(0,0,0,.2);
-  overflow-y: scroll;
 }
   .tab{
     width: 100%;
+    height:300px;
     text-align: center;
     border-collapse: collapse;
+    overflow-x: scroll;
+
+  }
+  .tab tbody{
+    display: block;
+    height: 200px;
+    overflow-y: scroll;
+  }
+  .tab thead,tbody tr{
+    display: table;
+    width: 100%;
+    table-layout: fixed;
   }
   .tab thead{
     background-color:#F5F5F5;
     color: #141414;
+    width: calc(100% - 16px);
   }
   .tab tr{
     border-bottom:1px solid #e4eeeb;
@@ -211,6 +261,20 @@
     background: #fff;
     cursor: pointer;
   }
-
+  .tab tr td:nth-child(1){
+    width: 25px;
+  }
+  .tab tr td:nth-child(2){
+    width: 35px;
+  }
+  .tab tr td:nth-child(4){
+    width: 100px;
+  }
+  .tab tr td:nth-child(5){
+    width: 150px;
+  }
+  .tab tr td:nth-child(12){
+    width: 100px;
+  }
 
 </style>

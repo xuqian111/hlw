@@ -19,6 +19,7 @@
 <style scoped leng="scss">
 .rightBox{
   width: 95%;
+  height:calc(100% - 70px);
   margin: 0 auto;
 }
 </style>

@@ -53,6 +53,7 @@
 
 .RsearchBox{
   width: calc(100% - 20px);
+  height: 40px;
   border-radius: 5px;
   font-size: 14px;
   color: #141414;
