@@ -11,8 +11,7 @@
           <el-input class="inputBox" v-model="userPass" placeholder="请输入密码"></el-input>
         </div>
         <div class="z checkBtn">
-          <input type="checkBox" :checked="isChecked" >
-          <label>记住我</label>
+          <el-checkbox v-model="checked" class="remember">记住密码</el-checkbox>
           <span class="forget">忘记密码？</span>
         </div>
         <el-button type="primary" class="z loginBtn">登&nbsp;&nbsp;&nbsp;&nbsp;录</el-button>
@@ -28,7 +27,7 @@
           return{
             userName:'',
             userPass:'',
-            isChecked:false
+            checked:false
           }
         }
     }
@@ -95,8 +94,7 @@
   .checkBtn{
     width: 85%;
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-between;
   }
   .checkBtn input{
     width: 20px;
@@ -106,10 +104,7 @@
     background-color: transparent;
     outline: none;
   }
-  .checkBtn label,.forget{
+  .remember,.forget{
     color: #000;
-  }
-  .forget{
-    align-self: flex-end;
   }
 </style>
