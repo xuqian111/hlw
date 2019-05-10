@@ -1,6 +1,6 @@
 <template>
     <div class="rightBox">
-      <cbRecruitSearchBox/>
+      <cbRecruitSearchBox></cbRecruitSearchBox>
       <cbRecruitTable/>
     </div>
 </template>
