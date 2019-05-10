@@ -65,12 +65,12 @@ export default new Router({
          * 字典*/
          
         {
-          path:'cbDictionaryList',
+          path:'dictionary',
           name:'cbDictionaryList',
           component:cbDictionaryList         
         },
         {
-          path:'cbDictionaryDataList',
+          path:'dictionaryDataList',
           name:'cbDictionaryDataList',
           component:cbDictionaryDataList
         },
