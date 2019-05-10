@@ -5,6 +5,7 @@ import recruit from '../components/recruit/cbRecruit'
 import cbRole from '../pages/cbRole'
 import login from '../pages/login'
 import cbPersonal from "../components/personal/cbPersonal"
+import managerial from "../components/managerial-position-vue/Managerial-Position"
 
 Vue.use(Router)
 
@@ -37,6 +38,10 @@ export default new Router({
           path: "personal",
           name: "cbPersonal",
           component: cbPersonal
+        },
+        {
+          path: "job",
+          component: managerial
         }
       ]
     }

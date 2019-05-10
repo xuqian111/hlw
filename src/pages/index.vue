@@ -17,12 +17,15 @@
 import cbHeader from "../components/cbHeader";
 import cbNav from "../components/cbNav";
 import cbbreadCrumb from "../components/cbbreadCrumb";
+// import Managerial_Position  from "./managerial-position-vue/Managerial-Position"
+
 export default {
   name: "Index",
   components: {
     cbHeader,
     cbNav,
     cbbreadCrumb
+    // Managerial_Position
   }
 };
 </script>
