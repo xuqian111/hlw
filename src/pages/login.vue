@@ -13,7 +13,7 @@
         <div class="z checkBtn">
           <el-checkbox label="记住我" :checked="isChecked" ></el-checkbox>
         </div>
-        <el-button type="primary" class="z loginBtn">登录</el-button>
+        <el-button type="primary" class="z loginBtn" @click="login">登录</el-button>
         <div class="bg"></div>
       </div>
   </div>
@@ -28,7 +28,13 @@
             userPass:'',
             isChecked:true
           }
-        }
+        },
+      methods:{
+          login(){
+            localStorage.setItem('user',this.userName)
+            this.$router.push("/index")
+          },
+      }
     }
 </script>
 

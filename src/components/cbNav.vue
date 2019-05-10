@@ -39,21 +39,24 @@
             </template>
             <el-menu-item-group>
               <el-menu-item index="2-1">
-                <span @click="router('role','角色')">角色</span>
+                <span @click="router('customer','用户')">用户</span>
               </el-menu-item>
               <el-menu-item index="2-2">
-                <span @click="router('part','部门')">部门</span>
+                <span @click="router('role','角色')">角色</span>
               </el-menu-item>
               <el-menu-item index="2-3">
-                <span @click="router('job','岗位')">岗位</span>
+                <span @click="router('part','部门')">部门</span>
               </el-menu-item>
               <el-menu-item index="2-4">
-                <span @click="router('schedule','日程')">日程</span>
+                <span @click="router('job','岗位')">岗位</span>
               </el-menu-item>
               <el-menu-item index="2-5">
-                <span @click="router('recruit','招聘管理')">招聘管理</span>
+                <span @click="router('schedule','日程')">日程</span>
               </el-menu-item>
               <el-menu-item index="2-6">
+                <span @click="router('recruit','招聘管理')">招聘管理</span>
+              </el-menu-item>
+              <el-menu-item index="2-7">
                 <span @click="router('dictionary','字典管理')">字典管理</span>
               </el-menu-item>
             </el-menu-item-group>
@@ -123,7 +126,7 @@ export default {
 
 .nav {
   background: #2f4050;
-  width: 220px;
+  min-width: 220px;
   overflow-x: hidden;
   overflow-y: auto;
   .userMenu {

@@ -15,15 +15,15 @@ Vue.use(ElementUI, {
 
 
 Vue.config.productionTip = false
-// router.beforeEach((to, from, next) => {
-//   let user = localStorage.getItem("user")
-//   next()
-//   if (user) {
-//     next()
-//   } else {
-//     router.push("/login")
-//   }
-// })
+router.beforeEach((to, from, next) => {
+  let user = localStorage.getItem("user")
+  next()
+  if (user) {
+    next()
+  } else {
+    router.push("/login")
+  }
+})
 
 /* eslint-disable no-new */
 new Vue({

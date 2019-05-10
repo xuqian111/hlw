@@ -11,8 +11,8 @@
 
 <script type='text/javascript'>
 
-    import RoleSeach from '@/components/cbRole/cbRoleSeach'
-    import RoleMain from '@/components/cbRole/cbRoleMain'
+    import RoleSeach from './cbRoleSeach'
+    import RoleMain from './cbRoleMain'
 
     export default {
         name: "cbRole",
