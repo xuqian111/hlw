@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Index from "../pages/index"
+import Index from "../pages/index";
 import recruit from '../components/recruit/cbRecruit'
 import cbRole from '../pages/cbRole'
 import login from '../pages/login'
 import cbPersonal from "../components/personal/cbPersonal"
+import managerial from "../components/managerial-position-vue/Managerial-Position"
 
 /** 
  * 字典*/ 
@@ -55,6 +56,10 @@ export default new Router({
           path:'cbDictionaryDataList',
           name:'cbDictionaryDataList',
           component:cbDictionaryDataList
+        },
+        {
+          path: "job",
+          component: managerial
         }
       ]
     }
