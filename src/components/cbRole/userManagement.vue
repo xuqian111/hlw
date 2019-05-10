@@ -169,7 +169,7 @@
 </template>
 
 <script>
-  import userManagementWrite from '../components/cbManagement/userManagementWrite'
+  import userManagementWrite from '../cbManagement/userManagementWrite'
     export default {
         name: "userManagement",
         components:{

@@ -126,7 +126,7 @@ export default {
 
 .nav {
   background: #2f4050;
-  width: 220px;
+  min-width: 220px;
   overflow-x: hidden;
   overflow-y: auto;
   .userMenu {
