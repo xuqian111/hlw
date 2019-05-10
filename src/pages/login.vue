@@ -14,7 +14,7 @@
           <el-checkbox v-model="checked" class="remember">记住密码</el-checkbox>
           <span class="forget">忘记密码？</span>
         </div>
-        <el-button type="primary" class="z loginBtn" >登&nbsp;&nbsp;&nbsp;&nbsp;录</el-button>
+        <el-button type="primary" class="z loginBtn" @click="login">登&nbsp;&nbsp;&nbsp;&nbsp;录</el-button>
         <div class="bg"></div>
       </div>
   </div>
@@ -29,7 +29,12 @@
             userPass:'',
             checked:false
           }
+        },
+      methods:{
+        login(){
+          
         }
+      }
     }
 </script>
 
