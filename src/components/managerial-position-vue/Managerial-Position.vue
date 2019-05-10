@@ -22,6 +22,7 @@
 
 <style scoped>
   .Managerial_Position{
+    position:relative;
     width:100%;
     height:800px;
     padding:20px 10px 0 10px;
