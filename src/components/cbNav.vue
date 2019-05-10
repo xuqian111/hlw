@@ -38,7 +38,7 @@
               <span>系统</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="2-1">用户</el-menu-item>
+              <router-link to="/userManagement"><el-menu-item index="2-1">用户</el-menu-item></router-link>
               <el-menu-item index="2-2">角色</el-menu-item>
               <el-menu-item index="2-3">部门</el-menu-item>
               <el-menu-item index="2-4">岗位</el-menu-item>
