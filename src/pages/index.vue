@@ -6,7 +6,9 @@
       <div class="content">
         <cbbreadCrumb/>
         <div class="main">
-          <router-view/>
+          <transition name="fade" mode="out-in">
+            <router-view/>
+          </transition>
         </div>
       </div>
     </div>
@@ -31,6 +33,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.1s;
+}
 .indexwrap {
   height: calc(100% - 60px);
   .contentwrap {
