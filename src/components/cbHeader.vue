@@ -12,7 +12,9 @@
     >
       <el-menu-item index="1">视频课程</el-menu-item>
       <el-menu-item index="2">开发文档</el-menu-item>
-      <el-menu-item index="3" @click="fullScreen" v-if="isFull">全屏显示</el-menu-item>
+      <el-menu-item index="3" @click="fullScreen" v-if="isFull">
+        <i class="el-icon-rank full"></i> 全屏显示
+      </el-menu-item>
       <el-menu-item index="3" @click="unFullScreen" v-else-if="!isFull">关闭全屏</el-menu-item>
       <el-menu-item index="4">葫芦娃</el-menu-item>
     </el-menu>
@@ -98,6 +100,11 @@ export default {
     li {
       background-color: #3c8dbc !important;
     }
+  }
+  .full {
+    transform: translateX(10px) rotateZ(45deg);
+    color: #42b0eb;
+    font-size: 20px;
   }
 }
 </style>

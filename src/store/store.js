@@ -28,7 +28,11 @@ export default new Vuex.Store({
     },
     deleteBrumb(state, obj) {
       let n = obj.data;
-      state.brumbs.splice(n, 1)
+      // console.log(n)
+      if (n != null) {
+        state.brumbs.splice(n, 1)
+      }
+
 
     },
     clear(state, obj) {

@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Index from "../pages/index";
-import cbMain from '../components/cbMain'
 import recruit from '../components/recruit/cbRecruit'
 import cbRole from '../pages/cbRole'
 import login from '../pages/login'

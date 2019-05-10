@@ -37,10 +37,7 @@ export default {
     .content {
       flex: 1;
       background: #e2e2e2;
-      display: flex;
-      flex-direction: column;
       .main {
-        flex: 1;
         margin-top: 30px;
       }
     }
