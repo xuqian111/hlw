@@ -1,17 +1,20 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Index from "../pages/index";
+import Index from "../pages/index"
+import home from "../components/Home"
 import recruit from '../components/recruit/cbRecruit'
-import cbRole from '../pages/cbRole'
+import cbRole from '../components/cbRole/cbRole'
 import login from '../pages/login'
 import cbPersonal from "../components/personal/cbPersonal"
 import managerial from "../components/managerial-position-vue/Managerial-Position"
+import userManagement from '../components/cbRole/userManagement'
+import userManagementWrite from '../components/cbManagement/userManagementWrite'
 
 Vue.use(Router)
 
-
 export default new Router({
-  routes: [{
+  routes: [
+    {
       path: '/',
       redirect: 'Index',
       component: Index
@@ -19,13 +22,27 @@ export default new Router({
     {
       path: '/login',
       name: 'login',
-      component: login
+      component: login,
+      beforeEnter(to,from,next){
+        let user = localStorage.getItem('user')
+        next()
+        if(user){
+          next('/index')
+        }else{
+          console.log("err")
+        }
+      }
     },
     {
       path: '/index',
       name: "Index",
       component: Index,
-      children: [{
+      children: [
+        {
+          path:"",
+          component:home
+        },
+        {
           path: "recruit",
           component: recruit
         },
@@ -42,8 +59,17 @@ export default new Router({
         {
           path: "job",
           component: managerial
+        },
+        {
+          path: 'customer',
+          name: 'userManagement',
+          component: userManagement
+        },
+        {
+          path: 'userManagementWrite',
+          name: 'userManagementWrite',
+          component: userManagementWrite
         }
       ]
-    }
-  ]
-})
+    }]}
+)
