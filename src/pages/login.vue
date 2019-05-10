@@ -13,6 +13,7 @@
         <div class="z checkBtn">
           <input type="checkBox" :checked="isChecked" >
           <label>记住我</label>
+          <span class="forget">忘记密码？</span>
         </div>
         <el-button type="primary" class="z loginBtn">登&nbsp;&nbsp;&nbsp;&nbsp;录</el-button>
         <div class="bg"></div>
@@ -93,18 +94,22 @@
   }
   .checkBtn{
     width: 85%;
-    align-self: flex-end;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
   }
   .checkBtn input{
     width: 20px;
     height: 20px;
-    /*background: #fff;*/
     border-color: #8c8c8c;
     margin-right: 5px;
     background-color: transparent;
     outline: none;
   }
-  .checkBtn label{
+  .checkBtn label,.forget{
     color: #000;
+  }
+  .forget{
+    align-self: flex-end;
   }
 </style>
