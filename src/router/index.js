@@ -6,12 +6,15 @@ import cbRole from '../pages/cbRole'
 import login from '../pages/login'
 import cbPersonal from "../components/personal/cbPersonal"
 import managerial from "../components/managerial-position-vue/Managerial-Position"
+import userManagement from '../pages/userManagement'
+import userManagementWrite from '../components/cbManagement/userManagementWrite'
 
 Vue.use(Router)
 
 
 export default new Router({
-  routes: [{
+  routes: [
+    {
       path: '/',
       redirect: 'Index',
       component: Index
@@ -25,7 +28,8 @@ export default new Router({
       path: '/index',
       name: "Index",
       component: Index,
-      children: [{
+      children: [
+        {
           path: "recruit",
           component: recruit
         },
@@ -42,8 +46,17 @@ export default new Router({
         {
           path: "job",
           component: managerial
+        },
+        {
+          path: 'customer',
+          name: 'userManagement',
+          component: userManagement
+        },
+        {
+          path: 'userManagementWrite',
+          name: 'userManagementWrite',
+          component: userManagementWrite
         }
       ]
-    }
-  ]
-})
+    }]}
+)
