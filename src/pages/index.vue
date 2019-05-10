@@ -5,7 +5,9 @@
       <cb-nav/>
       <div class="content">
         <cbbreadCrumb/>
-        <router-view/>
+        <div class="main">
+          <router-view/>
+        </div>
       </div>
     </div>
   </div>
@@ -35,6 +37,12 @@ export default {
     .content {
       flex: 1;
       background: #e2e2e2;
+      display: flex;
+      flex-direction: column;
+      .main {
+        flex: 1;
+        margin-top: 30px;
+      }
     }
   }
 }

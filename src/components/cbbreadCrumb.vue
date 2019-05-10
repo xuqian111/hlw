@@ -4,9 +4,9 @@
       <span class="el-icon-d-arrow-left"></span>
     </div>
     <div class="brumblist">
-      <a href v-for="(item,index) in list" :key="index">
+      <a href="javascript:;" v-for="(item,index) in list" :key="index" @click="goRouter(item)">
         {{ item }}
-        <span class="el-icon-close"></span>
+        <span class="el-icon-close" @click.prevent="deleteOne(index)"></span>
       </a>
     </div>
     <div class="comb">
@@ -19,13 +19,18 @@
           <i class="el-icon-arrow-down el-icon--right"></i>
         </span>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item>关闭当前</el-dropdown-item>
-          <el-dropdown-item>关闭其他</el-dropdown-item>
-          <el-dropdown-item>全部关闭</el-dropdown-item>
-          <el-dropdown-item>全屏显示</el-dropdown-item>
+          <el-dropdown-item>
+            <span @click="closeCurrent">关闭当前</span>
+          </el-dropdown-item>
+          <el-dropdown-item>
+            <span @click="closeOther">关闭其他</span>
+          </el-dropdown-item>
+          <el-dropdown-item>
+            <span @click="closeAll">全部关闭</span>
+          </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
-      <el-button>刷新</el-button>
+      <el-button @click="reload">刷新</el-button>
     </div>
   </div>
 </template>
@@ -37,6 +42,38 @@ export default {
     return {
       list: this.$store.getters.getbrumbs
     };
+  },
+  methods: {
+    reload() {
+      location.reload();
+    },
+    deleteOne(n) {
+      this.$store.dispatch({
+        type: "untradd",
+        data: n
+      });
+    },
+    goRouter(path) {
+      this.$router.push("/index/" + path);
+    },
+    closeCurrent() {
+      let lists = this.$store.getters.getbrumbs;
+      let url = window.location.hash.split("/").pop();
+      let i = "";
+      lists.some((item, index) => {
+        i = index;
+        if (item == url) return true;
+      });
+      this.deleteOne(i);
+    },
+    closeOther() {},
+    closeAll() {
+      this.$store.dispatch({
+        type: "clear",
+        data: ""
+      });
+      // console.log(this.$store.getters.getbrumbs);
+    }
   }
 };
 </script>
@@ -84,7 +121,7 @@ export default {
   .comb {
     display: flex;
     .el-dropdown {
-      line-height: 45px;
+      line-height: 40px;
     }
     .el-button {
       border: 0;
