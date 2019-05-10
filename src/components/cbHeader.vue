@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     handleSelect(key, keyPath) {
-      console.log(key, keyPath);
+      // console.log(key, keyPath);
     },
     fullScreen() {
       this.isFull = !this.isFull;
@@ -63,7 +63,7 @@ export default {
         document.exitFullscreen();
       }
       //兼容火狐
-      console.log(document.mozExitFullScreen);
+      // console.log(document.mozExitFullScreen);
       if (document.mozCancelFullScreen) {
         document.mozCancelFullScreen();
       }

@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import {
+  stat
+} from 'fs';
 
 Vue.use(Vuex)
 
@@ -28,16 +31,18 @@ export default new Vuex.Store({
     },
     deleteBrumb(state, obj) {
       let n = obj.data;
-      // console.log(n)
       if (n != null) {
         state.brumbs.splice(n, 1)
       }
-
-
     },
     clear(state, obj) {
-      state.brumbs = []
-    }
+      state.brumbs.splice(0)
+    },
+    last(state, obj) {
+      let a = state.brumbs.pop(obj.data)
+      state.brumbs.splice(0)
+      state.brumbs.push(a)
+    },
   },
   actions: {
     intradd(context, obj) {
@@ -52,9 +57,15 @@ export default new Vuex.Store({
         data: obj.data
       })
     },
-    clear(context, obj) {
+    clear(context) {
       context.commit({
-        type: 'clear',
+        type: 'clear'
+      })
+    },
+    lastOne(context, obj) {
+      // console.log('last', obj)
+      context.commit({
+        type: 'last',
         data: obj.data
       })
     }

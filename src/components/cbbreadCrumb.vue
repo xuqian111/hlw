@@ -73,19 +73,13 @@ export default {
           url = "recruit";
           break;
         case "岗位":
-          url = "personal";
+          url = "job";
           break;
         case "招聘管理":
           url = "recruit";
           break;
       }
-      // this.$router.push()
-      console.log(
-        window.location.hash
-          .split("/")
-          .splice(window.location.hash.split("/").length - 2),
-        1
-      );
+      this.$router.push("/index/" + url);
     },
     goRouter(path) {
       let url = "";
@@ -97,13 +91,13 @@ export default {
           url = "recruit";
           break;
         case "角色":
-          url = "personal";
+          url = "role";
           break;
         case "部门":
           url = "recruit";
           break;
         case "岗位":
-          url = "personal";
+          url = "job";
           break;
         case "招聘管理":
           url = "recruit";
@@ -120,20 +114,26 @@ export default {
           case "个人中心":
             url = "personal";
             break;
-          case "招聘管理":
-            url = "recruit";
-            break;
           case "角色":
-            url = "personal";
+            url = "role";
             break;
           case "部门":
-            url = "recruit";
+            url = "part";
             break;
           case "岗位":
-            url = "personal";
+            url = "job";
             break;
           case "招聘管理":
             url = "recruit";
+            break;
+          case "日程":
+            url = "schedule";
+            break;
+          case "字典管理":
+            url = "dictionary";
+            break;
+          default:
+            url = "";
             break;
         }
         if (url == window.location.hash.split("/").pop()) {
@@ -142,18 +142,57 @@ export default {
         }
       });
       this.deleteOne(i);
-      console.log(this.$store.getters.getbrumbs);
-
-      // console.log(nowUrl);
-      // this.$router.push()
     },
-    closeOther() {},
+    closeOther() {
+      let lists = this.$store.getters.getbrumbs || [];
+      let url = "";
+      let i = "";
+      lists.some((item, index) => {
+        console.log("1other", index);
+        switch (item) {
+          case "个人中心":
+            url = "personal";
+            break;
+          case "角色":
+            url = "role";
+            break;
+          case "部门":
+            url = "part";
+            break;
+          case "岗位":
+            url = "job";
+            break;
+          case "招聘管理":
+            url = "recruit";
+            break;
+          case "日程":
+            url = "schedule";
+            break;
+          case "字典管理":
+            url = "dictionary";
+            break;
+          default:
+            url = "";
+            break;
+        }
+        console.log("url", url);
+        console.log("arr", window.location.hash.split("/").pop());
+        if (url == window.location.hash.split("/").pop()) {
+          i = index;
+          return true;
+        }
+      });
+      console.log("index", i);
+      this.$store.dispatch({
+        type: "lastOne",
+        data: i
+      });
+    },
     closeAll() {
       this.$store.dispatch({
-        type: "clear",
-        data: ""
+        type: "clear"
       });
-      // console.log(this.$store.getters.getbrumbs);
+      this.$router.push("/index");
     }
   }
 };

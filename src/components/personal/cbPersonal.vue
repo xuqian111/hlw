@@ -1,7 +1,7 @@
 <template>
   <div class="personal">
     <el-row :gutter="20" style="margin:0">
-      <el-col :span="6" class="perLeft">
+      <el-col :xs="6" :sm="6" :md="6" :lg="6" class="perLeft">
         <div class="title">
           <span>个人资料</span>
         </div>
@@ -47,7 +47,7 @@
           </li>
         </ul>
       </el-col>
-      <el-col :span="17">
+      <el-col :xs="12" :sm="15" :md="16" :lg="17">
         <div class="title">
           <span>基本资料</span>
         </div>
@@ -73,7 +73,23 @@
               </el-form-item>
             </el-form>
           </el-tab-pane>
-          <el-tab-pane label="修改密码">修改密码</el-tab-pane>
+          <el-tab-pane label="修改密码">
+            <el-form ref="form" :model="form" label-width="80px">
+              <el-form-item label="旧密码">
+                <el-input v-model="form.pastPass"></el-input>
+              </el-form-item>
+              <el-form-item label="新密码">
+                <el-input v-model="form.nowPass"></el-input>
+              </el-form-item>
+              <el-form-item label="确认密码">
+                <el-input v-model="form.confirmPass"></el-input>
+              </el-form-item>
+              <el-form-item>
+                <el-button type="primary" @click="savePass">保存</el-button>
+                <el-button>关闭</el-button>
+              </el-form-item>
+            </el-form>
+          </el-tab-pane>
         </el-tabs>
       </el-col>
     </el-row>
@@ -88,7 +104,10 @@ export default {
       form: {
         name: "",
         email: "",
-        tel: ""
+        tel: "",
+        pastPass: "",
+        nowPass: "",
+        confirmPass: ""
       },
       radio: "1"
     };
@@ -96,7 +115,8 @@ export default {
   methods: {
     onSubmit() {
       console.log("submit!");
-    }
+    },
+    savePass() {}
   }
 };
 </script>
@@ -123,16 +143,17 @@ export default {
     border-radius: 5px;
 
     .headimg {
-      padding-top: 45px;
+      max-width: 120px;
+      height: 120px;
+      margin-top: 45px;
       text-align: center;
-      padding-bottom: 20px;
+      margin-bottom: 20px;
+      margin: 60px auto 40px;
       img {
         display: block;
-        width: 120px;
-        height: 120px;
+        width: 100%;
+        max-height: 120px;
         border-radius: 50%;
-        padding: 20px 0;
-        margin: 0 auto;
       }
     }
     .infoList {
