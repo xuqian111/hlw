@@ -3,7 +3,7 @@
         <!-- 按钮 -->
         <div class="BtnBox">
             <div class="leftBtn">
-                  <el-button type="primary" @click="dialogTableVisible = true"><i class="el-icon-plus"></i>新增</el-button>
+                  <el-button type="primary"><i class="el-icon-plus"></i>新增</el-button>
                   <el-button type="success"><i class="el-icon-edit-outline"></i>修改</el-button>
                   <el-button type="danger"><i class="el-icon-delete"></i>删除</el-button>
                   <el-button type="info"><i class="el-icon-download"></i>导出</el-button>
@@ -28,21 +28,28 @@
                   width="55">
                 </el-table-column>
                  <el-table-column
-                  label="字典主键"
+                  label="字典编码"
                   type="index"
                   width="120">
                   <template></template>
                 </el-table-column>
                 <el-table-column
-                  prop="name"
-                  label="字典名称"
+                  prop="tag"
+                  label="字典标签"
                   width="120">
                 </el-table-column>
                  <el-table-column
-                  label="字典类型"
+                  label="字典键值"
                   width="120">
-                  <template slot-scope="scope">{{ scope.row.type }}</template>
-                </el-table-column>                 <el-table-column
+                  <template slot-scope="scope">{{ scope.row.key }}</template>
+                </el-table-column> 
+                  <el-table-column
+                  label="字典编码"
+                  type="index"
+                  width="120">
+                  <template></template>
+                </el-table-column>           
+                 <el-table-column
                   label="状态"
                   width="120">
                   <template>
@@ -68,7 +75,6 @@
                   label="操作"
                   width="300">
                     <el-button type="primary"><i class="el-icon-edit-outline"></i>编辑</el-button>
-                    <el-button type="success"><i class="el-icon-s-fold"></i>列表</el-button>
                     <el-button type="danger"><i class="el-icon-delete"></i>删除</el-button>
                 </el-table-column>
 
@@ -77,88 +83,62 @@
                 <el-button @click="toggleSelection([tableData[1], tableData[2]])">切换第二、第三行的选中状态</el-button>
                 <el-button @click="toggleSelection()">取消选择</el-button>
               </div>
-            </div>
-                
-            <addDicWin/>
-               
-         </div>       
+                    </div>
+                </div>
 </template>
 
 <script>
-import addDicWin from './addDicWin'
+// import dataleft from './dataleft'
 
 
 export default {
-    name:"cbDictionaryListTable",
+    name:"cbDictionaryDataListTable",
     components:{
-        addDicWin
+
 
     },
     data(){
         return{
         tableData: [{
+          tag:'男',
           date: '2016-05-03',
-          name: '用户性别',
+          key: 0,
           type:'sys_user_sex',
-          remark:'用户性别列表',
-
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
+          remark:'性别男'
+        }, 
+        {
+          tag:'女',
           date: '2016-05-02',
-          name: '用户性别',
+          key: 1,
           type:'sys_user_sex',
-          remark:'用户性别列表',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
+          remark:'性别女'
+        }, 
+        {
+          tag:'未知',
           date: '2016-05-04',
-          name: '用户性别',
+          key: 2,
           type:'sys_user_sex',
-          remark:'用户性别列表',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-01',
-          name: '用户性别',
-          type:'sys_user_sex',
-          remark:'用户性别列表',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-08',
-          name: '用户性别',
-          type:'sys_user_sex',
-          remark:'用户性别列表',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-06',
-          name: '用户性别',
-          type:'sys_user_sex',
-          remark:'用户性别列表',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-07',
-          name: '用户性别',
-          type:'sys_user_sex',
-          remark:'用户性别列表',
-          address: '上海市普陀区金沙江路 1518 弄'
+          remark:'性别未知',
         }],
         multipleSelection: []
         }
     },
    
-    methods: {
-        toggleSelection(rows) {
-            if (rows) {
-              rows.forEach(row => {
-                this.$refs.multipleTable.toggleRowSelection(row);
-              });
-            } else {
-              this.$refs.multipleTable.clearSelection();
-            }
-        },
-        handleSelectionChange(val) {
-          this.multipleSelection = val;
+        methods: {
+      toggleSelection(rows) {
+        if (rows) {
+          rows.forEach(row => {
+            this.$refs.multipleTable.toggleRowSelection(row);
+          });
+        } else {
+          this.$refs.multipleTable.clearSelection();
         }
-
-    }
+      },
+      handleSelectionChange(val) {
+        this.multipleSelection = val;
+      }
+    
+  }
     
 }
 </script>
