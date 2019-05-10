@@ -41,10 +41,10 @@
             </div>
             <div class="twoBut">
                 <div class="searchBut">
-
+                    <el-button type="primary" icon='el-icon-search' round>搜索</el-button>
                 </div>
                 <div class="refreshBut">
-
+                    <el-button type="success" icon="el-icon-refresh" round>重置</el-button>
                 </div>
             </div>
         </div>
@@ -91,6 +91,7 @@
 }
 // Sinpt
 .Sinput{
+    width:280px;
     float:left;
     box-sizing:border-box;
     padding-right:15px;
@@ -114,6 +115,7 @@
     }
 }
 .Sinput_three{
+    width:280px;
     float:left;
     box-sizing:border-box;
     padding-right:15px;
@@ -134,7 +136,8 @@
 }
 .Sinput_four{
     overflow: hidden;
-    clear:both;
+    // clear:both;
+    float:left;
     display: -webkit-flex;
 }
 .block{
@@ -181,13 +184,20 @@
     padding:12px;
 }
 .twoBut{
+    margin:0px 0px 0px 12px;
+    float:left;
     .searchBut{
-        width:60px;
-        height: 30px;
-        background-color:#1ab394;
+        float:left;
+        .el-button--small{
+            padding: 10px;
+        }
     }
     .refreshBut{
-
+        margin-left:12px;
+        float:left;
+        .el-button--small{
+            padding: 10px;
+        }
     }
 }
 </style>
