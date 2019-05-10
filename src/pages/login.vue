@@ -11,9 +11,10 @@
           <el-input class="inputBox" v-model="userPass" placeholder="请输入密码"></el-input>
         </div>
         <div class="z checkBtn">
-          <el-checkbox label="记住我" :checked="isChecked" ></el-checkbox>
+          <input type="checkBox" :checked="isChecked" >
+          <label>记住我</label>
         </div>
-        <el-button type="primary" class="z loginBtn">登录</el-button>
+        <el-button type="primary" class="z loginBtn">登&nbsp;&nbsp;&nbsp;&nbsp;录</el-button>
         <div class="bg"></div>
       </div>
   </div>
@@ -26,7 +27,7 @@
           return{
             userName:'',
             userPass:'',
-            isChecked:true
+            isChecked:false
           }
         }
     }
@@ -45,32 +46,35 @@
   }
   .loginBox{
     position: relative;
-    width: 320px;
-    height: 340px;
+    width: 450px;
+    height: 400px;
     border-radius:10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+    padding-bottom: 30px;
   }
   .loginBox h1{
     color: #000;
-    font-size: 24px;
+    font-size: 28px;
     opacity: .7;
     margin-bottom: 20px;
   }
   .inp{
+    width: 85%;
+    margin: 0 auto;
     display: flex;
     align-items: center;
-    margin-top: 30px;
   }
-  label{
-    width: 80px;
+  .inp label{
+    width: 100px;
     color: #000;
+    font-size: 18px;
   }
   .bg{
-    width: 320px;
-    height: 340px;
+    width: 100%;
+    height: 100%;
     border-radius:10px;
     background: #fff;
     opacity: .5;
@@ -82,12 +86,25 @@
     z-index: 5;
   }
   .loginBtn{
-    width: 80%;
+    width: 85%;
     margin: 30px auto 0;
+    font-size: 18px;
+    font-weight: 900;
   }
   .checkBtn{
+    width: 85%;
     align-self: flex-end;
-    margin-right: 20px;
-    margin-top: 15px;
+  }
+  .checkBtn input{
+    width: 20px;
+    height: 20px;
+    /*background: #fff;*/
+    border-color: #8c8c8c;
+    margin-right: 5px;
+    background-color: transparent;
+    outline: none;
+  }
+  .checkBtn label{
+    color: #000;
   }
 </style>
