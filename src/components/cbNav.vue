@@ -1,7 +1,7 @@
 <template>
   <div class="nav">
     <div class="userMenu">
-      <div class="userImg">
+      <div class="userImg" @click="router('personal','个人中心')">
         <img src="../assets/img/user.jpg" alt>
       </div>
       <div class="userInfo">
@@ -39,25 +39,22 @@
             </template>
             <el-menu-item-group>
               <el-menu-item index="2-1">
-                <span @click="router('personal')">用户</span>
+                <span @click="router('role','角色')">角色</span>
               </el-menu-item>
               <el-menu-item index="2-2">
-                <span @click="router('role')">角色</span>
+                <span @click="router('part','部门')">部门</span>
               </el-menu-item>
               <el-menu-item index="2-3">
-                <span @click="router('part')">部门</span>
+                <span @click="router('job','岗位')">岗位</span>
               </el-menu-item>
               <el-menu-item index="2-4">
-                <span @click="router('job')">岗位</span>
+                <span @click="router('schedule','日程')">日程</span>
               </el-menu-item>
               <el-menu-item index="2-5">
-                <span @click="router('schedule')">日程</span>
+                <span @click="router('recruit','招聘管理')">招聘管理</span>
               </el-menu-item>
               <el-menu-item index="2-6">
-                <span @click="router('employment')">招聘管理</span>
-              </el-menu-item>
-              <el-menu-item index="2-7">
-                <span @click="router('dictionary')">字典管理</span>
+                <span @click="router('dictionary','字典管理')">字典管理</span>
               </el-menu-item>
             </el-menu-item-group>
           </el-submenu>
@@ -89,10 +86,10 @@ export default {
     handleClose(key, keyPath) {
       // console.log(key, keyPath);
     },
-    router(path) {
+    router(path, crumb) {
       this.$store.dispatch({
         type: "intradd",
-        data: path
+        data: crumb
       });
       this.$router.push("/index/" + path);
     }

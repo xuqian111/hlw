@@ -4,10 +4,10 @@
       <span class="el-icon-d-arrow-left"></span>
     </div>
     <div class="brumblist">
-      <a href="javascript:;" v-for="(item,index) in list" :key="index" @click="goRouter(item)">
+      <div v-for="(item,index) in list" :key="index" @click="goRouter(item)">
         {{ item }}
-        <span class="el-icon-close" @click.prevent="deleteOne(index)"></span>
-      </a>
+        <span class="el-icon-close" @click.stop="deleteOne(index)"></span>
+      </div>
     </div>
     <div class="comb">
       <div class="nextBtn">
@@ -48,31 +48,151 @@ export default {
       location.reload();
     },
     deleteOne(n) {
+      // console.log("n", n);
       this.$store.dispatch({
         type: "untradd",
         data: n
       });
+
+      let nowUrl = this.$store.getters.getbrumbs[
+        this.$store.getters.getbrumbs.length - 1
+      ];
+      // console.log("nowUrl", nowUrl);
+      let url = "";
+      switch (nowUrl) {
+        case "个人中心":
+          url = "personal";
+          break;
+        case "招聘管理":
+          url = "recruit";
+          break;
+        case "角色":
+          url = "personal";
+          break;
+        case "部门":
+          url = "recruit";
+          break;
+        case "岗位":
+          url = "job";
+          break;
+        case "招聘管理":
+          url = "recruit";
+          break;
+      }
+      this.$router.push("/index/" + url);
     },
     goRouter(path) {
-      this.$router.push("/index/" + path);
+      let url = "";
+      switch (path) {
+        case "个人中心":
+          url = "personal";
+          break;
+        case "招聘管理":
+          url = "recruit";
+          break;
+        case "角色":
+          url = "role";
+          break;
+        case "部门":
+          url = "recruit";
+          break;
+        case "岗位":
+          url = "job";
+          break;
+        case "招聘管理":
+          url = "recruit";
+          break;
+      }
+      this.$router.push("/index/" + url);
     },
     closeCurrent() {
       let lists = this.$store.getters.getbrumbs;
-      let url = window.location.hash.split("/").pop();
+      let url = "";
       let i = "";
       lists.some((item, index) => {
-        i = index;
-        if (item == url) return true;
+        switch (item) {
+          case "个人中心":
+            url = "personal";
+            break;
+          case "角色":
+            url = "role";
+            break;
+          case "部门":
+            url = "part";
+            break;
+          case "岗位":
+            url = "job";
+            break;
+          case "招聘管理":
+            url = "recruit";
+            break;
+          case "日程":
+            url = "schedule";
+            break;
+          case "字典管理":
+            url = "dictionary";
+            break;
+          default:
+            url = "";
+            break;
+        }
+        if (url == window.location.hash.split("/").pop()) {
+          i = index;
+          return true;
+        }
       });
       this.deleteOne(i);
     },
-    closeOther() {},
+    closeOther() {
+      let lists = this.$store.getters.getbrumbs || [];
+      let url = "";
+      let i = "";
+      lists.some((item, index) => {
+        console.log("1other", index);
+        switch (item) {
+          case "个人中心":
+            url = "personal";
+            break;
+          case "角色":
+            url = "role";
+            break;
+          case "部门":
+            url = "part";
+            break;
+          case "岗位":
+            url = "job";
+            break;
+          case "招聘管理":
+            url = "recruit";
+            break;
+          case "日程":
+            url = "schedule";
+            break;
+          case "字典管理":
+            url = "dictionary";
+            break;
+          default:
+            url = "";
+            break;
+        }
+        console.log("url", url);
+        console.log("arr", window.location.hash.split("/").pop());
+        if (url == window.location.hash.split("/").pop()) {
+          i = index;
+          return true;
+        }
+      });
+      console.log("index", i);
+      this.$store.dispatch({
+        type: "lastOne",
+        data: i
+      });
+    },
     closeAll() {
       this.$store.dispatch({
-        type: "clear",
-        data: ""
+        type: "clear"
       });
-      // console.log(this.$store.getters.getbrumbs);
+      this.$router.push("/index");
     }
   }
 };
@@ -106,7 +226,7 @@ export default {
     flex-wrap: nowrap;
     border-right: solid 1px #eee;
     overflow: hidden;
-    a {
+    div {
       flex-shrink: 0;
       height: 100%;
       line-height: 40px;
