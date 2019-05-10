@@ -13,11 +13,14 @@
 <script>
 import cbHeader from "../components/cbHeader";
 import cbNav from "../components/cbNav";
+// import Managerial_Position  from "./managerial-position-vue/Managerial-Position"
+
 export default {
   name: "index",
   components: {
     cbHeader,
-    cbNav
+    cbNav,
+    // Managerial_Position
   }
 };
 </script>
