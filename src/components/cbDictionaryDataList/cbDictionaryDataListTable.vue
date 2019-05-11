@@ -3,10 +3,10 @@
         <!-- 按钮 -->
         <div class="BtnBox">
             <div class="leftBtn">
-                  <el-button type="primary"><i class="el-icon-plus"></i>新增</el-button>
-                  <el-button type="success"><i class="el-icon-edit-outline"></i>修改</el-button>
-                  <el-button type="danger"><i class="el-icon-delete"></i>删除</el-button>
-                  <el-button type="info"><i class="el-icon-download"></i>导出</el-button>
+                  <el-button type="primary" @click="addDicData = true"><i class="el-icon-plus"></i>新增</el-button>
+                  <el-button type="success" @click="updateDicData = true"><i class="el-icon-edit-outline"></i>修改</el-button>
+                  <el-button type="danger" @click="delData"><i class="el-icon-delete"></i>删除</el-button>
+                  <el-button type="info" @click="expoData"><i class="el-icon-download"></i>导出</el-button>
             </div>
             <div class="rightBtn">
                 <el-button-group>
@@ -74,21 +74,93 @@
                   prop="name"
                   label="操作"
                   width="300">
-                    <el-button type="primary"><i class="el-icon-edit-outline"></i>编辑</el-button>
-                    <el-button type="danger"><i class="el-icon-delete"></i>删除</el-button>
+                    <el-button type="primary" @click="updateDicData = true"><i class="el-icon-edit-outline"></i>编辑</el-button>
+                    <el-button type="danger" @click="delData"><i class="el-icon-delete"></i>删除</el-button>
                 </el-table-column>
 
               </el-table>
-              <div style="margin-top: 20px">
-                <el-button @click="toggleSelection([tableData[1], tableData[2]])">切换第二、第三行的选中状态</el-button>
-                <el-button @click="toggleSelection()">取消选择</el-button>
-              </div>
-                    </div>
+
+             </div>
+             <!-- 添加字典模态窗-->
+
+              <el-dialog title="添加数据" :visible.sync="addDicData">
+                <el-form :model="form">
+                  <el-form-item label="字典编码" :label-width="formLabelWidth">
+                    <el-input v-model="form.name" autocomplete="off"></el-input>
+                  </el-form-item>
+
+                  <el-form-item label="字典键值" :label-width="formLabelWidth">
+                    <el-input v-model="form.key" autocomplete="off"></el-input>
+                  </el-form-item>
+                  <el-form-item label="字典类型" :label-width="formLabelWidth">
+                    <el-input v-model="form.type" autocomplete="off"></el-input>
+                  </el-form-item>
+
+                  <el-form-item label="样式属性" :label-width="formLabelWidth">
+                    <el-input v-model="form.cssAttr" autocomplete="off"></el-input>
+                  </el-form-item>
+                  <el-form-item label="字典排序" :label-width="formLabelWidth">
+                    <el-input v-model="form.sort" autocomplete="off"></el-input>
+                  </el-form-item>
+
+                  <el-form-item label="状态" :label-width="formLabelWidth">
+                      <el-radio-group v-model="form.status">
+                        <el-radio label="正常"></el-radio>
+                        <el-radio label="停用"></el-radio>
+                      </el-radio-group>
+                  </el-form-item>
+                <el-form-item label="备注" :label-width="formLabelWidth">
+                    <el-input type="textarea" v-model="form.desc"></el-input>
+                  </el-form-item>
+                </el-form>
+                <div slot="footer" class="dialog-footer">
+                  <el-button @click="addDicData = false">取 消</el-button>
+                  <el-button type="primary" @click="addDicData = false">确 定</el-button>
                 </div>
+              </el-dialog>
+
+
+             <!-- 修改字典数据模态窗-->
+
+              <el-dialog title="修改数据" :visible.sync="updateDicData">
+                <el-form :model="updateform">
+                  <el-form-item label="字典编码" :label-width="formLabelWidth">
+                    <el-input v-model="updateform.name" autocomplete="off"></el-input>
+                  </el-form-item>
+
+                  <el-form-item label="字典键值" :label-width="formLabelWidth">
+                    <el-input v-model="updateform.key" autocomplete="off"></el-input>
+                  </el-form-item>
+                  <el-form-item label="字典类型" :label-width="formLabelWidth">
+                    <el-input v-model="updateform.type" autocomplete="off"></el-input>
+                  </el-form-item>
+
+                  <el-form-item label="样式属性" :label-width="formLabelWidth">
+                    <el-input v-model="updateform.cssAttr" autocomplete="off"></el-input>
+                  </el-form-item>
+                  <el-form-item label="字典排序" :label-width="formLabelWidth">
+                    <el-input v-model="updateform.sort" autocomplete="off"></el-input>
+                  </el-form-item>
+
+                  <el-form-item label="状态" :label-width="formLabelWidth">
+                      <el-radio-group v-model="updateform.status">
+                        <el-radio label="正常"></el-radio>
+                        <el-radio label="停用"></el-radio>
+                      </el-radio-group>
+                  </el-form-item>
+                <el-form-item label="备注" :label-width="formLabelWidth">
+                    <el-input type="textarea" v-model="updateform.desc"></el-input>
+                  </el-form-item>
+                </el-form>
+                <div slot="footer" class="dialog-footer">
+                  <el-button @click="updateDicData = false">取 消</el-button>
+                  <el-button type="primary" @click="updateDicData = false">确 定</el-button>
+                </div>
+              </el-dialog>
+           </div>
 </template>
 
 <script>
-// import dataleft from './dataleft'
 
 
 export default {
@@ -100,42 +172,108 @@ export default {
     data(){
         return{
         tableData: [{
-          tag:'男',
-          date: '2016-05-03',
-          key: 0,
-          type:'sys_user_sex',
-          remark:'性别男'
-        }, 
-        {
-          tag:'女',
-          date: '2016-05-02',
-          key: 1,
-          type:'sys_user_sex',
-          remark:'性别女'
-        }, 
-        {
-          tag:'未知',
-          date: '2016-05-04',
-          key: 2,
-          type:'sys_user_sex',
-          remark:'性别未知',
-        }],
-        multipleSelection: []
+              tag:'男',
+              date: '2016-05-03',
+              key: 0,
+              type:'sys_user_sex',
+              remark:'性别男'
+            }, 
+            {
+              tag:'女',
+              date: '2016-05-02',
+              key: 1,
+              type:'sys_user_sex',
+              remark:'性别女'
+            }, 
+            {
+              tag:'未知',
+              date: '2016-05-04',
+              key: 2,
+              type:'sys_user_sex',
+              remark:'性别未知',
+            }],
+            multipleSelection: [],
+            // 添加数据模态窗口
+             
+            addDicData: false,
+            formLabelWidth: '100px',
+            form: {
+             name: '',
+             key:'',
+             cssAttr:'',
+             type: '',
+             status: '',
+             sort:'',
+             desc: ''
+           },
+            // 修改数据模态窗口
+           updateDicData: false,
+            updateform: {
+             name: '',
+             key:'',
+             cssAttr:'',
+             type: '',
+             status: '',
+             sort:'',
+             desc: ''
+           }           
         }
+         //添加弹框
+           
+
     },
    
         methods: {
-      toggleSelection(rows) {
-        if (rows) {
-          rows.forEach(row => {
-            this.$refs.multipleTable.toggleRowSelection(row);
+          toggleSelection(rows) {
+            if (rows) {
+              rows.forEach(row => {
+                this.$refs.multipleTable.toggleRowSelection(row);
+              });
+            } else {
+              this.$refs.multipleTable.clearSelection();
+            }
+          },
+
+          handleSelectionChange(val) {
+            this.multipleSelection = val;
+          },
+
+           // 删除提示框
+         delData() {
+        this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
           });
-        } else {
-          this.$refs.multipleTable.clearSelection();
-        }
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });          
+        });
       },
-      handleSelectionChange(val) {
-        this.multipleSelection = val;
+
+      // 导出提示框
+       expoData() {
+        this.$confirm('确定导出所有类型吗？', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });          
+        });
       }
     
   }
