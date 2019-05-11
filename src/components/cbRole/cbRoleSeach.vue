@@ -25,8 +25,7 @@
                     <el-date-picker
                         v-model="value4"
                         type="month"
-                        placeholder="开始时间"
-                        :editable='editable'>
+                        placeholder="开始时间">
                     </el-date-picker>
                 </div>
                 <div class="block">
@@ -47,6 +46,7 @@
                     <el-button type="success" icon="el-icon-refresh" round>重置</el-button>
                 </div>
             </div>
+
         </div>
 </template>
 
@@ -71,7 +71,7 @@
                     value3: '',
                     value4: '',
                     value5: '',
-                    editable:'ture'
+                
                 }
 
         },

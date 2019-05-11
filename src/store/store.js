@@ -20,7 +20,7 @@ export default new Vuex.Store({
       let str = obj.data;
       let has = false;
       state.brumbs.some((item) => {
-        if (item == str) {
+        if (item == str) { 
           has = true
           return true
         }

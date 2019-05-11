@@ -8,6 +8,7 @@ import login from '../pages/login'
 import cbPersonal from "../components/personal/cbPersonal"
 import managerial from "../components/managerial-position-vue/Managerial-Position"
 import userManagement from '../components/cbRole/userManagement'
+import AllocationUser from '../components/cbRole/cbAllocationUser'
 import userManagementWrite from '../components/cbManagement/userManagementWrite'
 
 /** 
@@ -55,6 +56,11 @@ export default new Router({
           path: 'role',
           name: 'cbRole',
           component: cbRole
+        },
+        {
+          path: 'AllocationUser',
+          name: 'AllocationUser',
+          component: AllocationUser
         },
         {
           path: "personal",
