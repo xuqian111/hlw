@@ -46,7 +46,9 @@
                   localStorage.setItem('user',_this.userName)
                   this.$router.push("/index")
                 }else if(data==0){
+                  alert("请输入正确的用户名或密码！")
                   this.$router.push("/login")
+                  this.userPass = '';
                 }
               })
             })
