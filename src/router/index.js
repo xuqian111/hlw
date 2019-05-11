@@ -10,6 +10,10 @@ import managerial from "../components/managerial-position-vue/Managerial-Positio
 import userManagement from '../components/cbRole/userManagement'
 import userManagementWrite from '../components/cbManagement/userManagementWrite'
 
+/** 
+ * 字典*/ 
+import cbDictionaryList from '../components/cbDictionaryList/cbDictionaryList'
+import cbDictionaryDataList from '../components/cbDictionaryDataList/cbDictionaryDataList'
 Vue.use(Router)
 
 export default new Router({
@@ -17,7 +21,8 @@ export default new Router({
     {
       path: '/',
       redirect: 'Index',
-      component: Index
+      component: Index,
+    
     },
     {
       path: '/login',
@@ -55,6 +60,19 @@ export default new Router({
           path: "personal",
           name: "cbPersonal",
           component: cbPersonal
+        },
+        /** 
+         * 字典*/
+         
+        {
+          path:'dictionary',
+          name:'cbDictionaryList',
+          component:cbDictionaryList         
+        },
+        {
+          path:'dictionaryDataList',
+          name:'cbDictionaryDataList',
+          component:cbDictionaryDataList
         },
         {
           path: "job",
