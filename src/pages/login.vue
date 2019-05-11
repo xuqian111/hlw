@@ -31,9 +31,24 @@
         },
       methods:{
           login(){
-            localStorage.setItem('user',this.userName)
-            this.$router.push("/index")
-          },
+            let _this = this
+            fetch('http://localhost:3000/user/api/login',{
+              method:"POST",
+              headers:{
+                "Content-Type":"application/x-www-form-urlencoded"
+              },
+              body:`id=${_this.userName}&pass=${_this.userPass}`
+            }).then(res=>{
+              res.json().then(data=>{
+                if(data==1){
+                  localStorage.setItem('user',_this.userName)
+                  this.$router.push("/index")
+                }else if(data==0){
+                  this.$router.push("/login")
+                }
+              })
+            })
+          }
       }
     }
 </script>
