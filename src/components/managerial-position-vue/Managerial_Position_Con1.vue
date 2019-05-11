@@ -1,29 +1,55 @@
 <template>
   <ul class="Ma_Po_Se_Con1">
-    <li>
-      <span class="Ma_Po_Se_Con1_num">岗位编码：</span>
-      <input type="text" class="Ma_Po_Se_Con1_input Ma_Po_Se_Con1_inputnum">
-    </li>
-    <li>
-      <span class="Ma_Po_Se_Con1_num">岗位编码：</span>
-      <input type="text" class="Ma_Po_Se_Con1_input Ma_Po_Se_Con1_inputnum">
-    </li>
-    <li>
-      <span class="Ma_Po_Se_Con1_num">岗位编码：</span>
-      <input type="text" class="Ma_Po_Se_Con1_input Ma_Po_Se_Con1_inputnum">
-    </li>
-    <div class="Ma_Po_Se_Con1_Btn">
-      <el-row id="Ma_Po_Se_Con1_Btn_Con">
+    <el-row :gutter="10">
+      <el-col :xs="12" :sm="12" :md="8" :lg="7" :xl="7" style="box-sizing: border-box">
+        <div class="grid-content bg-purple grid-content1">
+          <span class="Ma_Po_Se_Con1_num">岗位编码：</span>
+          <input type="text" class="Ma_Po_Se_Con1_input Ma_Po_Se_Con1_inputnum">
+        </div>
+      </el-col>
+      <el-col :xs="12" :sm="12" :md="16" :lg="7" :xl="7" style="box-sizing: border-box">
+        <div class="grid-content bg-purple-light">
+          <span class="Ma_Po_Se_Con1_num">岗位编码：</span>
+          <input type="text" class="Ma_Po_Se_Con1_input Ma_Po_Se_Con1_inputnum">
+        </div>
+      </el-col>
+      <el-col :xs="12" :sm="12" :md="8" :lg="7" :xl="7" style="box-sizing: border-box">
+        <div class="grid-content bg-purple">
+          <span class="Ma_Po_Se_Con1_num">岗位编码：</span>
+          <input type="text" class="Ma_Po_Se_Con1_input Ma_Po_Se_Con1_inputnum">
+        </div>
+      </el-col>
+      <el-col :xs="12" :sm="12" :md="16" :lg="3" :xl="3" style="box-sizing: border-box">
+        <div class="grid-content bg-purple-light">
+          <el-row id="Ma_Po_Se_Con1_Btn_Con">
             <el-button type="success" round icon="el-icon-search" class="Ma_Po_Se_Con1_Btn_Search">搜索</el-button>
             <el-button type="warning" round icon="el-icon-refresh" class="Ma_Po_Se_Con1_Btn_Reset">重置</el-button>
-      </el-row>
-    </div>
+          </el-row>
+        </div>
+      </el-col>
+    </el-row>
   </ul>
+
 </template>
 
 <script>
     export default {
-        name: "Managerial_Position_Con1"
+        name: "Managerial_Position_Con1",
+      data() {
+        return {
+          options: [{
+            value: '选项1',
+            label: '所有'
+          }, {
+            value: '选项2',
+            label: '正常'
+          }, {
+            value: '选项3',
+            label: '停用'
+          }, ],
+          value: ''
+        }
+      }
 
     }
 </script>
@@ -32,20 +58,27 @@
  .Ma_Po_Se_Con1{
    width:100%;
    display: flex;
+   flex-wrap: wrap;
    border-radius: 6px;
    border :1px solid #ececed;
    box-sizing: border-box;
    background: #ffffff;
    box-shadow: 2px 1px 3px 0.5px #e1e1e2;
  }
- .Ma_Po_Se_Con1 li{
-   width:26%;
+ .grid-content{
    display: flex;
+   padding-top: 10px;
+   padding-left: 8px;
+   padding-bottom: 18px;
+   box-sizing: border-box;
    align-items: center;
-   padding-left:15px;
-   padding-top:10px;
-   padding-bottom:18px;
  }
+
+ el-col{
+   padding-left:0;
+   padding-right: 0;
+ }
+
   .Ma_Po_Se_Con1_num{
     white-space: nowrap;
     font-size:13px;
@@ -91,4 +124,5 @@
     background-color:#f8ac59;
     text-align: center;
   }
+
 </style>
