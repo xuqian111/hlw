@@ -39,6 +39,7 @@
             let keypass = 'userPass'
             localStorage.setItem(keyname,this.userName)
             localStorage.setItem(keypass,this.userPass)
+
             this.$router.push('/')
           }
         }
