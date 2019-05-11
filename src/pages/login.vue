@@ -8,7 +8,7 @@
         </div>
         <div class="inp z">
           <label>密&nbsp;&nbsp;&nbsp;码：</label>
-          <el-input class="inputBox" v-model="userPass" placeholder="请输入密码"></el-input>
+          <el-input class="inputBox" type="password" v-model="userPass" placeholder="请输入密码"></el-input>
         </div>
         <div class="z checkBtn">
           <el-checkbox v-model="checked" class="remember">记住密码</el-checkbox>
@@ -29,20 +29,29 @@
             userPass:'',
             checked:false
           }
+
         },
       methods:{
-        login(){
-          if(this.userName === '' || this.userPass === ''){
-            alert("账号或密码不能为空")
-          }else{
-            let keyname = 'userName'
-            let keypass = 'userPass'
-            localStorage.setItem(keyname,this.userName)
-            localStorage.setItem(keypass,this.userPass)
-
-            this.$router.push('/')
+          login(){
+            let _this = this
+            fetch('http://localhost:3000/user/api/login',{
+              method:"POST",
+              headers:{
+                "Content-Type":"application/x-www-form-urlencoded"
+              },
+              body:`id=${_this.userName}&pass=${_this.userPass}`
+            }).then(res=>{
+              res.json().then(data=>{
+                if(data==1){
+                  localStorage.setItem('user',_this.userName)
+                  this.$router.push("/index")
+                }else if(data==0){
+                  this.$router.push("/login")
+                }
+              })
+            })
           }
-        }
+
       }
     }
 </script>

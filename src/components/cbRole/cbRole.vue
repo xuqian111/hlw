@@ -11,8 +11,8 @@
 
 <script type='text/javascript'>
 
-    import RoleSeach from '@/components/cbRole/cbRoleSeach'
-    import RoleMain from '@/components/cbRole/cbRoleMain'
+    import RoleSeach from './cbRoleSeach'
+    import RoleMain from './cbRoleMain'
 
     export default {
         name: "cbRole",
@@ -40,10 +40,16 @@
     width: 100%;
     background: #fff;
     border-radius: 6px;
-    // margin-top: 10px;
-    // padding-top: 5px;
-    // padding-bottom: 13px;
     padding:10px 15px;
+    box-sizing:border-box;
+    box-shadow: 1px 1px 3px rgba(0,0,0,.2);
+}
+.roleBox{
+    width: 100%;
+    background: #fff;
+    border-radius: 6px;
+    padding:10px 15px;
+    margin-top:10px;
     box-sizing:border-box;
     box-shadow: 1px 1px 3px rgba(0,0,0,.2);
 }
