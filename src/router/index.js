@@ -6,6 +6,7 @@ import cbRole from '../pages/cbRole'
 import login from '../pages/login'
 import cbPersonal from "../components/personal/cbPersonal"
 import managerial from "../components/managerial-position-vue/Managerial-Position"
+import cbMenuItem from "../components/cbMenuItem/cbMenuItem"
 
 Vue.use(Router)
 
@@ -42,6 +43,10 @@ export default new Router({
         {
           path: "job",
           component: managerial
+        },
+        {
+          path: "part",
+          component: cbMenuItem
         }
       ]
     }
