@@ -94,9 +94,9 @@
                 <el-table-column label="用户ID" sortable width="90">
                   <template slot-scope="scope">{{ scope.row.id }}</template>
                 </el-table-column>
-                <el-table-column prop="name" label="登录名称" width="120"></el-table-column>
-                <el-table-column prop="username" label="用户名称" width="70" show-overflow-tooltip></el-table-column>
-                <el-table-column prop="department" label="部门" width="100"></el-table-column>
+                <el-table-column prop="userId" label="登录名称" width="120"></el-table-column>
+                <el-table-column prop="userName" label="用户名称" width="70" show-overflow-tooltip></el-table-column>
+                <el-table-column prop="part" label="部门" width="100"></el-table-column>
                 <el-table-column prop="tel" label="手机" width="120"></el-table-column>
                 <el-table-column prop="userState" label="用户状态" width="80">
                   <template slot-scope="scope">
@@ -109,7 +109,7 @@
                     ></el-switch>
                   </template>
                 </el-table-column>
-                <el-table-column prop="data" label="创建时间" sortable width="110"></el-table-column>
+                <el-table-column prop="joinTime" label="创建时间" sortable width="110"></el-table-column>
                 <el-table-column prop="operation" label="操作" width="155">
                   <template>
                     <div class="rigBtn">
@@ -167,22 +167,22 @@ export default {
         }
       },
       tableData: [
-        {
-          id: "1",
-          name: "admin",
-          username: "若依",
-          department: "研发部门",
-          tel: "15811111111",
-          data: "2018-1-1"
-        },
-        {
-          id: "2",
-          name: "admin",
-          username: "若依",
-          department: "研发部门",
-          tel: "15811111111",
-          data: "2018-1-1"
-        }
+        // {
+        //   id: "1",
+        //   name: "admin",
+        //   username: "若依",
+        //   department: "研发部门",
+        //   tel: "15811111111",
+        //   data: "2018-1-1"
+        // },
+        // {
+        //   id: "2",
+        //   name: "admin",
+        //   username: "若依",
+        //   department: "研发部门",
+        //   tel: "15811111111",
+        //   data: "2018-1-1"
+        // }
       ],
       value1: true,
       value2: true,
@@ -231,7 +231,7 @@ export default {
   },
   created() {
     $.get("http://10.35.164.14:3000/user/api/getUser", data => {
-      console.log("cus", data);
+      this.tableData = data;
     });
   }
 };
