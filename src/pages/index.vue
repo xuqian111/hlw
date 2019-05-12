@@ -48,8 +48,8 @@ export default {
     display: flex;
     justify-content: space-between;
     .content {
+      width: calc(100% - 220px);
       flex: 1;
-      background: #e2e2e2;
       .main {
         margin-top: 30px;
         height: calc(100% - 71px);

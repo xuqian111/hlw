@@ -5,7 +5,7 @@
         <img src="../assets/img/user.jpg" alt>
       </div>
       <div class="userInfo">
-        <div class="userName">大娃</div>
+        <div class="userName">{{ userInfo.userName }}</div>
         <div class="userState">
           <div class="online">
             <i class="onlineIcon"></i>
@@ -13,7 +13,7 @@
           </div>
           <div class="outline">
             <i class="el-icon-s-unfold"></i>
-            <span>注销</span>
+            <span @click="logout">注销</span>
           </div>
         </div>
       </div>
@@ -77,12 +77,21 @@
 </template>
 
 <script>
+// import { mapGetters } from "vuex";
 export default {
   name: "cbNav",
   data() {
-    return {};
+    return {
+      userInfo: []
+    };
   },
   methods: {
+    logout() {
+      if (confirm("您确认退出登录吗")) {
+        localStorage.removeItem("user");
+        this.$router.push({ name: "login" });
+      }
+    },
     handleOpen(key, keyPath) {
       // console.log(key, keyPath);
     },
@@ -96,6 +105,14 @@ export default {
       });
       this.$router.push("/index/" + path);
     }
+  },
+  // computed: {
+  //   ...mapGetters({
+  //     user: "getUser"
+  //   })
+  // },
+  created() {
+    this.userInfo = JSON.parse(localStorage.getItem("user"));
   }
 };
 </script>
