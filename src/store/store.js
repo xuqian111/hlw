@@ -25,6 +25,7 @@ const actions = {
       type: 'deleteBrumb',
       data: obj.data
     })
+    console.log('ac', obj.data)
   },
   clear(context) {
     context.commit({
