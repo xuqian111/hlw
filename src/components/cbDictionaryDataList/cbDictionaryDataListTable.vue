@@ -74,8 +74,8 @@
                   prop="name"
                   label="操作"
                   width="300">
-                    <el-button type="primary" @click="updateDicData = true"><i class="el-icon-edit-outline"></i>编辑</el-button>
-                    <el-button type="danger" @click="delData"><i class="el-icon-delete"></i>删除</el-button>
+                    <el-button type="primary" size="mini" @click="updateDicData = true"><i class="el-icon-edit-outline"></i>编辑</el-button>
+                    <el-button type="danger" size="mini" @click="delData"><i class="el-icon-delete"></i>删除</el-button>
                 </el-table-column>
 
               </el-table>

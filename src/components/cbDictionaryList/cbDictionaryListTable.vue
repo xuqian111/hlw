@@ -3,73 +3,52 @@
         <!-- 按钮 -->
         <div class="BtnBox">
             <div class="leftBtn">
-                  <el-button type="primary" @click="addFormVisible = true"><i class="el-icon-plus"></i>新增</el-button>
-                  <el-button type="success" @click="upadteFormVisible = true"><i class="el-icon-edit-outline"></i>修改</el-button>
-                  <el-button type="danger" @click="del"><i class="el-icon-delete"></i>删除</el-button>
-                  <el-button type="info" @click="expo"><i class="el-icon-download"></i>导出</el-button>
+                <el-button type="primary" @click="addFormVisible = true"><i class="el-icon-plus"></i>新增</el-button>
+                <el-button type="success" @click="upadteFormVisible = true"><i class="el-icon-edit-outline"></i>修改</el-button>
+                <el-button type="danger" @click="del"><i class="el-icon-delete"></i>删除</el-button>
+                <el-button type="info" @click="expo"><i class="el-icon-download"></i>导出</el-button>
             </div>
             <div class="rightBtn">
                 <el-button-group>
-                     <el-button icon="el-icon-search"></el-button>
-                     <el-button icon="el-icon-refresh"></el-button>
-                     <el-button icon="el-icon-tickets"></el-button>
-                     <el-button icon="el-icon-s-grid"></el-button>
+                      <el-button icon="el-icon-search"></el-button>
+                      <el-button icon="el-icon-refresh"></el-button>
+                      <el-button icon="el-icon-tickets"></el-button>
+                      <el-button icon="el-icon-s-grid"></el-button>
                 </el-button-group>
             </div>
         </div>
 
         <!-- 表单 -->
         <div class="tableContent">
-            <el-table
+            <el-table 
                 ref="multipleTable" :data="tableData" tooltip-effect="dark"  style="width: 100%"
-                @selection-change="handleSelectionChange" v-loading="loading2">
-                <el-table-column
-                  type="selection"
-                  width="55">
+                @selection-change="handleSelectionChange">
+                <el-table-column type="selection" width="55">
                 </el-table-column>
-                 <el-table-column
-                  label="字典主键"
-                  type="index"
-                  width="120">
+                 <el-table-column label="字典主键" type="index" width="120">
                   <template></template>
                 </el-table-column>
-                <el-table-column
-                  prop="name"
-                  label="字典名称"
-                  width="120">
+                <el-table-column prop="name" label="字典名称" width="120">
                 </el-table-column>
-                 <el-table-column
-                  label="字典类型"
-                  width="120">
+                 <el-table-column prop="type" label="字典类型" width="120">
                   <template slot-scope="scope">{{ scope.row.type }}</template>
-                </el-table-column>                 <el-table-column
-                  label="状态"
-                  width="120">
+                </el-table-column>                  
+                <el-table-column prop="status" label="状态" width="120">
                   <template>
-                      <el-button
-                         size="mini"
-                         type="success" round>正常
-                     </el-button>
+                      <span slot-scope="scope" class="Status stopuse">{{scope.row.status}}
+                     </span>
                   </template>
                 </el-table-column>                 
-                <el-table-column
-                  label="备注"
-                  width="120">
+                <el-table-column prop="remark" label="备注"  width="120">
                   <template slot-scope="scope">{{ scope.row.remark }}</template>
                 </el-table-column> 
-                <el-table-column
-                  label="创建时间"
-                  width="120">
-                  <template slot-scope="scope">{{ scope.row.date }}</template>
+                <el-table-column prop="timer" label="创建时间" width="120">
+                  <template slot-scope="scope">{{ scope.row.timer }}</template>
                 </el-table-column>
-                <el-table-column
-                class="inside-btn"
-                  prop="name"
-                  label="操作"
-                  width="300">
-                    <el-button type="primary"><i class="el-icon-edit-outline" @click="upadteFormVisible = true"></i>编辑</el-button>
-                    <el-button type="success"><router-link to="/index/dictionaryDataList"><i class="el-icon-s-fold"></i>列表</router-link></el-button>
-                    <el-button type="danger" @click="del"><i class="el-icon-delete"></i>删除</el-button>
+                <el-table-column class="inside-btn"  prop="name" label="操作" width="300">
+                    <el-button size="mini" type="primary"><i class="el-icon-edit-outline" @click="upadteFormVisible = true"></i>编辑</el-button>
+                    <el-button size="mini" type="success"><router-link to="/index/dictionaryDataList"><i class="el-icon-s-fold"></i>列表</router-link></el-button>
+                    <el-button size="mini" type="danger" @click="del"><i class="el-icon-delete"></i>删除</el-button>
                 </el-table-column>
 
               </el-table>
@@ -126,74 +105,74 @@
                   <el-button type="primary" @click="upadteFormVisible = false">确 定</el-button>
                 </div>
               </el-dialog>
+
+              <!-- <addDicWin/> -->
             </div>
          </div>       
 </template>
 
 <script>
 
-
+// import addDicWin from './addDicWin'
 
 export default {
     name:"cbDictionaryListTable",
     components:{
-        
+        // addDicWin
 
     },
     data(){
         return{
           // 表格数据
         tableData: [{
-             date: '2016-05-03',
              name: '用户性别',
              type:'sys_user_sex',
+             status:'正常',
              remark:'用户性别列表',
-
-             address: '上海市普陀区金沙江路 1518 弄'
-           }, 
-           {
-             date: '2016-05-02',
-             name: '用户性别',
-             type:'sys_user_sex',
-             remark:'用户性别列表',
-             address: '上海市普陀区金沙江路 1518 弄'
-           }, 
-           {
-             date: '2016-05-04',
-             name: '用户性别',
-             type:'sys_user_sex',
-             remark:'用户性别列表',
-             address: '上海市普陀区金沙江路 1518 弄'
-           },
-            {
-             date: '2016-05-01',
-             name: '用户性别',
-             type:'sys_user_sex',
-             remark:'用户性别列表',
-             address: '上海市普陀区金沙江路 1518 弄'
-           }, 
-           {
-             date: '2016-05-08',
-             name: '用户性别',
-             type:'sys_user_sex',
-             remark:'用户性别列表',
-             address: '上海市普陀区金沙江路 1518 弄'
-           }, 
-           {
-             date: '2016-05-06',
-             name: '用户性别',
-             type:'sys_user_sex',
-             remark:'用户性别列表',
-             address: '上海市普陀区金沙江路 1518 弄'
-           },
-            {
-             date: '2016-05-07',
-             name: '用户性别',
-             type:'sys_user_sex',
-             remark:'用户性别列表',
-             address: '上海市普陀区金沙江路 1518 弄'
-           }],
-          //  multipleSelection: [],
+             timer: '2016-05-03',
+             
+            
+             
+           }
+          //  , 
+          //  {
+          //    date: '2016-05-02',
+          //    name: '用户性别',
+          //    type:'sys_user_sex',
+          //    remark:'用户性别列表'
+          //  }, 
+          //  {
+          //    date: '2016-05-04',
+          //    name: '用户性别',
+          //    type:'sys_user_sex',
+          //    remark:'用户性别列表'
+          //  },
+          //   {
+          //    date: '2016-05-01',
+          //    name: '用户性别',
+          //    type:'sys_user_sex',
+          //    remark:'用户性别列表'
+          //  }, 
+          //  {
+          //    date: '2016-05-08',
+          //    name: '用户性别',
+          //    type:'sys_user_sex',
+          //    remark:'用户性别列表'
+          //  }, 
+          //  {
+          //    date: '2016-05-06',
+          //    name: '用户性别',
+          //    type:'sys_user_sex',
+          //    remark:'用户性别列表'
+          //  },
+          //   {
+          //    date: '2016-05-07',
+          //    name: '用户性别',
+          //    type:'sys_user_sex',
+          //    remark:'用户性别列表'
+          //  }
+           ],
+           multipleSelection: [],
        
           //添加弹框
            addFormVisible: false,
@@ -302,4 +281,22 @@ overflow: hidden;
     width: 48px;
     height: 22px;
 }
+/* .normal{
+      background-color:#67C23A;
+}
+.stopuse{
+       background-color:#ed5565;
+}
+.Status{
+    display: inline-block;
+    widows: 36px;
+    height: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    padding-bottom: 4px;
+    padding-left: 6px;
+    padding-right: 6px;
+    color: #FFFFFF;
+    border-radius: 10px;
+} */
 </style>
