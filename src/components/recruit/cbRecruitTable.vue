@@ -71,12 +71,12 @@
             {
               isChecked: false,
               reId: '02',
-              reName: '刘瑞雪',
-              rePhone: '18817334402',
-              reEmail: 'liuruixue@163.com',
-              reAddress: '上海',
+              reName: '刘雪',
+              rePhone: '18715334402',
+              reEmail: 'liurui@163.com',
+              reAddress: '北京',
               reDitch: '投递',
-              reType: '项目经理',
+              reType: '人事',
               reInter: '初始',
               case: '',
               rePerson: '王菁'
@@ -84,12 +84,12 @@
             {
               isChecked: false,
               reId: '03',
-              reName: '刘瑞雪',
-              rePhone: '18817334402',
+              reName: '王瑞',
+              rePhone: '18817335502',
               reEmail: 'liuruixue@163.com',
-              reAddress: '上海',
+              reAddress: '西安',
               reDitch: '投递',
-              reType: '项目经理',
+              reType: '客服',
               reInter: '初始',
               case: '',
               rePerson: '王菁'
@@ -97,12 +97,12 @@
             {
               isChecked: false,
               reId: '04',
-              reName: '刘瑞雪',
-              rePhone: '18817334402',
+              reName: '刘雪雪',
+              rePhone: '17617334402',
               reEmail: 'liuruixue@163.com',
               reAddress: '上海',
               reDitch: '投递',
-              reType: '项目经理',
+              reType: '人事',
               reInter: '初始',
               case: '',
               rePerson: '王菁'
@@ -110,7 +110,7 @@
             {
               isChecked: false,
               reId: '05',
-              reName: '刘瑞雪',
+              reName: '张瑞雪',
               rePhone: '18817334402',
               reEmail: 'liuruixue@163.com',
               reAddress: '上海',
@@ -123,7 +123,7 @@
             {
               isChecked: false,
               reId: '06',
-              reName: '刘瑞雪',
+              reName: '高崎',
               rePhone: '18817334402',
               reEmail: 'liuruixue@163.com',
               reAddress: '上海',
@@ -136,8 +136,8 @@
             {
               isChecked: false,
               reId: '07',
-              reName: '刘瑞雪',
-              rePhone: '18817334402',
+              reName: '高丽',
+              rePhone: '18817556602',
               reEmail: 'liuruixue@163.com',
               reAddress: '上海',
               reDitch: '投递',
@@ -149,7 +149,7 @@
             {
               isChecked: false,
               reId: '08',
-              reName: '刘瑞雪',
+              reName: '雪',
               rePhone: '18817334402',
               reEmail: 'liuruixue@163.com',
               reAddress: '上海',
@@ -162,7 +162,7 @@
             {
               isChecked: false,
               reId: '09',
-              reName: '刘瑞雪',
+              reName: '张三',
               rePhone: '18817334402',
               reEmail: 'liuruixue@163.com',
               reAddress: '上海',
@@ -175,7 +175,7 @@
             {
               isChecked: false,
               reId: '10',
-              reName: '刘瑞雪',
+              reName: '瑞雪',
               rePhone: '18817334402',
               reEmail: 'liuruixue@163.com',
               reAddress: '上海',
