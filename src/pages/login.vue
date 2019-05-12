@@ -8,7 +8,13 @@
       </div>
       <div class="inp z">
         <label>密&nbsp;&nbsp;&nbsp;码：</label>
-        <el-input class="inputBox" type="password" v-model="userPass" placeholder="请输入密码"></el-input>
+        <el-input
+          class="inputBox"
+          type="password"
+          v-model="userPass"
+          v-on:keyup.13.native="login"
+          placeholder="请输入密码"
+        ></el-input>
       </div>
       <div class="z checkBtn">
         <el-checkbox v-model="checked" class="remember">记住密码</el-checkbox>
@@ -33,31 +39,38 @@ export default {
   methods: {
     login() {
       let _this = this;
+      // 192.168.11.115
       fetch("http://10.35.164.14:3000/user/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded"
         },
         body: `id=${_this.userName}&pass=${_this.userPass}`
-      }).then(res => {
-        res.json().then(data => {
-          console.log(data);
-          // if (data == 1) {
-          //   localStorage.setItem("user", _this.userName);
-          //   this.$router.push("/index");
-          // } else if (data == 0) {
-          //   alert("请输入正确的用户名或密码！");
-          //   this.$router.push("/login");
-          //   this.userPass = "";
-          // }
-          if (data == 1) {
-            localStorage.setItem("user", _this.userName);
-            this.$router.push("/index");
-          } else {
-            console.log(data);
-          }
+      })
+        .then(res => {
+          res.json().then(data => {
+            if (data.status == 200) {
+              let u = JSON.stringify(data.user);
+              localStorage.setItem("user", u);
+              this.$router.push({
+                path: "/index",
+                query: { userId: data.userId }
+              });
+              // console.log(data.user);
+            } else if (data.status == 400) {
+              alert(data.message);
+              this.$router.push("/login");
+              this.userPass = "";
+            } else {
+              alert(data.message);
+              this.$router.push("/login");
+              this.userPass = "";
+            }
+          });
+        })
+        .catch(err => {
+          console.log("error is", error);
         });
-      });
     }
   }
 };

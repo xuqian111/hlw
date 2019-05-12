@@ -4,37 +4,35 @@ import Index from "../pages/index"
 import home from "../components/Home"
 import recruit from '../components/recruit/cbRecruit'
 import cbRole from '../components/cbRole/cbRole'
+import userManagement from '../components/cbRole/userManagement'
 import login from '../pages/login'
 import cbPersonal from "../components/personal/cbPersonal"
 import managerial from "../components/managerial-position-vue/Managerial-Position"
-import userManagement from '../components/cbRole/userManagement'
 import userManagementWrite from '../components/cbManagement/userManagementWrite'
+import cbMenuItem from "../components/cbMenuItem/cbMenuItem"
 
 /** 
- * 字典*/ 
+ * 字典*/
 import cbDictionaryList from '../components/cbDictionaryList/cbDictionaryList'
 import cbDictionaryDataList from '../components/cbDictionaryDataList/cbDictionaryDataList'
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/',
       redirect: 'Index',
       component: Index,
-    
+
     },
     {
       path: '/login',
       name: 'login',
       component: login,
-      beforeEnter(to,from,next){
+      beforeEnter(to, from, next) {
         let user = localStorage.getItem('user')
         next()
-        if(user){
+        if (user) {
           next('/index')
-        }else{
-          console.log("err")
         }
       }
     },
@@ -42,10 +40,9 @@ export default new Router({
       path: '/index',
       name: "Index",
       component: Index,
-      children: [
-        {
-          path:"",
-          component:home
+      children: [{
+          path: "",
+          component: home
         },
         {
           path: "recruit",
@@ -63,16 +60,16 @@ export default new Router({
         },
         /** 
          * 字典*/
-         
+
         {
-          path:'dictionary',
-          name:'cbDictionaryList',
-          component:cbDictionaryList         
+          path: 'dictionary',
+          name: 'cbDictionaryList',
+          component: cbDictionaryList
         },
         {
-          path:'dictionaryDataList',
-          name:'cbDictionaryDataList',
-          component:cbDictionaryDataList
+          path: 'dictionaryDataList',
+          name: 'cbDictionaryDataList',
+          component: cbDictionaryDataList
         },
         {
           path: "job",
@@ -87,7 +84,12 @@ export default new Router({
           path: 'userManagementWrite',
           name: 'userManagementWrite',
           component: userManagementWrite
+        },
+        {
+          path: "part",
+          component: cbMenuItem
         }
       ]
-    }]}
-)
+    }
+  ]
+})
