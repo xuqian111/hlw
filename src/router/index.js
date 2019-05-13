@@ -4,11 +4,11 @@ import Index from "../pages/index"
 import home from "../components/Home"
 import recruit from '../components/recruit/cbRecruit'
 import cbRole from '../components/cbRole/cbRole'
-import userManagement from '../components/cbManagement/userManagement'
+import userManagement from '../components/cbRole/userManagement'
+import userManagementWrite from '../components/cbManagement/userManagementWrite'
 import login from '../pages/login'
 import cbPersonal from "../components/personal/cbPersonal"
 import managerial from "../components/managerial-position-vue/Managerial-Position"
-import userManagementWrite from '../components/cbManagement/userManagementWrite'
 import cbMenuItem from "../components/cbMenuItem/cbMenuItem"
 
 /** 
