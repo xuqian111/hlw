@@ -199,9 +199,9 @@
                 <el-table-column label="用户ID" sortable width="90">
                   <template slot-scope="scope">{{ scope.row.id }}</template>
                 </el-table-column>
-                <el-table-column prop="name" label="登录名称" width="120"></el-table-column>
-                <el-table-column prop="username" label="用户名称" width="70" show-overflow-tooltip></el-table-column>
-                <el-table-column prop="department" label="部门" width="100"></el-table-column>
+                <el-table-column prop="userId" label="登录名称" width="120"></el-table-column>
+                <el-table-column prop="userName" label="用户名称" width="70" show-overflow-tooltip></el-table-column>
+                <el-table-column prop="part" label="部门" width="100"></el-table-column>
                 <el-table-column prop="tel" label="手机" width="120"></el-table-column>
                 <el-table-column prop="userState" label="用户状态" width="80">
                   <template slot-scope="scope">
@@ -253,17 +253,13 @@
         </div>
       </div>
     </div>
-    <!--<usermanagement-write/>-->
   </div>
 </template>
 
 <script>
-import userManagementWrite from "../cbManagement/userManagementWrite";
 export default {
   name: "userManagement",
-  components: {
-    usermanagementWrite: userManagementWrite
-  },
+  components: {},
   data() {
     return {
       pickerOptions: {
@@ -271,24 +267,7 @@ export default {
           return time.getTime() > Date.now();
         }
       },
-      tableData: [
-        {
-          id: "1",
-          name: "admin",
-          username: "若依",
-          department: "研发部门",
-          tel: "15811111111",
-          data: "2018-1-1"
-        },
-        {
-          id: "2",
-          name: "admin",
-          username: "若依",
-          department: "研发部门",
-          tel: "15811111111",
-          data: "2018-1-1"
-        }
-      ],
+      tableData: [],
       value1: true,
       value2: true,
       value3: "",
@@ -297,6 +276,14 @@ export default {
     };
   },
   methods: {
+    router(path, crumb) {
+      this.$store.dispatch({
+        type: "intradd",
+        data: crumb
+      });
+      this.$router.push("/index/" + path);
+      // console.log(path, crumb);
+    },
     open() {
       this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
         confirmButtonText: "确定",
@@ -325,6 +312,12 @@ export default {
         this.$refs.s.style.left = "17%";
       }
     }
+  },
+  created() {
+    $.get("http://10.35.164.14:3000/user/api/getUser", data => {
+      this.tableData = data;
+      // console.log("tableData", this.tableData);
+    });
   },
   mounted() {
     // jquery实现左边树状结构
