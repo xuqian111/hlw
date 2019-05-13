@@ -11,7 +11,80 @@
           </div>
         </div>
         <div class="user_left_center">
-
+            <div class="user_left_cen_c">
+              <div class="tree">
+                <li class="tree_one">
+                    <span class="controlAll"></span>
+                    <a href="#"><i class="el-icon-folder-opened"></i><span>若依科技</span></a>
+                </li>
+                <ul class="tree_two">
+                  <li class="tree_one tree_two_a">
+                    <div class="Line line1">
+                      <span class="control"></span>
+                      <a href="#"><i class="el-icon-folder-opened"></i><span>深圳总公司</span></a>
+                    </div>
+                    <span class="a"></span>
+                    <ul class="sz">
+                      <li class="tree_three">
+                        <div class="Line">
+                          <span></span>
+                          <a href="#"><i class="el-icon-document"></i><span>研发部门</span></a>
+                        </div>
+                        <span class="a"></span>
+                      </li>
+                      <li class="tree_three four">
+                        <div class="Line">
+                          <span></span>
+                          <a href="#"><i class="el-icon-document"></i><span>市场部门</span></a>
+                        </div>
+                        <span class="a"></span>
+                      </li>
+                      <li class="tree_three four">
+                        <div class="Line">
+                          <span></span>
+                          <a href="#"><i class="el-icon-document"></i><span>测试部门</span></a>
+                        </div>
+                        <span class="a"></span>
+                      </li>
+                      <li class="tree_three four">
+                        <div class="Line">
+                          <span></span>
+                          <a href="#"><i class="el-icon-document"></i><span>财务部门</span></a>
+                        </div>
+                        <span class="a"></span>
+                      </li>
+                      <li class="tree_three four">
+                        <div class="Line">
+                          <span></span>
+                          <a href="#"><i class="el-icon-document"></i><span>运维部门</span></a>
+                        </div>
+                        <span class="a"></span>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="tree_one tree_two_a">
+                    <div class="Line line1">
+                      <span class="control"></span>
+                      <a href="#"><i class="el-icon-folder-opened"></i><span>长沙总公司</span></a>
+                    </div>
+                    <ul class="langLine">
+                      <li class="tree_three">
+                        <div class="Line">
+                          <span></span>
+                          <a href="#"><i class="el-icon-document"></i><span>市场部门</span></a>
+                        </div>
+                      </li>
+                      <li class="tree_three four">
+                        <div class="Line">
+                          <span></span>
+                          <a href="#"><i class="el-icon-document"></i><span>财务部门</span></a>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
         </div>
       </div>
       <div class="user_right">
@@ -232,11 +305,109 @@
           }
 
         }
+      },
+      mounted(){
+          // jquery实现左边树状结构
+          $('.controlAll').click(function () {
+            if ($('.tree_two').css('display')!='none'){
+              $(this).css('backgroundPosition','-126px 0')
+              $('.tree_two').css('display','none')
+              $(this).next().children().eq(0).attr('class','el-icon-folder')
+            }else {
+              $('.tree_two').css('display','block')
+              $(this).css('backgroundPosition','-105px 0')
+              $(this).next().children().eq(0).attr('class','el-icon-folder-opened')
+
+            }
+          })
+          $('.control').click(function () {
+          let isTrue = $(this).parent().nextAll('ul').css('display')
+          if (isTrue!='none') {
+            $(this).parent().nextAll('ul').css('display','none')
+            $(this).css('backgroundPosition','-127px -3px')
+            $(this).next().children().eq(0).attr('class','el-icon-folder')
+          }else {
+            $(this).parent().nextAll('ul').css('display','block')
+            $(this).css('backgroundPosition','-106px -3px')
+            $(this).next().children().eq(0).attr('class','el-icon-folder-opened')
+
+          }
+        })
       }
     }
 </script>
 
 <style scoped>
+  /*左边树形结构*/
+  .a{
+    width: 10px;
+    height: 20px;
+    position: absolute;
+    background: url("../../../static/metro.png") no-repeat -85px -20px;
+  }
+  .user_left_center{
+    width: 100%;
+  }
+  .user_left_cen_c{
+    width: 100%;
+    margin-top: 5%;
+  }
+  .tree_one{
+    margin-left: 10%;
+    align-items: center;
+    vertical-align: center;
+  }
+  .tree_one span{
+    display: inline-block;
+  }
+  .tree_one span:nth-child(1){
+    width: 17px;
+    height: 17px;
+    margin-right: 3px;
+    background: url("../../../static/metro.png") no-repeat -105px 0;
+    cursor: pointer;
+  }
+  .tree_one a{
+    color: #000;
+    font-size: 13px;
+  }
+  .tree_one a span{
+    color: #000;
+    margin-left: 5px;
+  }
+  .tree_two{
+    margin-left: 11%;
+  }
+  .tree_two li{
+    width: 90%;
+  }
+  .tree_two_a span:nth-child(1){
+    height: 21px;
+    width: 21px;
+    background-position: -106px -3px;
+    transform: rotateX(180deg);
+  }
+  .tree_three .Line{
+    margin-left: 15%;
+  }
+  .tree_three .Line span:nth-child(1){
+    background-position: -87px -20px;
+  }
+  .four .Line span:nth-child(1){
+    background-position: -87px -20px;
+  }
+  .four:last-of-type .Line span:nth-child(1){
+    background-position: -87px 0;
+  }
+  .Line{
+    display: flex;
+    align-items: center;
+  }
+  .line1{
+    padding-left: 0;
+  }
+  /*树桩样式结尾*/
+
   .user{
     width: 100%;
     height: 100%;

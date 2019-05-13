@@ -32,7 +32,7 @@
       methods:{
           login(){
             let _this = this
-            fetch('http://localhost:3000/user/api/login',{
+            fetch('http://10.35.164.14:3000/user/api/login',{
               method:"POST",
               headers:{
                 "Content-Type":"application/x-www-form-urlencoded"
