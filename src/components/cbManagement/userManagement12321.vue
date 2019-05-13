@@ -153,11 +153,11 @@
 </template>
 
 <script>
-import userManagementWrite from "../cbManagement/userManagementWrite";
+// import userManagementWrite from "../cbManagement/userManagementWrite";
 export default {
   name: "userManagement",
   components: {
-    usermanagementWrite: userManagementWrite
+    // usermanagementWrite: userManagementWrite
   },
   data() {
     return {
@@ -166,29 +166,12 @@ export default {
           return time.getTime() > Date.now();
         }
       },
-      tableData: [
-        // {
-        //   id: "1",
-        //   name: "admin",
-        //   username: "若依",
-        //   department: "研发部门",
-        //   tel: "15811111111",
-        //   data: "2018-1-1"
-        // },
-        // {
-        //   id: "2",
-        //   name: "admin",
-        //   username: "若依",
-        //   department: "研发部门",
-        //   tel: "15811111111",
-        //   data: "2018-1-1"
-        // }
-      ],
+      tableData: [],
       value1: true,
       value2: true,
       value3: "",
       value4: "",
-      isTrue: "true"
+      isTrue: true
     };
   },
   methods: {
