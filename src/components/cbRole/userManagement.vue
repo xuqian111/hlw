@@ -237,12 +237,11 @@
         </div>
       </div>
     </div>
-    <!--<usermanagement-write/>-->
   </div>
 </template>
 
 <script>
-  import userManagementWrite from '../cbManagement/userManagementWrite'
+  // import userManagementWrite from '../cbManagement/userManagementWrite'
     export default {
         name: "userManagement",
         components:{
