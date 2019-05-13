@@ -1,114 +1,155 @@
 <template>
   <div class="login">
-      <div class="loginBox">
-        <h1 class="z">LOGIN IN</h1>
-        <div class="inp z">
-          <label>用户名：</label>
-          <el-input class="inputBox" v-model="userName" placeholder="请输入用户名"></el-input>
-        </div>
-        <div class="inp z">
-          <label>密&nbsp;&nbsp;&nbsp;码：</label>
-          <el-input class="inputBox" v-model="userPass" placeholder="请输入密码"></el-input>
-        </div>
-        <div class="z checkBtn">
-          <el-checkbox label="记住我" :checked="isChecked" ></el-checkbox>
-        </div>
-        <el-button type="primary" class="z loginBtn" @click="login">登录</el-button>
-        <div class="bg"></div>
+    <div class="loginBox">
+      <h1 class="z">LOGIN IN</h1>
+      <div class="inp z">
+        <label>用户名：</label>
+        <el-input class="inputBox" v-model="userName" placeholder="请输入用户名"></el-input>
       </div>
+      <div class="inp z">
+        <label>密&nbsp;&nbsp;&nbsp;码：</label>
+        <el-input
+          class="inputBox"
+          type="password"
+          v-model="userPass"
+          v-on:keyup.13.native="login"
+          placeholder="请输入密码"
+        ></el-input>
+      </div>
+      <div class="z checkBtn">
+        <el-checkbox v-model="checked" class="remember">记住密码</el-checkbox>
+        <span class="forget">忘记密码？</span>
+      </div>
+      <el-button type="primary" class="z loginBtn" @click="login">登&nbsp;&nbsp;&nbsp;&nbsp;录</el-button>
+      <div class="bg"></div>
+    </div>
   </div>
 </template>
 
 <script>
-    export default {
-        name: "login",
-        data(){
-          return{
-            userName:'',
-            userPass:'',
-            isChecked:true
-          }
+export default {
+  name: "login",
+  data() {
+    return {
+      userName: "",
+      userPass: "",
+      checked: false
+    };
+  },
+  methods: {
+    login() {
+      let _this = this;
+      // 192.168.11.115
+      fetch("http://10.35.164.14:3000/user/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
         },
-      methods:{
-          login(){
-            let _this = this
-            fetch('http://10.35.164.14:3000/user/api/login',{
-              method:"POST",
-              headers:{
-                "Content-Type":"application/x-www-form-urlencoded"
-              },
-              body:`id=${_this.userName}&pass=${_this.userPass}`
-            }).then(res=>{
-              res.json().then(data=>{
-                if(data==1){
-                  localStorage.setItem('user',_this.userName)
-                  this.$router.push("/index")
-                }else if(data==0){
-                  this.$router.push("/login")
-                }
-              })
-            })
-          }
-      }
+        body: `id=${_this.userName}&pass=${_this.userPass}`
+      })
+        .then(res => {
+          res.json().then(data => {
+            if (data.status == 200) {
+              let u = JSON.stringify(data.user);
+              localStorage.setItem("user", u);
+              this.$router.push({
+                path: "/index",
+                query: { userId: data.userId }
+              });
+              // console.log(data.user);
+            } else if (data.status == 400) {
+              alert(data.message);
+              this.$router.push("/login");
+              this.userPass = "";
+            } else {
+              alert(data.message);
+              this.$router.push("/login");
+              this.userPass = "";
+            }
+          });
+        })
+        .catch(err => {
+          console.log("error is", error);
+        });
     }
+  }
+};
 </script>
 
 <style scoped>
-  .login{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    background: url("../../static/img/login.jpg");
-    background-size:100% 100%;
-    align-items: center;
-    z-index: -1;
-  }
-  .loginBox{
-    position: relative;
-    width: 320px;
-    height: 340px;
-    border-radius:10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .loginBox h1{
-    color: #000;
-    font-size: 24px;
-    opacity: .7;
-    margin-bottom: 20px;
-  }
-  .inp{
-    display: flex;
-    align-items: center;
-    margin-top: 30px;
-  }
-  label{
-    width: 80px;
-    color: #000;
-  }
-  .bg{
-    width: 320px;
-    height: 340px;
-    border-radius:10px;
-    background: #fff;
-    opacity: .5;
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
-  .z{
-    z-index: 5;
-  }
-  .loginBtn{
-    width: 80%;
-    margin: 30px auto 0;
-  }
-  .checkBtn{
-    align-self: flex-end;
-    margin-right: 20px;
-    margin-top: 15px;
-  }
+.login {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  background: url("../../static/img/login.jpg");
+  background-size: 100% 100%;
+  align-items: center;
+  z-index: -1;
+}
+.loginBox {
+  position: relative;
+  width: 450px;
+  height: 400px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding-bottom: 30px;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 1);
+}
+.loginBox h1 {
+  color: #000;
+  font-size: 28px;
+  opacity: 0.7;
+  margin-bottom: 20px;
+}
+.inp {
+  width: 85%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+.inp label {
+  width: 100px;
+  color: #000;
+  font-size: 18px;
+}
+.bg {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background: #fff;
+  opacity: 0.5;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.z {
+  z-index: 5;
+}
+.loginBtn {
+  width: 85%;
+  margin: 30px auto 0;
+  font-size: 18px;
+  font-weight: 900;
+}
+.checkBtn {
+  width: 85%;
+  display: flex;
+  justify-content: space-between;
+}
+.checkBtn input {
+  width: 20px;
+  height: 20px;
+  border-color: #8c8c8c;
+  margin-right: 5px;
+  background-color: transparent;
+  outline: none;
+}
+.remember,
+.forget {
+  color: #000;
+}
 </style>

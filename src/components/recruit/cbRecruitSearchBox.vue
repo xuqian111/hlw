@@ -15,8 +15,8 @@
         :value="item.value">
       </el-option>
     </el-select>
-    <el-button type="success" round class="searchBtn">搜索</el-button>
-    <el-button type="warning" round>重置</el-button>
+    <el-button type="success" round class="searchBtn" @click="search(reId,reName,rePhone)">搜索</el-button>
+    <el-button type="warning" round @click="reset">重置</el-button>
 
   </div>
 </template>
@@ -29,7 +29,8 @@
             reId:'',
             reName:'',
             rePhone:'',
-            options: [{
+            options: [
+              {
               value: '选项1',
               label: '人事'
             }, {
@@ -45,6 +46,15 @@
             value: ''
 
           }
+        },
+        methods:{
+          reset(){
+            this.reId = this.reName = this.rePhone = ''
+          },
+          // search(reId,reName,rePhone){
+          //   this.$emit('parentClick',{reId,reName,rePhone});
+          //   this.reId = this.reName = this.rePhone = ''
+          // }
         }
     }
 </script>
@@ -53,6 +63,7 @@
 
 .RsearchBox{
   width: calc(100% - 20px);
+  height: 40px;
   border-radius: 5px;
   font-size: 14px;
   color: #141414;
