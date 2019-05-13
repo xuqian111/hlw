@@ -67,16 +67,22 @@ export default {
           url = "recruit";
           break;
         case "角色":
-          url = "personal";
+          url = "role";
           break;
         case "部门":
-          url = "recruit";
+          url = "part";
           break;
         case "岗位":
           url = "job";
           break;
-        case "招聘管理":
-          url = "recruit";
+        case "用户":
+          url = "customer";
+          break;
+        case "字典管理":
+          url = "dictionary";
+          break;
+        case "修改用户":
+          url = "userManagementWrite";
           break;
       }
       this.$router.push("/index/" + url);
@@ -94,13 +100,19 @@ export default {
           url = "role";
           break;
         case "部门":
-          url = "recruit";
+          url = "part";
           break;
         case "岗位":
           url = "job";
           break;
-        case "招聘管理":
-          url = "recruit";
+        case "用户":
+          url = "customer";
+          break;
+        case "字典管理":
+          url = "dictionary";
+          break;
+        case "修改用户":
+          url = "userManagementWrite";
           break;
       }
       this.$router.push("/index/" + url);
@@ -113,6 +125,9 @@ export default {
         switch (item) {
           case "个人中心":
             url = "personal";
+            break;
+          case "用户":
+            url = "customer";
             break;
           case "角色":
             url = "role";
@@ -131,6 +146,9 @@ export default {
             break;
           case "字典管理":
             url = "dictionary";
+            break;
+          case "修改用户":
+            url = "userManagementWrite";
             break;
           default:
             url = "";
@@ -153,6 +171,9 @@ export default {
           case "个人中心":
             url = "personal";
             break;
+          case "用户":
+            url = "customer";
+            break;
           case "角色":
             url = "role";
             break;
@@ -170,6 +191,9 @@ export default {
             break;
           case "字典管理":
             url = "dictionary";
+            break;
+          case "修改用户":
+            url = "userManagementWrite";
             break;
           default:
             url = "";

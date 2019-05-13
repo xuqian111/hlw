@@ -15,35 +15,35 @@
               <span></span>
               登录名称:
             </div>
-            <div class="user"></div>
+            <div class="user">{{ userInfo.userName }}</div>
           </li>
           <li>
             <div class="left">
               <span></span>
               手机号码:
             </div>
-            <div class="tel"></div>
+            <div class="tel">{{ userInfo.tel }}</div>
           </li>
           <li>
             <div class="left">
               <span></span>
               所属部门:
             </div>
-            <div class="depart"></div>
+            <div class="depart">{{ userInfo.part }}</div>
           </li>
           <li>
             <div class="left">
               <span></span>
               邮箱地址:
             </div>
-            <div class="eamil"></div>
+            <div class="eamil">{{ userInfo.email }}</div>
           </li>
           <li>
             <div class="left">
               <span></span>
               创建时间:
             </div>
-            <div class="createTime"></div>
+            <div class="createTime">{{ userInfo.joinTime }}</div>
           </li>
         </ul>
       </el-col>
@@ -109,14 +109,23 @@ export default {
         nowPass: "",
         confirmPass: ""
       },
-      radio: "1"
+      radio: "",
+      userInfo: ""
     };
   },
   methods: {
     onSubmit() {
-      console.log("submit!");
+      // console.log("submit!");
     },
     savePass() {}
+  },
+  created() {
+    let user = JSON.parse(localStorage.getItem("user"));
+    this.userInfo = user;
+    this.form.name = user.userName;
+    this.form.tel = user.tel;
+    this.form.email = user.email;
+    this.radio = user.sex == "男" ? "1" : "2";
   }
 };
 </script>

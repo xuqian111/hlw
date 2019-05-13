@@ -329,7 +329,6 @@
             $(this).parent().nextAll('ul').css('display','block')
             $(this).css('backgroundPosition','-106px -3px')
             $(this).next().children().eq(0).attr('class','el-icon-folder-opened')
-
           }
         })
       }
