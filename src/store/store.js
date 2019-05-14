@@ -4,7 +4,8 @@ Vue.use(Vuex)
 
 const state = {
   brumbs: [],
-  user: {}
+  user: {},
+  num :''
 }
 
 const actions = {
@@ -44,6 +45,9 @@ const actions = {
 const mutations = {
   updateUser(state, obj) {
     state.user = obj.data
+  },
+  writeIndex(state,i){
+    state.num = i
   },
   addBrumb(state, obj) {
     let str = obj.data;

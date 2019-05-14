@@ -45,7 +45,6 @@ export default {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded"
         },
-<<<<<<< HEAD
       methods:{
           login(){
             let _this = this
@@ -66,8 +65,7 @@ export default {
               })
             })
           }
-      }
-=======
+      },
         body: `id=${_this.userName}&pass=${_this.userPass}`
       })
         .then(res => {
@@ -94,7 +92,6 @@ export default {
         .catch(err => {
           console.log("error is", error);
         });
->>>>>>> cda83a1f8f4b042f2b5e6873fc34c782fe743288
     }
   }
 };
