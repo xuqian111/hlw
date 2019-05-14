@@ -39,7 +39,6 @@ export default {
   methods: {
     login() {
       let _this = this;
-      // 192.168.11.115
       fetch("http://10.35.164.14:3000/user/api/login", {
         method: "POST",
         headers: {
@@ -69,7 +68,7 @@ export default {
           });
         })
         .catch(err => {
-          console.log("error is", error);
+          alert("error is", error);
         });
     }
   }
