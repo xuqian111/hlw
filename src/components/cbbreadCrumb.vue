@@ -45,6 +45,7 @@ export default {
   },
   methods: {
     reload() {
+      this.$router.push('/')
       location.reload();
     },
     deleteOne(n) {

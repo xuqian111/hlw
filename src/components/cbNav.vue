@@ -30,7 +30,7 @@
         >
           <el-menu-item index="1">
             <i class="el-icon-document"></i>
-            <span slot="title">个人信息</span>
+            <span slot="title" @click="router('personal','个人中心')">个人信息</span>
           </el-menu-item>
           <el-submenu index="2">
             <template slot="title">
@@ -150,6 +150,9 @@ export default {
     box-sizing: border-box;
 
     .userImg {
+      &:hover{
+        cursor: pointer;
+      }
       img {
         width: 45px;
         height: 45px;

@@ -25,7 +25,6 @@ const actions = {
       type: 'deleteBrumb',
       data: obj.data
     })
-    console.log('ac', obj.data)
   },
   clear(context) {
     context.commit({
@@ -33,7 +32,6 @@ const actions = {
     })
   },
   lastOne(context, obj) {
-    // console.log('last', obj)
     context.commit({
       type: 'last',
       data: obj.data

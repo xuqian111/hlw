@@ -47,7 +47,7 @@
           </li>
         </ul>
       </el-col>
-      <el-col :xs="12" :sm="15" :md="16" :lg="17">
+      <el-col :xs="12" :sm="15" :md="16" :lg="17" v-loading="loading">
         <div class="title">
           <span>基本资料</span>
         </div>
@@ -85,7 +85,8 @@
                 <el-input v-model="form.confirmPass"></el-input>
               </el-form-item>
               <el-form-item>
-                <el-button type="primary" @click="savePass">保存</el-button>
+                <!--<el-button type="primary" @click=""></el-button>-->
+                <el-button :plain="true" @click="savePass">保存</el-button>
                 <el-button>关闭</el-button>
               </el-form-item>
             </el-form>
@@ -110,18 +111,39 @@ export default {
         confirmPass: ""
       },
       radio: "",
-      userInfo: ""
+      userInfo: "",
+      userId:'',
+      loading:false
     };
   },
   methods: {
     onSubmit() {
       // console.log("submit!");
     },
-    savePass() {}
+    savePass() {
+      // console.log(this.userId,this.form.nowPass)
+      this.loading = true
+      $.post('http://localhost:3000/user/api/updateUser',{
+        userId:this.userId,
+        userPass:this.form.nowPass
+      },(data,status,xhr)=> {
+        // console.log(data)
+          this.loading = false
+        if(data == 1){
+          this.$message('修改成功');
+        }else{
+          this.$message('修改失败');
+        }
+      },
+
+        'json'
+      )
+    }
   },
   created() {
     let user = JSON.parse(localStorage.getItem("user"));
     this.userInfo = user;
+    this.userId = user.userId;
     this.form.name = user.userName;
     this.form.tel = user.tel;
     this.form.email = user.email;
