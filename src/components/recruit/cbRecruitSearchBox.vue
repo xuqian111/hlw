@@ -1,11 +1,11 @@
 <template>
   <div class="RsearchBox">
     <label>ID号：</label>
-    <el-input class="inputBox" v-model="reId" placeholder="请输入内容"></el-input>
+    <el-input class="inputBox" v-model="address" placeholder="请输入内容"></el-input>
     <label>姓名：</label>
-    <el-input class="inputBox" v-model="reName" placeholder="请输入内容"></el-input>
+    <el-input class="inputBox" v-model="Name" placeholder="请输入内容"></el-input>
     <label>电话：</label>
-    <el-input class="inputBox" v-model="rePhone" placeholder="请输入内容"></el-input>
+    <el-input class="inputBox" v-model="Phone" placeholder="请输入内容"></el-input>
     <label>任职类型：</label>
     <el-select class="inputBox" clearable v-model="value" placeholder="请选择">
       <el-option
@@ -15,7 +15,7 @@
         :value="item.value">
       </el-option>
     </el-select>
-    <el-button type="success" round class="searchBtn" @click="search(reId,reName,rePhone)">搜索</el-button>
+    <el-button type="success" round class="searchBtn" @click="search(address,Name,Phone)" native>搜索</el-button>
     <el-button type="warning" round @click="reset">重置</el-button>
 
   </div>
@@ -26,9 +26,9 @@
         name: "cbRecruitSearchBox",
         data(){
           return{
-            reId:'',
-            reName:'',
-            rePhone:'',
+            address:'',
+            Name:'',
+            Phone:'',
             options: [
               {
               value: '选项1',
@@ -49,12 +49,14 @@
         },
         methods:{
           reset(){
-            this.reId = this.reName = this.rePhone = ''
+            this.Id = this.Name = this.Phone = '';
+            this.$emit('parentReset')
           },
-          // search(reId,reName,rePhone){
-          //   this.$emit('parentClick',{reId,reName,rePhone});
-          //   this.reId = this.reName = this.rePhone = ''
-          // }
+          search(address,Name,Phone){
+            // console.log(Id,Name,Phone)
+            this.$emit('parentClick',{address,Name,Phone});
+            // this.reId = this.reName = this.rePhone = ''
+          }
         }
     }
 </script>

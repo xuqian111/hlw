@@ -20,7 +20,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for=" item in p" :key="item.reId">
+        <tr v-for=" (item,index) in p" :key="item.reId">
           <td>
             <input type="checkBox" class="checkBtn" :checked="item.isChecked">
           </td>
@@ -35,7 +35,7 @@
           <td>{{ item.rePerson }}</td>
           <td>{{ item.case }}</td>
           <td>
-            <el-button type="primary" icon="el-icon-edit-outline" size="mini" @click="open">编辑</el-button>
+            <el-button type="primary" icon="el-icon-edit-outline" size="mini" @click="open(index,item.reId)">编辑</el-button>
           </td>
         </tr>
       </tbody>
@@ -57,6 +57,7 @@
 <script>
 export default {
   name: "cbRecruitTable",
+  props:["p"],
   data() {
     return {
       currentPage: 1,
@@ -71,17 +72,29 @@ export default {
     handleCurrentChange(val) {
       // console.log(`当前页: ${val}`);
     },
-    open() {
+    open(index,id) {
+      let _this = this
       this.$prompt("意向情况", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消"
-      })
-        .then(({ value }) => {
-          this.$message({
-            type: "success",
-            message: "本次面试: " + value
-          });
-        })
+      }).then(({ value }) => {
+        console.log(id)
+          $.post('http://10.35.164.14:3000/reperson/api/setReperson',{reId:id,case:value},
+            (data)=>{
+            console.log(data)
+              if(data == 1){
+                this.$message({
+                  type: "success",
+                  message: "本次面试: " + value
+                });
+                _this.p[index].case = value;
+              }else if(data == 0){
+                this.$message({
+                  message:"修改失败，请重新修改！"
+                })
+              }
+           })
+         })
         .catch(() => {
           this.$message({
             type: "info",
