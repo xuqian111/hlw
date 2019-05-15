@@ -2,8 +2,8 @@
     <div class="DeparHeader">
         <div class="LaddNew">
             <cbNewDialog/>
-            <el-button type="primary2" icon="el-icon-edit-outline">修改</el-button>
-            <el-button type="primary3" icon="el-icon-folder-opened
+            <el-button type="primary2" size="mini" icon="el-icon-edit-outline">修改</el-button>
+            <el-button type="primary3" size="mini" icon="el-icon-folder-opened
 ">展开/折叠</el-button>
         </div>
         <div class="Rchart">

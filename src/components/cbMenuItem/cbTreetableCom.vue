@@ -12,7 +12,7 @@
     <el-table-column
       label="部门名称"
       show-overflow-tooltip>
-      <template slot-scope="scope">{{ scope.row.company }}</template>
+      <template slot-scope="scope">&nbsp;&nbsp;{{ scope.row.company }}</template>
     </el-table-column>
     <el-table-column
       prop="sort"
@@ -63,31 +63,31 @@ import cbDialog from "./cbDialog";
           date: '2018-03-16 11:33:00',
           operation: ''
         }, {
-          company: '研发部门',
+          company: ' 研发部门',
           sort: '1',
           address: '正常',
           date: '2018-03-16 11:33:00',
           operation: ''
         }, {
-          company: '市场部门',
+          company: ' 市场部门',
           sort: '2',
           address: '正常',
           date: '2018-03-16 11:33:00',
           operation: ''
         }, {
-          company: '测试部门',
+          company: ' 测试部门',
           sort: '3',
           address: '正常',
           date: '2018-03-16 11:33:00',
           operation: ''
         }, {
-          company: '财务部门',
+          company: ' 财务部门',
           sort: '4',
           address: '正常',
           date: '2018-03-16 11:33:00',
           operation: ''
         }, {
-          company: '运维部门',
+          company: ' 运维部门',
           sort: '5',
           address: '正常',
           date: '2018-03-16 11:33:00',
@@ -99,13 +99,13 @@ import cbDialog from "./cbDialog";
           date: '2018-03-16 11:33:00',
           operation: ''
         }, {
-          company: '市场部门',
+          company: ' 市场部门',
           sort: '1',
           address: '正常',
           date: '2018-03-16 11:33:00',
           operation: ''
         }, {
-          company: '财务部门',
+          company: ' 财务部门',
           sort: '2',
           address: '正常',
           date: '2018-03-16 11:33:00',
@@ -164,5 +164,6 @@ import cbDialog from "./cbDialog";
   }
 </script>
 <style scoped>
-
+.cell el-tooltip{
+}
 </style>
