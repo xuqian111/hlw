@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import { setTimeout } from "timers";
 export default {
   name: "login",
   data() {
@@ -39,6 +40,12 @@ export default {
   methods: {
     login() {
       let _this = this;
+      // setTimeout(() => {
+      //   alert("登录超时");
+      //   return;
+      // }, 10000);
+      // 192.168.11.115
+      // 10.35.164.14
       fetch("http://10.35.164.14:3000/user/api/login", {
         method: "POST",
         headers: {
@@ -48,6 +55,7 @@ export default {
       })
         .then(res => {
           res.json().then(data => {
+            console.log(data);
             if (data.status == 200) {
               let u = JSON.stringify(data.user);
               localStorage.setItem("user", u);
@@ -67,8 +75,8 @@ export default {
             }
           });
         })
-        .catch(err => {
-          alert("error is", error);
+        .catch(error => {
+          alert("服务器连接超时");
         });
     }
   }

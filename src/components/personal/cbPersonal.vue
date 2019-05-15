@@ -112,42 +112,60 @@ export default {
       },
       radio: "",
       userInfo: "",
-      userId:'',
-      loading:false
+      userId: "",
+      userPass: "",
+      loading: false
     };
   },
   methods: {
+    initUser() {
+      let user = JSON.parse(localStorage.getItem("user"));
+      this.userInfo = user;
+      this.userPass = user.userPass;
+      this.userId = user.userId;
+      this.form.name = user.userName;
+      this.form.tel = user.tel;
+      this.form.email = user.email;
+      this.radio = user.sex == "男" ? "1" : "2";
+    },
     onSubmit() {
       // console.log("submit!");
     },
     savePass() {
-      // console.log(this.userId,this.form.nowPass)
-      this.loading = true
-      $.post('http://localhost:3000/user/api/updateUser',{
-        userId:this.userId,
-        userPass:this.form.nowPass
-      },(data,status,xhr)=> {
-        // console.log(data)
-          this.loading = false
-        if(data == 1){
-          this.$message('修改成功');
-        }else{
-          this.$message('修改失败');
-        }
-      },
+      if (this.userPass !== this.form.pastPass) {
+        alert("原密码错误");
+        return;
+      }
 
-        'json'
-      )
+      if (this.form.nowPass && this.form.confirmPass) {
+        if (this.form.nowPass !== this.form.confirmPass) {
+          alert("两次密码不一致");
+          return;
+        } else {
+          this.loading = true;
+          $.post(
+            "http://localhost:3000/user/api/updateUser",
+            {
+              userId: this.userId,
+              userPass: this.form.nowPass
+            },
+            (data, status, xhr) => {
+              this.loading = false;
+              if (data == 1) {
+                this.$message("修改成功");
+                this.initUser();
+              } else {
+                this.$message("修改失败");
+              }
+            },
+            "json"
+          );
+        }
+      }
     }
   },
   created() {
-    let user = JSON.parse(localStorage.getItem("user"));
-    this.userInfo = user;
-    this.userId = user.userId;
-    this.form.name = user.userName;
-    this.form.tel = user.tel;
-    this.form.email = user.email;
-    this.radio = user.sex == "男" ? "1" : "2";
+    this.initUser();
   }
 };
 </script>
