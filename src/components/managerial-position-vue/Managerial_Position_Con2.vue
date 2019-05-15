@@ -1,5 +1,5 @@
 <template>
-  <div class="Ma_Po_Se_Con2">
+  <div class="Ma_Po_Se_Con2" >
     <div class="Ma_Po_Se_Con2_Midd">
       <div class="Ma_Po_Se_Con2_Card">
         <div class="Ma_Po_Se_Con2_Card_Btn">
@@ -41,13 +41,12 @@
                 @click="showdata"
               ></el-button>
               <el-button icon="el-icon-s-grid" class="Ma_Po_Se_Con2_Card_Btn_right_lists_single">
-                <!--<div class=""></div>-->
               </el-button>
             </el-button-group>
           </div>
         </div>
         <div class="Ma_Po_Se_Con2_Card_Table_lists">
-          <div class="Ma_Po_Se_Con2_Card_Table" v-if="Ma_Po_Se_Con2_Card_Table">
+          <div class="Ma_Po_Se_Con2_Card_Table" v-if="Ma_Po_Se_Con2_Card_Table" >
             <table class="Ma_Po_Se_Con2_Card_Table_Con" style="width:100%;">
               <tr class="Ma_Po_Se_Con2_Card_Table_Con_first_tr">
                 <td>
@@ -61,25 +60,26 @@
                 <td>创建时间</td>
                 <td>操作</td>
               </tr>
+              <!--循环数据-->
               <tr
-                class="Ma_Po_Se_Con2_Card_Table_Con_first_tr Ma_Po_Se_Con2_Card_Table_Con_first_tr1"
+                class="Ma_Po_Se_Con2_Card_Table_Con_first_tr Ma_Po_Se_Con2_Card_Table_Con_first_tr1" :index="index" v-for="(item,index) in data"
               >
                 <td>
                   <el-checkbox></el-checkbox>
                 </td>
-                <td>1</td>
-                <td>ceo</td>
-                <td>董事长</td>
-                <td>1</td>
+                <td>{{item.serialnumber}}</td>
+                <td>{{item.coding}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.order}}</td>
                 <td>
                   <el-button
                     round
                     style="font-size:12px;width:36px; height:18px;display: flex;justify-content: center;
 background: #1ab394;color:#fff;padding: 4px 15px;"
                     align="center"
-                  >正常</el-button>
+                  >{{item.status}}</el-button>
                 </td>
-                <td>2018-03-16 11:33:00</td>
+                <td>{{item.time}}</td>
                 <td>
                   <el-row
                     style=";display: flex;justify-content: center; align-items: center;
@@ -90,15 +90,15 @@ align-items: center;"
                       icon="el-icon-edit"
                       style="font-size:12px;width:48px; height:22px;display: flex;justify-content: center;
 align-items: center;padding: 4px 15px;"
-                    >编辑</el-button>
+                    >{{item.dosomething1}}</el-button>
                     <el-button
                       type="danger"
                       icon="el-icon-close"
                       style="font-size:12px;width:48px; height:22px;display: flex;justify-content: center;
-padding: 4px 15px;padding: 4px 15px;"
-                    >删除</el-button>
+padding: 4px 15px;padding: 4px 15px;"  @click="open"
+                    >{{item.dosomething2}}</el-button>
                   </el-row>
-                  <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog">
+                  <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog" >
                     <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd">
                       <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_top">
                         <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_top_left">修改岗位</div>
@@ -111,7 +111,7 @@ padding: 4px 15px;padding: 4px 15px;"
                       <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_Cen">
                         <el-form ref="form" :model="form" label-width="80px">
                           <el-form-item label="岗位名称">
-                            <el-input v-model="form.name"></el-input>
+                            <el-input v-model="form.name" ></el-input>
                           </el-form-item>
                           <el-form-item label="岗位编码">
                             <el-input v-model="form.name"></el-input>
@@ -132,280 +132,50 @@ padding: 4px 15px;padding: 4px 15px;"
                       </div>
                       <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_Bot">
                         <el-button type="primary">确认</el-button>
-                        <el-button>取消</el-button>
+                        <el-button >取消</el-button>
                       </div>
                     </div>
                   </div>
                 </td>
               </tr>
-              <tr
-                class="Ma_Po_Se_Con2_Card_Table_Con_first_tr Ma_Po_Se_Con2_Card_Table_Con_first_tr1"
-              >
-                <td>
-                  <el-checkbox></el-checkbox>
-                </td>
-                <td>1</td>
-                <td>ceo</td>
-                <td>董事长</td>
-                <td>1</td>
-                <td>
-                  <el-button
-                    round
-                    style="font-size:12px;width:36px; height:18px;display: flex;justify-content: center;
-background: #1ab394;color:#fff;padding: 4px 15px;"
-                    align="center"
-                  >正常</el-button>
-                </td>
-                <td>2018-03-16 11:33:00</td>
-                <td>
-                  <el-row
-                    style=";display: flex;justify-content: center; align-items: center;
-align-items: center;"
-                  >
-                    <el-button
-                      type="primary"
-                      icon="el-icon-edit"
-                      style="font-size:12px;width:48px; height:22px;display: flex;justify-content: center;
-align-items: center;padding: 4px 15px;"
-                    >编辑</el-button>
-                    <el-button
-                      type="danger"
-                      icon="el-icon-close"
-                      style="font-size:12px;width:48px; height:22px;display: flex;justify-content: center;
-padding: 4px 15px;"
-                    >删除</el-button>
-                  </el-row>
-                  <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog">
-                    <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd">
-                      <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_top">
-                        <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_top_left">修改岗位</div>
-                        <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_top_right">
-                          <i class="el-icon-minus"></i>
-                          <i class="el-icon-copy-document" style="margin:0 8px;"></i>
-                          <i class="el-icon-close"></i>
-                        </div>
-                      </div>
-                      <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_Cen">
-                        <el-form ref="form" :model="form" label-width="80px">
-                          <el-form-item label="岗位名称">
-                            <el-input v-model="form.name"></el-input>
-                          </el-form-item>
-                          <el-form-item label="岗位编码">
-                            <el-input v-model="form.name"></el-input>
-                          </el-form-item>
-                          <el-form-item label="显示顺序">
-                            <el-input v-model="form.name"></el-input>
-                          </el-form-item>
-                          <el-form-item label="岗位状态">
-                            <el-radio-group v-model="form.resource">
-                              <el-radio label="正常"></el-radio>
-                              <el-radio label="停用"></el-radio>
-                            </el-radio-group>
-                          </el-form-item>
-                          <el-form-item label="备注">
-                            <el-input type="textarea" v-model="form.desc"></el-input>
-                          </el-form-item>
-                        </el-form>
-                      </div>
-                      <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_Bot">
-                        <el-button type="primary">确认</el-button>
-                        <el-button>取消</el-button>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr
-                class="Ma_Po_Se_Con2_Card_Table_Con_first_tr Ma_Po_Se_Con2_Card_Table_Con_first_tr1"
-              >
-                <td>
-                  <el-checkbox></el-checkbox>
-                </td>
-                <td>1</td>
-                <td>ceo</td>
-                <td>董事长</td>
-                <td>1</td>
-                <td>
-                  <el-button
-                    round
-                    style="font-size:12px;width:36px; height:18px;display: flex;justify-content: center;
-background: #1ab394;color:#fff;padding: 4px 15px;"
-                    align="center"
-                  >正常</el-button>
-                </td>
-                <td>2018-03-16 11:33:00</td>
-                <td>
-                  <el-row
-                    style=";display: flex;justify-content: center; align-items: center;
-align-items: center;"
-                  >
-                    <el-button
-                      type="primary"
-                      icon="el-icon-edit"
-                      style="font-size:12px;width:48px; height:22px;display: flex;justify-content: center;
-align-items: center;padding: 4px 15px;"
-                    >编辑</el-button>
-                    <el-button
-                      type="danger"
-                      icon="el-icon-close"
-                      style="font-size:12px;width:48px; height:22px;display: flex;justify-content: center;
-padding: 4px 15px;"
-                    >删除</el-button>
-                  </el-row>
-                  <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog">
-                    <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd">
-                      <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_top">
-                        <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_top_left">修改岗位</div>
-                        <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_top_right">
-                          <i class="el-icon-minus"></i>
-                          <i class="el-icon-copy-document" style="margin:0 8px;"></i>
-                          <i class="el-icon-close"></i>
-                        </div>
-                      </div>
-                      <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_Cen">
-                        <el-form ref="form" :model="form" label-width="80px">
-                          <el-form-item label="岗位名称">
-                            <el-input v-model="form.name"></el-input>
-                          </el-form-item>
-                          <el-form-item label="岗位编码">
-                            <el-input v-model="form.name"></el-input>
-                          </el-form-item>
-                          <el-form-item label="显示顺序">
-                            <el-input v-model="form.name"></el-input>
-                          </el-form-item>
-                          <el-form-item label="岗位状态">
-                            <el-radio-group v-model="form.resource">
-                              <el-radio label="正常"></el-radio>
-                              <el-radio label="停用"></el-radio>
-                            </el-radio-group>
-                          </el-form-item>
-                          <el-form-item label="备注">
-                            <el-input type="textarea" v-model="form.desc"></el-input>
-                          </el-form-item>
-                        </el-form>
-                      </div>
-                      <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_Bot">
-                        <el-button type="primary">确认</el-button>
-                        <el-button>取消</el-button>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr
-                class="Ma_Po_Se_Con2_Card_Table_Con_first_tr Ma_Po_Se_Con2_Card_Table_Con_first_tr1"
-              >
-                <td>
-                  <el-checkbox></el-checkbox>
-                </td>
-                <td>1</td>
-                <td>ceo</td>
-                <td>董事长</td>
-                <td>1</td>
-                <td>
-                  <el-button
-                    round
-                    style="font-size:12px;width:36px; height:18px;display: flex;justify-content: center;
-background: #1ab394;color:#fff;padding: 4px 15px;"
-                    align="center"
-                  >正常</el-button>
-                </td>
-                <td>2018-03-16 11:33:00</td>
-                <td>
-                  <el-row
-                    style=";display: flex;justify-content: center; align-items: center;
-align-items: center;"
-                  >
-                    <el-button
-                      type="primary"
-                      icon="el-icon-edit"
-                      style="font-size:12px;width:48px; height:22px;display: flex;justify-content: center;
-align-items: center;padding: 4px 15px;"
-                    >编辑</el-button>
-                    <el-button
-                      type="danger"
-                      icon="el-icon-close"
-                      style="font-size:12px;width:48px; height:22px;display: flex;justify-content: center;
-padding: 4px 15px;"
-                    >删除</el-button>
-                  </el-row>
-                  <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog">
-                    <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd">
-                      <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_top">
-                        <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_top_left">修改岗位</div>
-                        <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_top_right">
-                          <i class="el-icon-minus"></i>
-                          <i class="el-icon-copy-document" style="margin:0 8px;"></i>
-                          <i class="el-icon-close"></i>
-                        </div>
-                      </div>
-                      <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_Cen">
-                        <el-form ref="form" :model="form" label-width="80px">
-                          <el-form-item label="岗位名称">
-                            <el-input v-model="form.name"></el-input>
-                          </el-form-item>
-                          <el-form-item label="岗位编码">
-                            <el-input v-model="form.name"></el-input>
-                          </el-form-item>
-                          <el-form-item label="显示顺序">
-                            <el-input v-model="form.name"></el-input>
-                          </el-form-item>
-                          <el-form-item label="岗位状态">
-                            <el-radio-group v-model="form.resource">
-                              <el-radio label="正常"></el-radio>
-                              <el-radio label="停用"></el-radio>
-                            </el-radio-group>
-                          </el-form-item>
-                          <el-form-item label="备注">
-                            <el-input type="textarea" v-model="form.desc"></el-input>
-                          </el-form-item>
-                        </el-form>
-                      </div>
-                      <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_Bot">
-                        <el-button type="primary">确认</el-button>
-                        <el-button>取消</el-button>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
+
             </table>
           </div>
           <div class="Ma_Po_Se_Con2_Card_Table2" v-if="Ma_Po_Se_Con2_Card_Table2">
-            <table class="Ma_Po_Se_Con2_Card_Table2_Con1" style="padding-bottom: 8px;">
+            <table class="Ma_Po_Se_Con2_Card_Table2_Con1" style="padding-bottom: 8px;" v-for="item in  data ">
               <tr class="Ma_Po_Se_Con2_Card_Table2_Con1_tr">
                 <td>
                   <el-checkbox></el-checkbox>
                 </td>
               </tr>
               <tr class="Ma_Po_Se_Con2_Card_Table2_Con1_tr">
-                <td>岗位编号</td>
-                <td>1</td>
+                <td>{{item.serialnumbername}}</td>
+                <td>{{item.serialnumber}}</td>
               </tr>
               <tr class="Ma_Po_Se_Con2_Card_Table2_Con1_tr">
-                <td>岗位编码</td>
-                <td>ceo</td>
+                <td>{{item.codingname}}</td>
+                <td>{{item.coding}}</td>
               </tr>
               <tr class="Ma_Po_Se_Con2_Card_Table2_Con1_tr">
-                <td>岗位名称</td>
-                <td>董事长</td>
+                <td>{{item.username}}</td>
+                <td>{{item.name}}</td>
               </tr>
               <tr class="Ma_Po_Se_Con2_Card_Table2_Con1_tr">
-                <td>状态</td>
+                <td>{{item.statusname}}</td>
                 <td>
                   <el-button
                     round
                     style="font-size:12px;width:36px; height:18px;display: flex;justify-content: center;
 background: #1ab394;color:#fff; padding: 4px 15px;"
-                  >正常</el-button>
+                  >{{item.status}}</el-button>
                 </td>
               </tr>
               <tr class="Ma_Po_Se_Con2_Card_Table2_Con1_tr">
-                <td>创建时间</td>
-                <td>2018-03-16 11:33:00</td>
+                <td>{{item.timename}}</td>
+                <td>{{item.time}}</td>
               </tr>
               <tr class="Ma_Po_Se_Con2_Card_Table2_Con1_tr">
-                <td>操作</td>
+                <td>{{item.dosomethingname}}</td>
                 <td>
                   <el-row style=";display: flex; align-items: center;
 align-items: center; ">
@@ -414,290 +184,14 @@ align-items: center; ">
                       icon="el-icon-edit"
                       style="font-size:12px;width:48px; height:22px;display: flex;justify-content: center;
 align-items: center; padding: 4px 15px;"
-                      @click="dialogFormVisible = true"
-                    >编辑</el-button>
+
+                    >{{item.dosomething1}}</el-button>
                     <el-button
                       type="danger"
                       icon="el-icon-close"
                       style="font-size:12px;width:48px; height:22px;display: flex;justify-content: center;
 padding: 4px 15px;"
-                    >删除</el-button>
-                  </el-row>
-                  <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog">
-                    <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd">
-                      <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_top">
-                        <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_top_left">修改岗位</div>
-                        <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_top_right">
-                          <i class="el-icon-minus"></i>
-                          <i class="el-icon-copy-document" style="margin:0 8px;"></i>
-                          <i class="el-icon-close"></i>
-                        </div>
-                      </div>
-                      <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_Cen">
-                        <el-form ref="form" :model="form" label-width="80px">
-                          <el-form-item label="岗位名称">
-                            <el-input v-model="form.name"></el-input>
-                          </el-form-item>
-                          <el-form-item label="岗位编码">
-                            <el-input v-model="form.name"></el-input>
-                          </el-form-item>
-                          <el-form-item label="显示顺序">
-                            <el-input v-model="form.name"></el-input>
-                          </el-form-item>
-                          <el-form-item label="岗位状态">
-                            <el-radio-group v-model="form.resource">
-                              <el-radio label="正常"></el-radio>
-                              <el-radio label="停用"></el-radio>
-                            </el-radio-group>
-                          </el-form-item>
-                          <el-form-item label="备注">
-                            <el-input type="textarea" v-model="form.desc"></el-input>
-                          </el-form-item>
-                        </el-form>
-                      </div>
-                      <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_Bot">
-                        <el-button type="primary">确认</el-button>
-                        <el-button>取消</el-button>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </table>
-            <table class="Ma_Po_Se_Con2_Card_Table2_Con1" style="padding-bottom: 8px;">
-              <tr class="Ma_Po_Se_Con2_Card_Table2_Con1_tr">
-                <td>
-                  <el-checkbox></el-checkbox>
-                </td>
-              </tr>
-              <tr class="Ma_Po_Se_Con2_Card_Table2_Con1_tr">
-                <td>岗位编号</td>
-                <td>1</td>
-              </tr>
-              <tr class="Ma_Po_Se_Con2_Card_Table2_Con1_tr">
-                <td>岗位编码</td>
-                <td>ceo</td>
-              </tr>
-              <tr class="Ma_Po_Se_Con2_Card_Table2_Con1_tr">
-                <td>岗位名称</td>
-                <td>董事长</td>
-              </tr>
-              <tr class="Ma_Po_Se_Con2_Card_Table2_Con1_tr">
-                <td>状态</td>
-                <td>
-                  <el-button
-                    round
-                    style="font-size:12px;width:36px; height:18px;display: flex;justify-content: center;
-background: #1ab394;color:#fff; padding: 4px 15px;"
-                  >正常</el-button>
-                </td>
-              </tr>
-              <tr class="Ma_Po_Se_Con2_Card_Table2_Con1_tr">
-                <td>创建时间</td>
-                <td>2018-03-16 11:33:00</td>
-              </tr>
-              <tr class="Ma_Po_Se_Con2_Card_Table2_Con1_tr">
-                <td>操作</td>
-                <td>
-                  <el-row style=";display: flex; align-items: center;
-align-items: center; ">
-                    <el-button
-                      type="primary"
-                      icon="el-icon-edit"
-                      style="font-size:12px;width:48px; height:22px;display: flex;justify-content: center;
-align-items: center; padding: 4px 15px;"
-                      @click="dialogFormVisible = true"
-                    >编辑</el-button>
-                    <el-button
-                      type="danger"
-                      icon="el-icon-close"
-                      style="font-size:12px;width:48px; height:22px;display: flex;justify-content: center;
-padding: 4px 15px;"
-                    >删除</el-button>
-                  </el-row>
-                  <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog">
-                    <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd">
-                      <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_top">
-                        <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_top_left">修改岗位</div>
-                        <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_top_right">
-                          <i class="el-icon-minus"></i>
-                          <i class="el-icon-copy-document" style="margin:0 8px;"></i>
-                          <i class="el-icon-close"></i>
-                        </div>
-                      </div>
-                      <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_Cen">
-                        <el-form ref="form" :model="form" label-width="80px">
-                          <el-form-item label="岗位名称">
-                            <el-input v-model="form.name"></el-input>
-                          </el-form-item>
-                          <el-form-item label="岗位编码">
-                            <el-input v-model="form.name"></el-input>
-                          </el-form-item>
-                          <el-form-item label="显示顺序">
-                            <el-input v-model="form.name"></el-input>
-                          </el-form-item>
-                          <el-form-item label="岗位状态">
-                            <el-radio-group v-model="form.resource">
-                              <el-radio label="正常"></el-radio>
-                              <el-radio label="停用"></el-radio>
-                            </el-radio-group>
-                          </el-form-item>
-                          <el-form-item label="备注">
-                            <el-input type="textarea" v-model="form.desc"></el-input>
-                          </el-form-item>
-                        </el-form>
-                      </div>
-                      <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_Bot">
-                        <el-button type="primary">确认</el-button>
-                        <el-button>取消</el-button>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </table>
-            <table class="Ma_Po_Se_Con2_Card_Table2_Con1" style="padding-bottom: 8px;">
-              <tr class="Ma_Po_Se_Con2_Card_Table2_Con1_tr">
-                <td>
-                  <el-checkbox></el-checkbox>
-                </td>
-              </tr>
-              <tr class="Ma_Po_Se_Con2_Card_Table2_Con1_tr">
-                <td>岗位编号</td>
-                <td>1</td>
-              </tr>
-              <tr class="Ma_Po_Se_Con2_Card_Table2_Con1_tr">
-                <td>岗位编码</td>
-                <td>ceo</td>
-              </tr>
-              <tr class="Ma_Po_Se_Con2_Card_Table2_Con1_tr">
-                <td>岗位名称</td>
-                <td>董事长</td>
-              </tr>
-              <tr class="Ma_Po_Se_Con2_Card_Table2_Con1_tr">
-                <td>状态</td>
-                <td>
-                  <el-button
-                    round
-                    style="font-size:12px;width:36px; height:18px;display: flex;justify-content: center;
-background: #1ab394;color:#fff; padding: 4px 15px;"
-                  >正常</el-button>
-                </td>
-              </tr>
-              <tr class="Ma_Po_Se_Con2_Card_Table2_Con1_tr">
-                <td>创建时间</td>
-                <td>2018-03-16 11:33:00</td>
-              </tr>
-              <tr class="Ma_Po_Se_Con2_Card_Table2_Con1_tr">
-                <td>操作</td>
-                <td>
-                  <el-row style=";display: flex; align-items: center;
-align-items: center; ">
-                    <el-button
-                      type="primary"
-                      icon="el-icon-edit"
-                      style="font-size:12px;width:48px; height:22px;display: flex;justify-content: center;
-align-items: center; padding: 4px 15px;"
-                      @click="dialogFormVisible = true"
-                    >编辑</el-button>
-                    <el-button
-                      type="danger"
-                      icon="el-icon-close"
-                      style="font-size:12px;width:48px; height:22px;display: flex;justify-content: center;
-padding: 4px 15px;"
-                    >删除</el-button>
-                  </el-row>
-                  <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog">
-                    <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd">
-                      <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_top">
-                        <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_top_left">修改岗位</div>
-                        <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_top_right">
-                          <i class="el-icon-minus"></i>
-                          <i class="el-icon-copy-document" style="margin:0 8px;"></i>
-                          <i class="el-icon-close"></i>
-                        </div>
-                      </div>
-                      <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_Cen">
-                        <el-form ref="form" :model="form" label-width="80px">
-                          <el-form-item label="岗位名称">
-                            <el-input v-model="form.name"></el-input>
-                          </el-form-item>
-                          <el-form-item label="岗位编码">
-                            <el-input v-model="form.name"></el-input>
-                          </el-form-item>
-                          <el-form-item label="显示顺序">
-                            <el-input v-model="form.name"></el-input>
-                          </el-form-item>
-                          <el-form-item label="岗位状态">
-                            <el-radio-group v-model="form.resource">
-                              <el-radio label="正常"></el-radio>
-                              <el-radio label="停用"></el-radio>
-                            </el-radio-group>
-                          </el-form-item>
-                          <el-form-item label="备注">
-                            <el-input type="textarea" v-model="form.desc"></el-input>
-                          </el-form-item>
-                        </el-form>
-                      </div>
-                      <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_Bot">
-                        <el-button type="primary">确认</el-button>
-                        <el-button>取消</el-button>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </table>
-            <table class="Ma_Po_Se_Con2_Card_Table2_Con1" style="padding-bottom: 8px;">
-              <tr class="Ma_Po_Se_Con2_Card_Table2_Con1_tr">
-                <td>
-                  <el-checkbox></el-checkbox>
-                </td>
-              </tr>
-              <tr class="Ma_Po_Se_Con2_Card_Table2_Con1_tr">
-                <td>岗位编号</td>
-                <td>1</td>
-              </tr>
-              <tr class="Ma_Po_Se_Con2_Card_Table2_Con1_tr">
-                <td>岗位编码</td>
-                <td>ceo</td>
-              </tr>
-              <tr class="Ma_Po_Se_Con2_Card_Table2_Con1_tr">
-                <td>岗位名称</td>
-                <td>董事长</td>
-              </tr>
-              <tr class="Ma_Po_Se_Con2_Card_Table2_Con1_tr">
-                <td>状态</td>
-                <td>
-                  <el-button
-                    round
-                    style="font-size:12px;width:36px; height:18px;display: flex;justify-content: center;
-background: #1ab394;color:#fff; padding: 4px 15px;"
-                  >正常</el-button>
-                </td>
-              </tr>
-              <tr class="Ma_Po_Se_Con2_Card_Table2_Con1_tr">
-                <td>创建时间</td>
-                <td>2018-03-16 11:33:00</td>
-              </tr>
-              <tr class="Ma_Po_Se_Con2_Card_Table2_Con1_tr">
-                <td>操作</td>
-                <td>
-                  <el-row style=";display: flex; align-items: center;
-align-items: center; ">
-                    <el-button
-                      type="primary"
-                      icon="el-icon-edit"
-                      style="font-size:12px;width:48px; height:22px;display: flex;justify-content: center;
-align-items: center; padding: 4px 15px;"
-                      @click="dialogFormVisible = true"
-                    >编辑</el-button>
-                    <el-button
-                      type="danger"
-                      icon="el-icon-close"
-                      style="font-size:12px;width:48px; height:22px;display: flex;justify-content: center;
-padding: 4px 15px;"
-                    >删除</el-button>
+                      @click="open">{{item.dosomething2}}</el-button>
                   </el-row>
                   <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog">
                     <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd">
@@ -753,11 +247,12 @@ padding: 4px 15px;"
 <script>
 export default {
   name: "Managerial_Position_Con2",
+  props:["data"],
   data() {
     return {
       isShow: true,
       form: {
-        name: "",
+        name: "1",
         region: "",
         date1: "",
         date2: "",
@@ -768,8 +263,17 @@ export default {
       },
       multipleSelection: [],
       Ma_Po_Se_Con2_Card_Table: true,
-      Ma_Po_Se_Con2_Card_Table2: false
+      Ma_Po_Se_Con2_Card_Table2: false,
+      Ma_Po_Se_Con2_Card_Table_Con_first_trdialog:false,
+      id:"",
+
     };
+  },
+  computed:{
+      getdataindex:function(){
+
+      }
+
   },
   methods: {
     onSubmit() {
@@ -779,18 +283,43 @@ export default {
     showdata() {
       this.Ma_Po_Se_Con2_Card_Table = !this.Ma_Po_Se_Con2_Card_Table;
       this.Ma_Po_Se_Con2_Card_Table2 = !this.Ma_Po_Se_Con2_Card_Table2;
+
     },
     handleSelectionChange(val) {
       this.multipleSelection = val;
     },
     change() {
       this.$emit("change");
-    }
-  }
-  /****
-   * 点击编辑按钮弹出一个框
-   *
-   * ***/
+    },
+/**
+ * 点击编辑按钮让弹框显示onchangeshow（）
+ *
+ * **/
+
+
+
+
+
+    /**点击删除按钮让弹框显示
+     *
+     *
+     */
+
+    open() {
+      this.$alert(`<strong>
+                      <div class="questionbox" style=" font-size:14px ;
+    color:#676a6c;display: flex;align-items: center; ">
+                        <span class="el-icon-question" style=" font-size:32px ;
+  color:#3498db;margin-right: 10px;"></span>
+                        确定删除这条信息吗？
+                      </div>
+
+                  </strong>`, '提示系统', {
+        dangerouslyUseHTMLString: true
+      });
+    },
+  },
+
 };
 </script>
 
@@ -916,7 +445,7 @@ el-icon-caret-bottom {
   text-align: center;
 }
 .Ma_Po_Se_Con2_Card_Table_Con_first_trdialog {
-  display: none;
+display: none;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -992,9 +521,6 @@ el-button--small {
   background: #f0f4f7;
   box-sizing: border-box;
 }
-.Ma_Po_Se_Con2_Card_Table2 {
-  /*display: none;*/
-}
 .Ma_Po_Se_Con2_Card_Table2_Con1 {
   width: 100%;
   padding-left: 8px;
@@ -1004,16 +530,16 @@ el-button--small {
   border-bottom: 1px solid #e7eaec;
 }
 .checkboxinput {
-  margin-right: 0.22rem;
+  margin-right: 4px;
   position: relative;
   vertical-align: middle;
 }
 .checkboxinput::after {
   position: absolute;
-  width: 0.28rem;
-  height: 0.28rem;
+  width: 14px;
+  height:14px;
   top: 0;
-  background-color: #fff;
+  background-color: #dedede;
   content: " ";
   color: #fff;
   display: inline-block;
@@ -1023,13 +549,13 @@ el-button--small {
 }
 .checkboxinput:checked::after {
   content: "√";
-  width: 0.28rem;
-  height: 0.28rem;
-  font-size: 0.28rem;
+  width: 14px;
+  height: 14px;
+  font-size: 14px;
   color: #ffffff;
   text-align: center;
-  line-height: 0.24rem;
-  background-color: #ff0000;
+  line-height: 14px;
+  background-color:#dedede;
 }
 .Ma_Po_Se_Con2_Card_Table2_Con1 tr:last-child {
   width: 100%;
@@ -1051,4 +577,12 @@ el-button--small {
 .Ma_Po_Se_Con2_Card_Table2_Con1_tr td:nth-child(2) {
   width: 71%;
 }
+.questionbox span{
+  font-size:32px ;
+  color:#3498db;
+}
+  .questionbox{
+    font-size:14px ;
+    color:#676a6c;
+  }
 </style>

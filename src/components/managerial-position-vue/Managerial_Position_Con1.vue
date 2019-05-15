@@ -4,19 +4,26 @@
       <el-col :xs="12" :sm="12" :md="8" :lg="7" :xl="7" style="box-sizing: border-box">
         <div class="grid-content bg-purple grid-content1">
           <span class="Ma_Po_Se_Con1_num">岗位编码：</span>
-          <input type="text" class="Ma_Po_Se_Con1_input Ma_Po_Se_Con1_inputnum">
+          <input type="text" class="Ma_Po_Se_Con1_input Ma_Po_Se_Con1_inputnum Ma_Po_Se_Con1_inputnum1">
         </div>
       </el-col>
       <el-col :xs="12" :sm="12" :md="16" :lg="7" :xl="7" style="box-sizing: border-box">
         <div class="grid-content bg-purple-light">
-          <span class="Ma_Po_Se_Con1_num">岗位编码：</span>
-          <input type="text" class="Ma_Po_Se_Con1_input Ma_Po_Se_Con1_inputnum">
+          <span class="Ma_Po_Se_Con1_num">岗位名称：</span>
+          <input type="text" class="Ma_Po_Se_Con1_input Ma_Po_Se_Con1_inputnum Ma_Po_Se_Con1_inputnum2">
         </div>
       </el-col>
       <el-col :xs="12" :sm="12" :md="8" :lg="7" :xl="7" style="box-sizing: border-box">
         <div class="grid-content bg-purple">
-          <span class="Ma_Po_Se_Con1_num">岗位编码：</span>
-          <input type="text" class="Ma_Po_Se_Con1_input Ma_Po_Se_Con1_inputnum">
+          <span class="Ma_Po_Se_Con1_num">岗位状态：</span>
+          <el-select v-model="value" placeholder="所有">
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value">
+            </el-option>
+          </el-select>
         </div>
       </el-col>
       <el-col :xs="12" :sm="12" :md="16" :lg="3" :xl="3" style="box-sizing: border-box">
@@ -62,10 +69,17 @@ export default {
           label: "停用"
         }
       ],
-      value: ""
-    };
-  }
-};
+      value: "",
+      user:{
+        "coding":"",
+        "name":"",
+        "status":""
+      }
+    }
+  },
+
+
+}
 </script>
 
 <style scoped>
