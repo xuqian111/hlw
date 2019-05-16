@@ -1,31 +1,27 @@
 <template>
     <div class="roleMain">
-        <div class="seachBox" v-if="isShow">
-            <RoleSeach/>
-        </div>
-        <div class="roleBox">
-            <RoleMain/>
-        </div>
+        
+        <div>11{{isShows}}</div>
     </div>
 </template>
 
 <script type='text/javascript'>
 
-    import RoleSeach from './cbRoleSeach'
-    import RoleMain from './cbRoleMain'
+    // import RoleSeach from '@/components/cbRole/cbRoleSeach'
+    // import RoleMain from '@/components/cbRole/cbRoleMain'
 
     export default {
         name: "cbRole",
         components:{
             RoleSeach,RoleMain
         },
-        data() {
+        data(){
             return {
-                isShow:true,
-            };
+                
+            }
         },
         methods: {
-
+            
         }
     };
 </script>

@@ -10,6 +10,7 @@ import login from '../pages/login'
 import cbPersonal from "../components/personal/cbPersonal"
 import managerial from "../components/managerial-position-vue/Managerial-Position"
 import cbMenuItem from "../components/cbMenuItem/cbMenuItem"
+import AllocationUser from '../components/cbRole/cbAllocationUser'
 
 /** 
  * 字典*/
@@ -51,6 +52,11 @@ export default new Router({
           path: 'role',
           name: 'cbRole',
           component: cbRole
+        },
+        {
+          path: 'AllocationUser',
+          name: 'AllocationUser',
+          component: AllocationUser
         },
         {
           path: "personal",
