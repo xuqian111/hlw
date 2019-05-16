@@ -15,48 +15,69 @@
             <div class="tree">
               <li class="tree_one">
                 <span class="controlAll"></span>
-                <a href="#"><i class="el-icon-folder-opened"></i><span>若依科技</span></a>
+                <a href="#">
+                  <i class="el-icon-folder-opened"></i>
+                  <span>若依科技</span>
+                </a>
               </li>
               <ul class="tree_two">
                 <li class="tree_one tree_two_a">
                   <div class="Line line1">
                     <span class="control"></span>
-                    <a href="#"><i class="el-icon-folder-opened"></i><span>深圳总公司</span></a>
+                    <a href="#">
+                      <i class="el-icon-folder-opened"></i>
+                      <span>深圳总公司</span>
+                    </a>
                   </div>
                   <span class="a"></span>
                   <ul class="sz">
                     <li class="tree_three">
                       <div class="Line">
                         <span></span>
-                        <a href="#"><i class="el-icon-document"></i><span>研发部门</span></a>
+                        <a href="#">
+                          <i class="el-icon-document"></i>
+                          <span>研发部门</span>
+                        </a>
                       </div>
                       <span class="a"></span>
                     </li>
                     <li class="tree_three four">
                       <div class="Line">
                         <span></span>
-                        <a href="#"><i class="el-icon-document"></i><span>市场部门</span></a>
+                        <a href="#">
+                          <i class="el-icon-document"></i>
+                          <span>市场部门</span>
+                        </a>
                       </div>
                       <span class="a"></span>
                     </li>
                     <li class="tree_three four">
                       <div class="Line">
                         <span></span>
-                        <a href="#"><i class="el-icon-document"></i><span>测试部门</span></a>
+                        <a href="#">
+                          <i class="el-icon-document"></i>
+                          <span>测试部门</span>
+                        </a>
                       </div>
                       <span class="a"></span>
                     </li>
                     <li class="tree_three four">
                       <div class="Line">
                         <span></span>
-                        <a href="#"><i class="el-icon-document"></i><span>财务部门</span></a>
+                        <a href="#">
+                          <i class="el-icon-document"></i>
+                          <span>财务部门</span>
+                        </a>
                       </div>
                       <span class="a"></span>
                     </li>
                     <li class="tree_three four">
                       <div class="Line">
                         <span></span>
-                        <a href="#"><i class="el-icon-document"></i><span>运维部门</span></a>
+                        <a href="#">
+                          <i class="el-icon-document"></i>
+                          <span>运维部门</span>
+                        </a>
                       </div>
                       <span class="a"></span>
                     </li>
@@ -65,19 +86,28 @@
                 <li class="tree_one tree_two_a">
                   <div class="Line line1">
                     <span class="control"></span>
-                    <a href="#"><i class="el-icon-folder-opened"></i><span>长沙总公司</span></a>
+                    <a href="#">
+                      <i class="el-icon-folder-opened"></i>
+                      <span>长沙总公司</span>
+                    </a>
                   </div>
                   <ul class="langLine">
                     <li class="tree_three">
                       <div class="Line">
                         <span></span>
-                        <a href="#"><i class="el-icon-document"></i><span>市场部门</span></a>
+                        <a href="#">
+                          <i class="el-icon-document"></i>
+                          <span>市场部门</span>
+                        </a>
                       </div>
                     </li>
                     <li class="tree_three four">
                       <div class="Line">
                         <span></span>
-                        <a href="#"><i class="el-icon-document"></i><span>财务部门</span></a>
+                        <a href="#">
+                          <i class="el-icon-document"></i>
+                          <span>财务部门</span>
+                        </a>
                       </div>
                     </li>
                   </ul>
@@ -93,18 +123,18 @@
             <ul class="user_top_r">
               <li>
                 <p>登录名称:</p>
-                <input v-model="name" type="text">
+                <input type="text">
               </li>
               <li>
                 <p>手机号码:</p>
-                <input v-model="tel" type="text">
+                <input type="text">
               </li>
               <li>
                 <p>用户状态:</p>
-                <select v-model="states">
-                  <option value="所有">所有</option>
-                  <option value="正常">正常</option>
-                  <option value="停用">停用</option>
+                <select name id>
+                  <option value>所有</option>
+                  <option value>正常</option>
+                  <option value>停用</option>
                 </select>
               </li>
               <li class="time">
@@ -119,7 +149,7 @@
                 </div>
               </li>
               <li>
-                <el-button type="primary" @click="selects" round>搜索</el-button>
+                <el-button type="primary" round>搜索</el-button>
                 <el-button type="danger" round>重置</el-button>
               </li>
             </ul>
@@ -164,13 +194,10 @@
                 :data="tableData"
                 tooltip-effect="dark"
                 style="width: 100%"
-                :row-class-name="tableRowClassName"
               >
                 <el-table-column type="selection" width="40"></el-table-column>
-                <el-table-column  label="用户ID" sortable width="90">
-                  <template slot-scope="scope">
-                    {{scope.$index+1}}
-                  </template>
+                <el-table-column label="用户ID" sortable width="90">
+                  <template slot-scope="scope">{{ scope.row.id }}</template>
                 </el-table-column>
                 <el-table-column prop="userId" label="登录名称" width="120"></el-table-column>
                 <el-table-column prop="userName" label="用户名称" width="70" show-overflow-tooltip></el-table-column>
@@ -187,14 +214,14 @@
                     ></el-switch>
                   </template>
                 </el-table-column>
-                <el-table-column prop="joinTime" label="创建时间" sortable width="110"></el-table-column>
+                <el-table-column prop="data" label="创建时间" sortable width="110"></el-table-column>
                 <el-table-column prop="operation" label="操作" width="155">
-                  <template slot-scope="scope">
+                  <template>
                     <div class="rigBtn">
-                        <el-button size="mini">
-                          <i class="el-icon-edit-outline"></i>
-                          <span @click="router('userManagementWrite','修改用户',scope.row)">编辑</span>
-                        </el-button>
+                      <el-button size="mini">
+                        <i class="el-icon-edit-outline"></i>
+                        <router-link to="userManagementWrite">编辑</router-link>
+                      </el-button>
                       <el-button @click="open" size="mini">
                         <i class="el-icon-delete"></i>删除
                       </el-button>
@@ -226,17 +253,13 @@
         </div>
       </div>
     </div>
-    <!--<usermanagement-write/>-->
   </div>
 </template>
 
 <script>
-import userManagementWrite from "../cbManagement/userManagementWrite";
 export default {
   name: "userManagement",
-  components: {
-    usermanagementWrite: userManagementWrite
-  },
+  components: {},
   data() {
     return {
       pickerOptions: {
@@ -244,61 +267,22 @@ export default {
           return time.getTime() > Date.now();
         }
       },
-      tableData: [
-
-      ],
+      tableData: [],
       value1: true,
       value2: true,
       value3: "",
       value4: "",
-      isTrue: true,
-      oldlist:'',
-      name:'',
-      tel:'',
-      states:'所有'
+      isTrue: true
     };
   },
-  mounted(){
-    // jquery实现左边树状结构
-    $('.controlAll').click(function () {
-      if ($('.tree_two').css('display')!='none'){
-        $(this).css('backgroundPosition','-126px 0')
-        $('.tree_two').css('display','none')
-        $(this).next().children().eq(0).attr('class','el-icon-folder')
-      }else {
-        $('.tree_two').css('display','block')
-        $(this).css('backgroundPosition','-105px 0')
-        $(this).next().children().eq(0).attr('class','el-icon-folder-opened')
-
-      }
-    })
-    $('.control').click(function () {
-      let isTrue = $(this).parent().nextAll('ul').css('display')
-      if (isTrue!='none') {
-        $(this).parent().nextAll('ul').css('display','none')
-        $(this).css('backgroundPosition','-127px -3px')
-        $(this).next().children().eq(0).attr('class','el-icon-folder')
-      }else {
-        $(this).parent().nextAll('ul').css('display','block')
-        $(this).css('backgroundPosition','-106px -3px')
-        $(this).next().children().eq(0).attr('class','el-icon-folder-opened')
-      }
-    })
-  },
   methods: {
-    tableRowClassName({row, rowIndex}){
-      row.index = rowIndex
-    },
-    router(path, crumb,i) {
-      // console.log(this.tableData[0].userId)
-      let a = i.index
-      this.$store.commit('writeIndex',a)
+    router(path, crumb) {
       this.$store.dispatch({
         type: "intradd",
         data: crumb
       });
       this.$router.push("/index/" + path);
-      console.log(path, crumb);
+      // console.log(path, crumb);
     },
     open() {
       this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
@@ -327,125 +311,139 @@ export default {
         this.isTrue = !this.isTrue;
         this.$refs.s.style.left = "17%";
       }
-    },
-    selects(){
-      let name = this.name
-      let tel = this.tel
-      let state = this.states
-      let newlist = []
-      this.tableData = this.oldlist
-      console.log(this.tableData)
-      this.tableData.forEach(item =>{
-        if (((item.userId).indexOf(name) || (item.tel).indexOf(tel))!=-1){
-          newlist.push(item)
-        }
-        this.tableData = newlist
-      })
-
-      // if (state == "所有") {
-      //   this.tableData.forEach(item1 => {
-      //     newlist.push(item1)
-      //   })
-      //   this.tableData = newlist
-      //   console.log(newlist)
-      // }
-      // else if (state == '正常'){
-      //   this.tableData.forEach(item2 =>{
-      //     if (item2.status==true){
-      //       newslist.push(item2)
-      //     }
-      //     this.tableData = newlist
-      //   })
-      // }else {
-      //   this.tableData.forEach(item3 =>{
-      //     if (item3.status=='停用'){
-      //       newslist.push(item3)
-      //     }
-      //     this.tableData = newlist
-      //   })
-      // }
     }
   },
-
   created() {
     $.get("http://10.35.164.14:3000/user/api/getUser", data => {
       this.tableData = data;
-      this.oldlist = this.tableData
+      // console.log("tableData", this.tableData);
+    });
+  },
+  mounted() {
+    // jquery实现左边树状结构
+    $(".controlAll").click(function() {
+      if ($(".tree_two").css("display") != "none") {
+        $(this).css("backgroundPosition", "-126px 0");
+        $(".tree_two").css("display", "none");
+        $(this)
+          .next()
+          .children()
+          .eq(0)
+          .attr("class", "el-icon-folder");
+      } else {
+        $(".tree_two").css("display", "block");
+        $(this).css("backgroundPosition", "-105px 0");
+        $(this)
+          .next()
+          .children()
+          .eq(0)
+          .attr("class", "el-icon-folder-opened");
+      }
+    });
+    $(".control").click(function() {
+      let isTrue = $(this)
+        .parent()
+        .nextAll("ul")
+        .css("display");
+      if (isTrue != "none") {
+        $(this)
+          .parent()
+          .nextAll("ul")
+          .css("display", "none");
+        $(this).css("backgroundPosition", "-127px -3px");
+        $(this)
+          .next()
+          .children()
+          .eq(0)
+          .attr("class", "el-icon-folder");
+      } else {
+        $(this)
+          .parent()
+          .nextAll("ul")
+          .css("display", "block");
+        $(this).css("backgroundPosition", "-106px -3px");
+        $(this)
+          .next()
+          .children()
+          .eq(0)
+          .attr("class", "el-icon-folder-opened");
+      }
     });
   }
 };
 </script>
 
 <style scoped>
-  /*左边树形结构*/
-  .a{
-    width: 10px;
-    height: 20px;
-    position: absolute;
-    background: url("../../../static/metro.png") no-repeat -85px -20px;
-  }
-  .user_left_center{
-    width: 100%;
-  }
-  .user_left_cen_c{
-    width: 100%;
-    margin-top: 5%;
-  }
-  .tree_one{
-    margin-left: 10%;
-    align-items: center;
-    vertical-align: center;
-  }
-  .tree_one span{
-    display: inline-block;
-  }
-  .tree_one span:nth-child(1){
-    width: 17px;
-    height: 17px;
-    margin-right: 3px;
-    background: url("../../../static/metro.png") no-repeat -105px 0;
-    cursor: pointer;
-  }
-  .tree_one a{
-    color: #000;
-    font-size: 13px;
-  }
-  .tree_one a span{
-    color: #000;
-    margin-left: 5px;
-  }
-  .tree_two{
-    margin-left: 11%;
-  }
-  .tree_two li{
-    width: 90%;
-  }
-  .tree_two_a span:nth-child(1){
-    height: 21px;
-    width: 21px;
-    background-position: -106px -3px;
-    transform: rotateX(180deg);
-  }
-  .tree_three .Line{
-    margin-left: 15%;
-  }
-  .tree_three .Line span:nth-child(1){
-    background-position: -87px -20px;
-  }
-  .four .Line span:nth-child(1){
-    background-position: -87px -20px;
-  }
-  .four:last-of-type .Line span:nth-child(1){
-    background-position: -87px 0;
-  }
-  .Line{
-    display: flex;
-    align-items: center;
-  }
-  .line1{
-    padding-left: 0;
-  }
-  /*树桩样式结尾*/
+/*左边树形结构*/
+.a {
+  width: 10px;
+  height: 20px;
+  position: absolute;
+  background: url("../../../static/metro.png") no-repeat -85px -20px;
+}
+.user_left_center {
+  width: 100%;
+}
+.user_left_cen_c {
+  width: 100%;
+  margin-top: 5%;
+}
+.tree_one {
+  margin-left: 10%;
+  align-items: center;
+  vertical-align: center;
+}
+.tree_one span {
+  display: inline-block;
+}
+.tree_one span:nth-child(1) {
+  width: 17px;
+  height: 17px;
+  margin-right: 3px;
+  background: url("../../../static/metro.png") no-repeat -105px 0;
+  cursor: pointer;
+}
+.tree_one a {
+  color: #000;
+  font-size: 13px;
+}
+.tree_one a span {
+  color: #000;
+  margin-left: 5px;
+}
+.tree_two {
+  margin-left: 11%;
+}
+.tree_two li {
+  width: 90%;
+}
+.tree_two_a span:nth-child(1) {
+  height: 21px;
+  width: 21px;
+  background-position: -106px -3px;
+  transform: rotateX(180deg);
+}
+.tree_three .Line {
+  margin-left: 15%;
+}
+.tree_three .Line span:nth-child(1) {
+  background-position: -87px -20px;
+}
+.four .Line span:nth-child(1) {
+  background-position: -87px -20px;
+}
+.four:last-of-type .Line span:nth-child(1) {
+  background-position: -87px 0;
+}
+.Line {
+  display: flex;
+  align-items: center;
+}
+.line1 {
+  padding-left: 0;
+}
+/*树桩样式结尾*/
+
 .user {
   width: 100%;
   height: 100%;

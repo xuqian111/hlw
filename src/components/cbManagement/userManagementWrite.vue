@@ -8,8 +8,8 @@
         <div class="basic_cen">
             <div class="basic_cen_left">
               <div class="basic_cen_left_wrap">
-                <p><span>用户名称：</span><input type="text" placeholder="请输入用户名"></p>
-                <p><span>手机号码：</span><input type="text" placeholder="请输入手机号"></p>
+                <p><span>用户名称：</span><input type="text" v-model="tableData.userName" placeholder="请输入用户名"></p>
+                <p><span>手机号码：</span><input type="text" v-model="tableData.tel" placeholder="请输入手机号"></p>
                 <p><span>登录账号：</span><input type="text" disabled="true" placeholder="请输入用户名"></p>
                 <p>
                   <span>岗位：</span>
@@ -27,8 +27,8 @@
             </div>
           <div class="basic_cen_left">
             <div class="basic_cen_left_wrap basic_cen_rig_wrap">
-              <p><span>归属部门：</span><input type="text" placeholder="请输入部门"><span class="icons"><i class="el-icon-search"></i></span></p>
-              <p><span>邮箱：</span><input type="text" placeholder="请输入邮箱"></p>
+              <p><span>归属部门：</span><input type="text" v-model="tableData.part" placeholder="请输入部门"><span class="icons"><i class="el-icon-search"></i></span></p>
+              <p><span>邮箱：</span><input type="text" v-model="tableData.email" placeholder="请输入邮箱"></p>
               <p><span>用户状态：</span>
                 <el-switch
                   v-model="value2"
@@ -38,9 +38,9 @@
               </p>
               <p>
                 <span>性别：</span>
-                <select name="" id="">
-                  <option value="">男</option>
-                  <option value="">女</option>
+                <select v-model="tableData.sex">
+                  <option value="男">男</option>
+                  <option value="女">女</option>
                 </select>
               </p>
             </div>
@@ -76,7 +76,8 @@
         name: "userManagementWrite",
       data(){
         return {
-          options: [{
+          options: [
+            {
             value: '选项1',
             label: '董事长'
           }, {
@@ -88,14 +89,28 @@
           }, {
             value: '选项4',
             label: '普通员工'
-          }],
+          }
+          ],
           value5: [],
           value11: [],
           checked: true,
           checked1:false,
           value1:true,
-          value2:true
+          value2:true,
+          tableData:''
         }
+      },
+      created() {
+        $.get("http://10.35.164.14:3000/user/api/getUser", data => {
+          // this.tableData = data;
+          let Cindex = this.$store.state.num
+          data.forEach((item,index)=>{
+              if (index==Cindex){
+                this.tableData = item
+              }
+          })
+          console.log(this.tableData)
+        });
       }
     }
 </script>

@@ -45,6 +45,7 @@ export default {
   },
   methods: {
     reload() {
+      this.$router.push('/')
       location.reload();
     },
     deleteOne(n) {
@@ -141,9 +142,6 @@ export default {
           case "招聘管理":
             url = "recruit";
             break;
-          case "日程":
-            url = "schedule";
-            break;
           case "字典管理":
             url = "dictionary";
             break;
@@ -166,7 +164,7 @@ export default {
       let url = "";
       let i = "";
       lists.some((item, index) => {
-        console.log("1other", index);
+        // console.log("1other", index);
         switch (item) {
           case "个人中心":
             url = "personal";
@@ -185,9 +183,6 @@ export default {
             break;
           case "招聘管理":
             url = "recruit";
-            break;
-          case "日程":
-            url = "schedule";
             break;
           case "字典管理":
             url = "dictionary";
