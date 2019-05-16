@@ -1,9 +1,5 @@
 <template>
-<<<<<<< HEAD
   <div class="Ma_Po_Se_Con2">
-=======
-  <div class="Ma_Po_Se_Con2" >
->>>>>>> 80653a155e8fbf4016a916bbd1d0c4a12a16af5c
     <div class="Ma_Po_Se_Con2_Midd">
       <div class="Ma_Po_Se_Con2_Card">
         <div class="Ma_Po_Se_Con2_Card_Btn">
@@ -30,44 +26,6 @@
                 class="Ma_Po_Se_Con2_Card_Btn_left_lists_single"
               >导出</el-button>
             </el-row>
-<<<<<<< HEAD
-          </div>
-          <div class="Ma_Po_Se_Con2_Card_Btn_right">
-            <el-button-group>
-              <el-button icon="el-icon-search" class="Ma_Po_Se_Con2_Card_Btn_right_lists_single"></el-button>
-              <el-button icon="el-icon-refresh" class="Ma_Po_Se_Con2_Card_Btn_right_lists_single"></el-button>
-              <el-button icon="el-icon-tickets" class="Ma_Po_Se_Con2_Card_Btn_right_lists_single"></el-button>
-              <el-button icon="el-icon-s-grid" class="Ma_Po_Se_Con2_Card_Btn_right_lists_single">
-                <span class="el-icon-caret-bottom"></span>
-                <!--<div class=""></div>-->
-              </el-button>
-            </el-button-group>
-          </div>
-        </div>
-        <div class="Ma_Po_Se_Con2_Card_Table">
-          <el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%">
-            <el-table-column type="selection" width="55"></el-table-column>
-            <el-table-column label="岗位编号" width="120">
-              <template slot-scope="scope">{{ scope.row.date }}</template>
-            </el-table-column>
-            <el-table-column prop="datenum" label="岗位编码" width="120"></el-table-column>
-            <el-table-column prop="name" label="岗位名称" show-overflow-tooltip></el-table-column>
-            <el-table-column prop="shunxu" label="显示顺序" show-overflow-tooltip></el-table-column>
-            <el-table-column prop="states" label="状态" show-overflow-tooltip>
-              <template slot-scope="scope">
-                <el-button size="mini" type="danger">正常</el-button>
-              </template>
-            </el-table-column>
-            <el-table-column prop="time" label="创建时间" show-overflow-tooltip></el-table-column>
-            <el-table-column label="操作">
-              <template slot-scope="scope">
-                <el-button size="mini">编辑</el-button>
-                <el-button size="mini" type="danger">删除</el-button>
-              </template>
-            </el-table-column>
-          </el-table>
-        </div>
-=======
           </div>
           <div class="Ma_Po_Se_Con2_Card_Btn_right">
             <el-button-group>
@@ -82,13 +40,12 @@
                 class="Ma_Po_Se_Con2_Card_Btn_right_lists_single"
                 @click="showdata"
               ></el-button>
-              <el-button icon="el-icon-s-grid" class="Ma_Po_Se_Con2_Card_Btn_right_lists_single">
-              </el-button>
+              <el-button icon="el-icon-s-grid" class="Ma_Po_Se_Con2_Card_Btn_right_lists_single"></el-button>
             </el-button-group>
           </div>
         </div>
         <div class="Ma_Po_Se_Con2_Card_Table_lists">
-          <div class="Ma_Po_Se_Con2_Card_Table" v-if="Ma_Po_Se_Con2_Card_Table" >
+          <div class="Ma_Po_Se_Con2_Card_Table" v-if="Ma_Po_Se_Con2_Card_Table">
             <table class="Ma_Po_Se_Con2_Card_Table_Con" style="width:100%;">
               <tr class="Ma_Po_Se_Con2_Card_Table_Con_first_tr">
                 <td>
@@ -104,7 +61,9 @@
               </tr>
               <!--循环数据-->
               <tr
-                class="Ma_Po_Se_Con2_Card_Table_Con_first_tr Ma_Po_Se_Con2_Card_Table_Con_first_tr1" :index="index" v-for="(item,index) in data"
+                class="Ma_Po_Se_Con2_Card_Table_Con_first_tr Ma_Po_Se_Con2_Card_Table_Con_first_tr1"
+                :index="index"
+                v-for="(item,index) in data"
               >
                 <td>
                   <el-checkbox></el-checkbox>
@@ -137,10 +96,11 @@ align-items: center;padding: 4px 15px;"
                       type="danger"
                       icon="el-icon-close"
                       style="font-size:12px;width:48px; height:22px;display: flex;justify-content: center;
-padding: 4px 15px;padding: 4px 15px;"  @click="open"
+padding: 4px 15px;padding: 4px 15px;"
+                      @click="open"
                     >{{item.dosomething2}}</el-button>
                   </el-row>
-                  <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog" >
+                  <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog">
                     <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd">
                       <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_top">
                         <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_top_left">修改岗位</div>
@@ -153,7 +113,7 @@ padding: 4px 15px;padding: 4px 15px;"  @click="open"
                       <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_Cen">
                         <el-form ref="form" :model="form" label-width="80px">
                           <el-form-item label="岗位名称">
-                            <el-input v-model="form.name" ></el-input>
+                            <el-input v-model="form.name"></el-input>
                           </el-form-item>
                           <el-form-item label="岗位编码">
                             <el-input v-model="form.name"></el-input>
@@ -174,17 +134,20 @@ padding: 4px 15px;padding: 4px 15px;"  @click="open"
                       </div>
                       <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd_Bot">
                         <el-button type="primary">确认</el-button>
-                        <el-button >取消</el-button>
+                        <el-button>取消</el-button>
                       </div>
                     </div>
                   </div>
                 </td>
               </tr>
-
             </table>
           </div>
           <div class="Ma_Po_Se_Con2_Card_Table2" v-if="Ma_Po_Se_Con2_Card_Table2">
-            <table class="Ma_Po_Se_Con2_Card_Table2_Con1" style="padding-bottom: 8px;" v-for="item in  data ">
+            <table
+              class="Ma_Po_Se_Con2_Card_Table2_Con1"
+              style="padding-bottom: 8px;"
+              v-for="item in  data "
+            >
               <tr class="Ma_Po_Se_Con2_Card_Table2_Con1_tr">
                 <td>
                   <el-checkbox></el-checkbox>
@@ -226,14 +189,14 @@ align-items: center; ">
                       icon="el-icon-edit"
                       style="font-size:12px;width:48px; height:22px;display: flex;justify-content: center;
 align-items: center; padding: 4px 15px;"
-
                     >{{item.dosomething1}}</el-button>
                     <el-button
                       type="danger"
                       icon="el-icon-close"
                       style="font-size:12px;width:48px; height:22px;display: flex;justify-content: center;
 padding: 4px 15px;"
-                      @click="open">{{item.dosomething2}}</el-button>
+                      @click="open"
+                    >{{item.dosomething2}}</el-button>
                   </el-row>
                   <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog">
                     <div class="Ma_Po_Se_Con2_Card_Table_Con_first_trdialog_Midd">
@@ -278,7 +241,6 @@ padding: 4px 15px;"
             </table>
           </div>
         </div>
->>>>>>> 80653a155e8fbf4016a916bbd1d0c4a12a16af5c
         <div class="Ma_Po_Se_Con2_Card_Sum">
           <p class="Ma_Po_Se_Con2_Card_Text">第 1 到 4 条，共 4 条记录。</p>
         </div>
@@ -290,7 +252,7 @@ padding: 4px 15px;"
 <script>
 export default {
   name: "Managerial_Position_Con2",
-  props:["data"],
+  props: ["data"],
   data() {
     return {
       isShow: true,
@@ -307,16 +269,12 @@ export default {
       multipleSelection: [],
       Ma_Po_Se_Con2_Card_Table: true,
       Ma_Po_Se_Con2_Card_Table2: false,
-      Ma_Po_Se_Con2_Card_Table_Con_first_trdialog:false,
-      id:"",
-
+      Ma_Po_Se_Con2_Card_Table_Con_first_trdialog: false,
+      id: ""
     };
   },
-  computed:{
-      getdataindex:function(){
-
-      }
-
+  computed: {
+    getdataindex: function() {}
   },
   methods: {
     onSubmit() {
@@ -326,7 +284,6 @@ export default {
     showdata() {
       this.Ma_Po_Se_Con2_Card_Table = !this.Ma_Po_Se_Con2_Card_Table;
       this.Ma_Po_Se_Con2_Card_Table2 = !this.Ma_Po_Se_Con2_Card_Table2;
-
     },
     handleSelectionChange(val) {
       this.multipleSelection = val;
@@ -334,14 +291,10 @@ export default {
     change() {
       this.$emit("change");
     },
-/**
- * 点击编辑按钮让弹框显示onchangeshow（）
- *
- * **/
-
-
-
-
+    /**
+     * 点击编辑按钮让弹框显示onchangeshow（）
+     *
+     * **/
 
     /**点击删除按钮让弹框显示
      *
@@ -349,7 +302,8 @@ export default {
      */
 
     open() {
-      this.$alert(`<strong>
+      this.$alert(
+        `<strong>
                       <div class="questionbox" style=" font-size:14px ;
     color:#676a6c;display: flex;align-items: center; ">
                         <span class="el-icon-question" style=" font-size:32px ;
@@ -357,12 +311,14 @@ export default {
                         确定删除这条信息吗？
                       </div>
 
-                  </strong>`, '提示系统', {
-        dangerouslyUseHTMLString: true
-      });
-    },
-  },
-
+                  </strong>`,
+        "提示系统",
+        {
+          dangerouslyUseHTMLString: true
+        }
+      );
+    }
+  }
 };
 </script>
 
@@ -488,7 +444,7 @@ el-icon-caret-bottom {
   text-align: center;
 }
 .Ma_Po_Se_Con2_Card_Table_Con_first_trdialog {
-display: none;
+  display: none;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -580,7 +536,7 @@ el-button--small {
 .checkboxinput::after {
   position: absolute;
   width: 14px;
-  height:14px;
+  height: 14px;
   top: 0;
   background-color: #dedede;
   content: " ";
@@ -598,7 +554,7 @@ el-button--small {
   color: #ffffff;
   text-align: center;
   line-height: 14px;
-  background-color:#dedede;
+  background-color: #dedede;
 }
 .Ma_Po_Se_Con2_Card_Table2_Con1 tr:last-child {
   width: 100%;
@@ -620,12 +576,12 @@ el-button--small {
 .Ma_Po_Se_Con2_Card_Table2_Con1_tr td:nth-child(2) {
   width: 71%;
 }
-.questionbox span{
-  font-size:32px ;
-  color:#3498db;
+.questionbox span {
+  font-size: 32px;
+  color: #3498db;
 }
-  .questionbox{
-    font-size:14px ;
-    color:#676a6c;
-  }
+.questionbox {
+  font-size: 14px;
+  color: #676a6c;
+}
 </style>
