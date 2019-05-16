@@ -180,8 +180,8 @@
                   <template slot-scope="scope">
                     <el-switch
                       v-model="scope.row.status"
-                      :active-value="true"
-                      :inactive-value="false"
+                      :active-value="false"
+                      :inactive-value="true"
                       active-color="#13ce66"
                       inactive-color="#eee"
                     ></el-switch>
@@ -193,7 +193,7 @@
                     <div class="rigBtn">
                         <el-button size="mini">
                           <i class="el-icon-edit-outline"></i>
-                          <span @click="router('userManagementWrite','修改用户',scope.row)">编辑</span>
+                          <span class="write" @click="router('userManagementWrite','修改用户',scope.row)">编辑</span>
                         </el-button>
                       <el-button @click="open(scope.row)" size="mini">
                         <i class="el-icon-delete"></i>删除
@@ -682,4 +682,8 @@ export default {
 span {
   color: #676a6c;
 }
+  .write{
+    margin:0!important;
+    color: white;
+  }
 </style>
