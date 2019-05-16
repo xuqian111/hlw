@@ -1,0 +1,46 @@
+  tableData= [{
+        name: '用户性别',
+        type:'sys_user_sex',
+        status:'正常',
+        remark:'用户性别列表',
+        timer: '2016-05-03'
+        
+      }
+      , 
+      {
+        date: '2016-05-02',
+        name: '用户性别',
+        type:'sys_user_sex',
+        remark:'用户性别列表'
+      }, 
+      {
+        date: '2016-05-04',
+        name: '用户性别',
+        type:'sys_user_sex',
+        remark:'用户性别列表'
+      },
+       {
+        date: '2016-05-01',
+        name: '用户性别',
+        type:'sys_user_sex',
+        remark:'用户性别列表'
+      }, 
+      {
+        date: '2016-05-08',
+        name: '用户性别',
+        type:'sys_user_sex',
+        remark:'用户性别列表'
+      }, 
+      {
+        date: '2016-05-06',
+        name: '用户性别',
+        type:'sys_user_sex',
+        remark:'用户性别列表'
+      },
+       {
+        date: '2016-05-07',
+        name: '用户性别',
+        type:'sys_user_sex',
+        remark:'用户性别列表'
+      }
+      ],
