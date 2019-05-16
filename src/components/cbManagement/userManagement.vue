@@ -290,6 +290,7 @@ export default {
       row.index = rowIndex
     },
     router(path, crumb,i) {
+      console.log("------",i)
       // console.log(this.tableData[0].userId)
       let a = i.index
       this.$store.commit('writeIndex',a)
@@ -317,6 +318,7 @@ export default {
             }).then(res => {
               console.log('res', 1111)
               res.json().then(data => {
+                console.log('---------',data)
               })
             })
           this.$message({

@@ -119,6 +119,7 @@
             }).then(res => {
               console.log('res', res)
               res.json().then(data => {
+                this.$router.push("/index/customer");
                 console.log('data2', data)
               })
             })
