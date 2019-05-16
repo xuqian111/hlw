@@ -1,9 +1,5 @@
 <template>
-<<<<<<< HEAD
   <div class="Ma_Po_Se_Con2">
-=======
-  <div class="Ma_Po_Se_Con2" >
->>>>>>> 80653a155e8fbf4016a916bbd1d0c4a12a16af5c
     <div class="Ma_Po_Se_Con2_Midd">
       <div class="Ma_Po_Se_Con2_Card">
         <div class="Ma_Po_Se_Con2_Card_Btn">
@@ -30,44 +26,6 @@
                 class="Ma_Po_Se_Con2_Card_Btn_left_lists_single"
               >导出</el-button>
             </el-row>
-<<<<<<< HEAD
-          </div>
-          <div class="Ma_Po_Se_Con2_Card_Btn_right">
-            <el-button-group>
-              <el-button icon="el-icon-search" class="Ma_Po_Se_Con2_Card_Btn_right_lists_single"></el-button>
-              <el-button icon="el-icon-refresh" class="Ma_Po_Se_Con2_Card_Btn_right_lists_single"></el-button>
-              <el-button icon="el-icon-tickets" class="Ma_Po_Se_Con2_Card_Btn_right_lists_single"></el-button>
-              <el-button icon="el-icon-s-grid" class="Ma_Po_Se_Con2_Card_Btn_right_lists_single">
-                <span class="el-icon-caret-bottom"></span>
-                <!--<div class=""></div>-->
-              </el-button>
-            </el-button-group>
-          </div>
-        </div>
-        <div class="Ma_Po_Se_Con2_Card_Table">
-          <el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%">
-            <el-table-column type="selection" width="55"></el-table-column>
-            <el-table-column label="岗位编号" width="120">
-              <template slot-scope="scope">{{ scope.row.date }}</template>
-            </el-table-column>
-            <el-table-column prop="datenum" label="岗位编码" width="120"></el-table-column>
-            <el-table-column prop="name" label="岗位名称" show-overflow-tooltip></el-table-column>
-            <el-table-column prop="shunxu" label="显示顺序" show-overflow-tooltip></el-table-column>
-            <el-table-column prop="states" label="状态" show-overflow-tooltip>
-              <template slot-scope="scope">
-                <el-button size="mini" type="danger">正常</el-button>
-              </template>
-            </el-table-column>
-            <el-table-column prop="time" label="创建时间" show-overflow-tooltip></el-table-column>
-            <el-table-column label="操作">
-              <template slot-scope="scope">
-                <el-button size="mini">编辑</el-button>
-                <el-button size="mini" type="danger">删除</el-button>
-              </template>
-            </el-table-column>
-          </el-table>
-        </div>
-=======
           </div>
           <div class="Ma_Po_Se_Con2_Card_Btn_right">
             <el-button-group>
@@ -278,7 +236,6 @@ padding: 4px 15px;"
             </table>
           </div>
         </div>
->>>>>>> 80653a155e8fbf4016a916bbd1d0c4a12a16af5c
         <div class="Ma_Po_Se_Con2_Card_Sum">
           <p class="Ma_Po_Se_Con2_Card_Text">第 1 到 4 条，共 4 条记录。</p>
         </div>
