@@ -180,8 +180,8 @@
                   <template slot-scope="scope">
                     <el-switch
                       v-model="scope.row.status"
-                      :active-value="true"
-                      :inactive-value="false"
+                      :active-value="false"
+                      :inactive-value="true"
                       active-color="#13ce66"
                       inactive-color="#eee"
                     ></el-switch>
@@ -193,9 +193,9 @@
                     <div class="rigBtn">
                         <el-button size="mini">
                           <i class="el-icon-edit-outline"></i>
-                          <span @click="router('userManagementWrite','修改用户',scope.row)">编辑</span>
+                          <span class="write" @click="router('userManagementWrite','修改用户',scope.row)">编辑</span>
                         </el-button>
-                      <el-button @click="open" size="mini">
+                      <el-button @click="open(scope.row)" size="mini">
                         <i class="el-icon-delete"></i>删除
                       </el-button>
                       <el-button size="mini">
@@ -300,16 +300,28 @@ export default {
       this.$router.push("/index/" + path);
       console.log(path, crumb);
     },
-    open() {
+    open(i) {
+      let a = i.index+1
       this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning"
       })
         .then(() => {
+            fetch('http://10.35.164.14:3000/user/api/deleteUser', {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
+              body: `userId=${a}`
+            }).then(res => {
+              console.log('res', 1111)
+              res.json().then(data => {
+              })
+            })
           this.$message({
             type: "success",
-            message: "删除成功!"
+            message: "删除成功!",
           });
         })
         .catch(() => {
@@ -670,4 +682,8 @@ export default {
 span {
   color: #676a6c;
 }
+  .write{
+    margin:0!important;
+    color: white;
+  }
 </style>
