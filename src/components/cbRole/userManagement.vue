@@ -15,69 +15,48 @@
             <div class="tree">
               <li class="tree_one">
                 <span class="controlAll"></span>
-                <a href="#">
-                  <i class="el-icon-folder-opened"></i>
-                  <span>若依科技</span>
-                </a>
+                <a href="#"><i class="el-icon-folder-opened"></i><span>若依科技</span></a>
               </li>
               <ul class="tree_two">
                 <li class="tree_one tree_two_a">
                   <div class="Line line1">
                     <span class="control"></span>
-                    <a href="#">
-                      <i class="el-icon-folder-opened"></i>
-                      <span>深圳总公司</span>
-                    </a>
+                    <a href="#"><i class="el-icon-folder-opened"></i><span>深圳总公司</span></a>
                   </div>
                   <span class="a"></span>
                   <ul class="sz">
                     <li class="tree_three">
                       <div class="Line">
                         <span></span>
-                        <a href="#">
-                          <i class="el-icon-document"></i>
-                          <span>研发部门</span>
-                        </a>
+                        <a href="#"><i class="el-icon-document"></i><span>研发部门</span></a>
                       </div>
                       <span class="a"></span>
                     </li>
                     <li class="tree_three four">
                       <div class="Line">
                         <span></span>
-                        <a href="#">
-                          <i class="el-icon-document"></i>
-                          <span>市场部门</span>
-                        </a>
+                        <a href="#"><i class="el-icon-document"></i><span>市场部门</span></a>
                       </div>
                       <span class="a"></span>
                     </li>
                     <li class="tree_three four">
                       <div class="Line">
                         <span></span>
-                        <a href="#">
-                          <i class="el-icon-document"></i>
-                          <span>测试部门</span>
-                        </a>
+                        <a href="#"><i class="el-icon-document"></i><span>测试部门</span></a>
                       </div>
                       <span class="a"></span>
                     </li>
                     <li class="tree_three four">
                       <div class="Line">
                         <span></span>
-                        <a href="#">
-                          <i class="el-icon-document"></i>
-                          <span>财务部门</span>
-                        </a>
+                        <a href="#"><i class="el-icon-document"></i><span>财务部门</span></a>
                       </div>
                       <span class="a"></span>
                     </li>
                     <li class="tree_three four">
                       <div class="Line">
                         <span></span>
-                        <a href="#">
-                          <i class="el-icon-document"></i>
-                          <span>运维部门</span>
-                        </a>
+                        <a href="#"><i class="el-icon-document"></i><span>运维部门</span></a>
                       </div>
                       <span class="a"></span>
                     </li>
@@ -86,28 +65,19 @@
                 <li class="tree_one tree_two_a">
                   <div class="Line line1">
                     <span class="control"></span>
-                    <a href="#">
-                      <i class="el-icon-folder-opened"></i>
-                      <span>长沙总公司</span>
-                    </a>
+                    <a href="#"><i class="el-icon-folder-opened"></i><span>长沙总公司</span></a>
                   </div>
                   <ul class="langLine">
                     <li class="tree_three">
                       <div class="Line">
                         <span></span>
-                        <a href="#">
-                          <i class="el-icon-document"></i>
-                          <span>市场部门</span>
-                        </a>
+                        <a href="#"><i class="el-icon-document"></i><span>市场部门</span></a>
                       </div>
                     </li>
                     <li class="tree_three four">
                       <div class="Line">
                         <span></span>
-                        <a href="#">
-                          <i class="el-icon-document"></i>
-                          <span>财务部门</span>
-                        </a>
+                        <a href="#"><i class="el-icon-document"></i><span>财务部门</span></a>
                       </div>
                     </li>
                   </ul>
@@ -123,18 +93,18 @@
             <ul class="user_top_r">
               <li>
                 <p>登录名称:</p>
-                <input type="text">
+                <input v-model="name" type="text">
               </li>
               <li>
                 <p>手机号码:</p>
-                <input type="text">
+                <input v-model="tel" type="text">
               </li>
               <li>
                 <p>用户状态:</p>
-                <select name id>
-                  <option value>所有</option>
-                  <option value>正常</option>
-                  <option value>停用</option>
+                <select v-model="states">
+                  <option value="所有">所有</option>
+                  <option value="正常">正常</option>
+                  <option value="停用">停用</option>
                 </select>
               </li>
               <li class="time">
@@ -149,7 +119,7 @@
                 </div>
               </li>
               <li>
-                <el-button type="primary" round>搜索</el-button>
+                <el-button type="primary" @click="selects" round>搜索</el-button>
                 <el-button type="danger" round>重置</el-button>
               </li>
             </ul>
@@ -194,66 +164,10 @@
                 :data="tableData"
                 tooltip-effect="dark"
                 style="width: 100%"
+                :row-class-name="tableRowClassName"
               >
                 <el-table-column type="selection" width="40"></el-table-column>
-                <el-table-column label="用户ID" sortable width="90">
-                  <template slot-scope="scope">{{ scope.row.id }}</template>
-                </el-table-column>
-                <el-table-column prop="userId" label="登录名称" width="120"></el-table-column>
-                <el-table-column prop="userName" label="用户名称" width="70" show-overflow-tooltip></el-table-column>
-                <el-table-column prop="part" label="部门" width="100"></el-table-column>
-                <el-table-column prop="tel" label="手机" width="120"></el-table-column>
-                <el-table-column prop="userState" label="用户状态" width="80">
-                  <template slot-scope="scope">
-                    <el-switch
-                      v-model="scope.row.status"
-                      :active-value="true"
-                      :inactive-value="false"
-                      active-color="#13ce66"
-                      inactive-color="#eee"
-                    ></el-switch>
-                  </template>
-                </el-table-column>
-                <el-table-column prop="data" label="创建时间" sortable width="110"></el-table-column>
-                <el-table-column prop="operation" label="操作" width="155">
-                  <template>
-                    <div class="rigBtn">
-                      <el-button size="mini">
-                        <i class="el-icon-edit-outline"></i>
-                        <router-link to="userManagementWrite">编辑</router-link>
-                      </el-button>
-                      <el-button @click="open" size="mini">
-                        <i class="el-icon-delete"></i>删除
-                      </el-button>
-                      <el-button size="mini">
-                        <i class="el-icon-key"></i>重置
-                      </el-button>
-                    </div>
-                  </template>
-                </el-table-column>
-              </el-table>
-            </div>
-            <div class="user_right_cent_bot">
-              <p>
-                第
-                <span>1</span> 到
-                <span>2</span>,
-              </p>
-              <p>
-                共
-                <span>2</span> 条记录。
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="rightLine" ref="s">
-        <div @click="showLeft" class="rightLineC">
-          <i class="el-icon-caret-left"></i>
-        </div>
-      </div>
-    </div>
-  </div>
+                <el-table-column  label="用户ID" sortable width="90">
 </template>
 
 <script>
@@ -276,7 +190,15 @@ export default {
     };
   },
   methods: {
-    router(path, crumb) {
+
+    tableRowClassName({ row, rowIndex }) {
+      row.index = rowIndex;
+    },
+    router(path, crumb, i) {
+      console.log("------", i);
+      // console.log(this.tableData[0].userId)
+      let a = i.index;
+      this.$store.commit("writeIndex", a);
       this.$store.dispatch({
         type: "intradd",
         data: crumb
@@ -291,6 +213,18 @@ export default {
         type: "warning"
       })
         .then(() => {
+          fetch("http://10.35.164.14:3000/user/api/deleteUser", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: `userId=${a}`
+          }).then(res => {
+            console.log("res", 1111);
+            res.json().then(data => {
+              console.log("---------", data);
+            });
+          });
           this.$message({
             type: "success",
             message: "删除成功!"
@@ -316,7 +250,6 @@ export default {
   created() {
     $.get("http://10.35.164.14:3000/user/api/getUser", data => {
       this.tableData = data;
-      // console.log("tableData", this.tableData);
     });
   },
   mounted() {
