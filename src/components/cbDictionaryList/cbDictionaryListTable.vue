@@ -21,29 +21,26 @@
         <!-- 表单 -->
         <div class="tableContent">
             <el-table 
-                ref="multipleTable" :data="tableData" tooltip-effect="dark"  style="width: 100%"
+                ref="multipleTable" :data="datas" tooltip-effect="dark"  style="width: 100%"
                 @selection-change="handleSelectionChange">
                 <el-table-column type="selection" width="55">
                 </el-table-column>
                  <el-table-column label="字典主键" type="index" width="120">
-                  <template></template>
+                 
                 </el-table-column>
                 <el-table-column prop="name" label="字典名称" width="120">
                 </el-table-column>
                  <el-table-column prop="type" label="字典类型" width="120">
-                  <template slot-scope="scope">{{ scope.row.type }}</template>
+                  
                 </el-table-column>                  
                 <el-table-column prop="status" label="状态" width="120">
-                  <template>
-                      <span slot-scope="scope" class="Status stopuse">{{scope.row.status}}
-                     </span>
-                  </template>
+                 
                 </el-table-column>                 
                 <el-table-column prop="remark" label="备注"  width="120">
-                  <template slot-scope="scope">{{ scope.row.remark }}</template>
+                  
                 </el-table-column> 
                 <el-table-column prop="timer" label="创建时间" width="120">
-                  <template slot-scope="scope">{{ scope.row.timer }}</template>
+                  
                 </el-table-column>
                 <el-table-column class="inside-btn"  prop="name" label="操作" width="300">
                     <el-button size="mini" type="primary"><i class="el-icon-edit-outline" @click="upadteFormVisible = true"></i>编辑</el-button>
@@ -72,12 +69,12 @@
                       </el-radio-group>
                   </el-form-item>
                 <el-form-item label="备注" :label-width="formLabelWidth">
-                    <el-input type="textarea" v-model="form.desc"></el-input>
+                    <el-input type="textarea" v-model="form.remark"></el-input>
                   </el-form-item>
                 </el-form>
                 <div slot="footer" class="dialog-footer">
-                  <el-button @click="addFormVisible = false">取 消</el-button>
-                  <el-button type="primary" @click="addFormVisible = false">确 定</el-button>
+                  <el-button @click.native="addInfo">取 消</el-button>
+                  <el-button type="primary" @click.native="addInfo">确 定</el-button>
                 </div>
               </el-dialog>
 <!-- 修改模态窗口 -->
@@ -113,10 +110,12 @@
 
 <script>
 
+import Axios from 'axios' 
 // import addDicWin from './addDicWin'
 
 export default {
     name:"cbDictionaryListTable",
+    props:["datas"],
     components:{
         // addDicWin
 
@@ -124,76 +123,59 @@ export default {
     data(){
         return{
           // 表格数据
-        tableData: [{
-             name: '用户性别',
-             type:'sys_user_sex',
-             status:'正常',
-             remark:'用户性别列表',
-             timer: '2016-05-03',
-             
-            
-             
-           }
-          //  , 
-          //  {
-          //    date: '2016-05-02',
-          //    name: '用户性别',
-          //    type:'sys_user_sex',
-          //    remark:'用户性别列表'
-          //  }, 
-          //  {
-          //    date: '2016-05-04',
-          //    name: '用户性别',
-          //    type:'sys_user_sex',
-          //    remark:'用户性别列表'
-          //  },
-          //   {
-          //    date: '2016-05-01',
-          //    name: '用户性别',
-          //    type:'sys_user_sex',
-          //    remark:'用户性别列表'
-          //  }, 
-          //  {
-          //    date: '2016-05-08',
-          //    name: '用户性别',
-          //    type:'sys_user_sex',
-          //    remark:'用户性别列表'
-          //  }, 
-          //  {
-          //    date: '2016-05-06',
-          //    name: '用户性别',
-          //    type:'sys_user_sex',
-          //    remark:'用户性别列表'
-          //  },
-          //   {
-          //    date: '2016-05-07',
-          //    name: '用户性别',
-          //    type:'sys_user_sex',
-          //    remark:'用户性别列表'
-          //  }
-           ],
+          tableData:[],
            multipleSelection: [],
-       
           //添加弹框
            addFormVisible: false,
            form: {
              name: '',
              type: '',
              status: '',
-             desc: ''
+             remark: ''
            },
           formLabelWidth: '100px',
           upadteFormVisible:false,
           updateform:{
-            name: '',
+              name: '',
              type: '',
              status: '',
-             desc: ''
+             remark: '' 
+
           }
        }
     },
-   
+    created(){
+      // console.log(this.data)
+    },
     methods: {
+
+        //新增
+         addInfo(){
+           this.addFormVisible=!this.addFormVisible
+           let obj = {
+              status: this.form.status,
+              name: this.form.name,
+              type:this.form.type,
+              remark:this.form.remark
+           }
+           console.log(obj)
+          //  Axios({
+          //           method:'post',
+          //           url:'http://10.35.164.14:3000/word/api/addWord',
+          //           data:obj
+          //        })
+          //         .then(function(res){
+          //         console.log(res)
+          //         tableData = res;
+          //       }).catch(function(err){
+          //         	console.log("获取axios失败数据")
+          //       })
+          $.post('http://10.35.164.14:3000/word/api/addWord',obj,function(data){
+            console.log(data)
+          })
+
+
+         },
         // 多选框checkedout
         handleSelectionChange(val) {
           this.multipleSelection = val;
@@ -235,6 +217,8 @@ export default {
         });
       }
 
+    },
+    computed:{
     }
 
 }

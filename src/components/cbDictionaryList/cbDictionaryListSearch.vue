@@ -32,7 +32,7 @@
             </el-form-item>
     
             <el-form-item>
-                <el-button type="success" round @click="submitForm('formInline')"><i class="el-icon-search"></i>搜索</el-button>
+                <el-button type="success" round @click="submitForm"><i class="el-icon-search"></i>搜索</el-button>
                 <el-button  type="warning" round @click="resetForm('formInline')"><i class="el-icon-refresh"></i> 重置</el-button>
             </el-form-item>
         </el-form>        
@@ -44,6 +44,7 @@
 
 export default {
     name:"cbDictionaryListSearch",
+    props:["datas"],
     components:{
 
 
@@ -58,40 +59,22 @@ export default {
           date2: ''
         
         },
-        rules: {
-          name: [
-            { required: true, message: '请输入字典名称', trigger: 'blur' },
-            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
-          ],
-          type: [
-            { required: true, message: '请输入字典类型', trigger: 'blur' },
-            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
-          ],
-          region: [
-            { required: true, message: '请选择活动区域', trigger: 'change' }
-          ],
-          date1: [
-            { type: 'date', required: true, message: '请选择日期', trigger: 'change' }
-          ],
-          date2: [
-            { type: 'date', required: true, message: '请选择时间', trigger: 'change' }
-          ]
-        }
       };
     },
+    created(){
+      console.log(this.tableData)
+    },
     methods: {
-      submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            alert('submit!');
-          } else {
-            console.log('error submit!!');
-            return false;
-          }
-        });
-      },
-      resetForm(formName) {
-        this.$refs[formName].resetFields();
+      submitForm() {
+        let dicArr=[]
+        let dic = this.$store.state.dicinfo
+        dic.forEach((item)=>{
+            if(item.name ==this.formInline.name){
+                dicArr.push(item);
+            }
+        })
+        this.$store.commit('seachDic',dicArr);
+        console.log(this.$store.state.dicinfo)
       }
     }
   

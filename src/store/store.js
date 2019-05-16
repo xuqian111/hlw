@@ -5,7 +5,8 @@ Vue.use(Vuex)
 const state = {
   brumbs: [],
   user: {},
-  num :''
+  num :'',
+  dicinfo:''
 }
 
 const actions = {
@@ -41,6 +42,10 @@ const actions = {
 }
 
 const mutations = {
+  seachDic(state,obj){
+    state.dicinfo = obj
+  },
+
   updateUser(state, obj) {
     state.user = obj.data
   },
