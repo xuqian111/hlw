@@ -22,7 +22,13 @@
                     </el-option>
                   </el-select>
                 </p>
-                <p><span>角色：</span><el-checkbox v-model="checked">管理员</el-checkbox><el-checkbox v-model="checked1">普通角色</el-checkbox></p>
+                <p>
+                    <span>角色：</span>
+                  <template>
+                    <el-radio  @change="sourceFilter" name="1"  v-model="tableData.权限" label="管理员">管理员</el-radio>
+                    <el-radio  @change="sourceFilter" name="1" v-model="tableData.权限" label="pro">普通员工</el-radio>
+                  </template>
+                </p>
               </div>
             </div>
           <div class="basic_cen_left">
@@ -59,7 +65,7 @@
             </div>
             <div class="rest_cen_c">
               <div class="endBtn">
-                <el-button size="mini"><i class="el-icon-check"></i>保存</el-button>
+                <el-button @click="saveData" size="mini"><i class="el-icon-check"></i>保存</el-button>
                 <el-button size="mini"><i class="el-icon-receiving"></i>关闭</el-button>
               </div>
             </div>
@@ -93,12 +99,30 @@
           ],
           value5: [],
           value11: [],
-          checked: true,
-          checked1:false,
           value1:true,
           value2:true,
           tableData:''
         }
+      },
+      methods:{
+        sourceFilter(){
+          console.log(this.tableData.权限)
+        },
+          saveData(){
+            console.log(this.checked)
+            fetch('http://10.35.164.14:3000/user/api/editUser', {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
+              body:`userId=${this.tableData.userId}&userPass=${this.tableData.userId}&sex=${this.tableData.sex}&userName=${this.tableData.userName}&email=${this.tableData.email}&part=${this.tableData.part}&job=${this.tableData.job}&state=${this.tableData.state}&权限=${this.tableData.权限}`
+            }).then(res => {
+              console.log('res', res)
+              res.json().then(data => {
+                console.log('data2', data)
+              })
+            })
+          }
       },
       created() {
         $.get("http://10.35.164.14:3000/user/api/getUser", data => {
@@ -111,7 +135,7 @@
           })
           console.log(this.tableData)
         });
-      }
+      },
     }
 </script>
 
