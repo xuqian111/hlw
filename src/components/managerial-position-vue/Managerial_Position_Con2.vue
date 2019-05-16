@@ -1,5 +1,5 @@
 <template>
-  <div class="Ma_Po_Se_Con2" >
+  <div class="Ma_Po_Se_Con2">
     <div class="Ma_Po_Se_Con2_Midd">
       <div class="Ma_Po_Se_Con2_Card">
         <div class="Ma_Po_Se_Con2_Card_Btn">

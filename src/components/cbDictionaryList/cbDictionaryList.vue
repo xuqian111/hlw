@@ -1,5 +1,5 @@
 <template>
-    <div class="DictionaryListBox">
+    <div class="DictionaryListBox" @getNew="fetchNewData">
         <cbDictionaryListSearch :datas="tableData"/>
         <cbDictionaryListTable :datas="tableData"/>
     </div>
@@ -21,6 +21,23 @@ export default {
     data(){
         return{
             tableData:''
+        }
+    },
+    methods:{
+        fetchNewData(){
+            console.log(11)
+            Axios({
+                    method:'get',
+                    url:'http://10.35.164.14:3000/word/api/getWord'
+                    // data:form
+                 })
+                  .then(function(res){
+                  // res = JSON.stringifyres
+                  _this.tableData = res.data;
+                //   console.log('-------',_this.tableData);
+                }).catch(function(error){
+                      alert(error);
+                  })
         }
     },
     created(){
